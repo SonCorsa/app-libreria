@@ -10,13 +10,13 @@ public class Libri {
     //attributo per il punteggio(recensione)
 
     
-    public Libri(String autore, String nome, String genere, int pagine, int[] dataI, int[] dataF, String trama) {
+    public Libri(String autore, String nome, String genere, int pagine,String trama) {
         this.autore = autore;
         this.nome = nome;
         this.genere = genere;
         this.pagine = pagine;
-        this.dataI = dataI;
-        this.dataF = dataF;
+        dataI = new int[3];
+        dataF = new int[3];
         this.trama = trama;
     }
 

@@ -75,7 +75,17 @@ public class Libri {
     public void setTrama(String trama) {
         this.trama = trama;
     }
+    public String toString(){
+        return String.format("%s %s %s %d %s",autore,nome, genere,pagine,trama);
+    }
 
+    public boolean equals(Libri l){
+        if(this.toString().equals(l.toString()) && dataI == l.getDataI() && dataF == l.getDataF()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
     
 }

@@ -21,6 +21,21 @@ public class Libreria {
             return false;
         }
     }
+
+    public boolean eliminaLibro(Libri l){
+        boolean presente=false;
+        for(Libri li:libri){
+            if(li.equals(libri)){
+                presente=true;
+            }
+        }
+        if(presente){
+            libri.remove(l);
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 
     

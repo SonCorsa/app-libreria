@@ -76,7 +76,7 @@ public class Libri {
         this.trama = trama;
     }
     public String toString(){
-        return String.format("%s %s %s %d %s",autore,nome, genere,pagine,trama);
+        return String.format("%s %s %s %d",autore,nome, genere,pagine);
     }
 
     public boolean equals(Libri l){

@@ -19,7 +19,7 @@ public class Libri {
         dataF = new int[3];
         this.trama = trama;
     }
-
+pisnelo
     public String getAutore() {
         return autore;
     }

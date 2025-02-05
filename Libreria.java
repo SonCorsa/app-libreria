@@ -21,7 +21,7 @@ public class Libreria {
             return false;
         }
     }
-
+    
     public boolean eliminaLibro(Libri l){
         boolean presente=false;
         for(Libri li:libri){

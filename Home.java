@@ -49,6 +49,9 @@ public class Home extends  JFrame{
                 File file = fileChooser.getSelectedFile();
                 icon = new ImageIcon(file.getAbsolutePath());
                 profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(50, 70, 5)));
+                profileButton.setOpaque(false);
+                profileButton.setBorderPainted(false);
+                profileButton.setContentAreaFilled(false);
             }
         });
 

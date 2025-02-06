@@ -80,9 +80,9 @@ public class Home extends  JFrame{
     }
 
     /*ToDo:
-     * sistemare il BoxLayout
-     * mettere le altre 3 righe
-     * inserire l'immagine nel JButton
+     * creare il pulsante per visualizzare la lista
+     * creare i pulsanti per aggiungere i libri alla lista 
+     * creatre file txt per salvare il path dell'immagine profilo  
      * impostare il JButton come un cerchio
      * creare il Listener
      * 

@@ -10,7 +10,7 @@ public class Home extends  JFrame{
 
     private JButton profileButton; 
     private JLabel home,reading,read,toRead; 
-    private JPanel p1,p2,p3,p4,p5;
+    private JPanel p1,p5;
     
     public Home(String titolo){
         super(titolo);

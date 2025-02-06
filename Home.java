@@ -12,7 +12,7 @@ public class Home extends  JFrame{
 
     private JButton profileButton; 
     private JLabel home,reading,read,toRead; 
-    private JPanel p1,p2;
+    private JPanel p1,p2,readPanel,readingPanel,toReadPanel;
     private ArrayList<JPanel> readList,readingList,toReadList;
     private ImageIcon icon;
     
@@ -30,13 +30,29 @@ public class Home extends  JFrame{
         readList=new ArrayList<JPanel>();
         readingList=new ArrayList<JPanel>();
         toReadList= new ArrayList<JPanel>();
+        readPanel = new JPanel(new FlowLayout());
+        readingPanel = new JPanel(new FlowLayout());
+        toReadPanel = new JPanel(new FlowLayout());
         
 
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
         p2.add(reading);
+        for(JPanel l:readingList){
+            readingPanel.add(l);
+        }
+        p2.add(readingPanel);
         p2.add(read);
+        for(JPanel l:readList){
+            readPanel.add(l);
+        }
+        p2.add(readPanel);
         p2.add(toRead);
+        for(JPanel l:toReadList){
+            toReadPanel.add(l);
+        }
+        p2.add(toReadPanel);
+
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.CENTER);
         

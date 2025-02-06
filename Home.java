@@ -22,19 +22,13 @@ public class Home extends  JFrame{
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
         p1 = new JPanel(new BorderLayout());
-        p2=new JPanel(new FlowLayout());
-        p3=new JPanel(new FlowLayout());
-        p4=new JPanel(new FlowLayout());
         p5=new JPanel(new GridLayout(3,0));
 
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
-        p2.add(reading);
-        p3.add(read);
-        p4.add(toRead);
-        p5.add(p2);
-        p5.add(p3);
-        p5.add(p4);
+        p5.add(reading);
+        p5.add(read);
+        p5.add(toRead);
         add(p1,BorderLayout.NORTH);
         add(p5,BorderLayout.WEST);
         

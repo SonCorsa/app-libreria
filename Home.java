@@ -14,12 +14,13 @@ public class Home extends  JFrame{
     private JLabel home,reading,read,toRead; 
     private JPanel p1,p2;
     private ArrayList<JPanel> readList,readingList,toReadList;
+    private ImageIcon icon;
     
     public Home(String titolo){
         super(titolo);
         setLayout(new BorderLayout());
         
-        profileButton = new JButton(icon);
+        profileButton = new JButton();
         home = new JLabel("    home");
         read= new JLabel("Read");
         reading = new JLabel("Reading");
@@ -46,10 +47,12 @@ public class Home extends  JFrame{
             int result = fileChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File file = fileChooser.getSelectedFile();
-                ImageIcon imageIcon = new ImageIcon(file.getAbsolutePath());
-                Icon icon = new ImageIcon(imageIcon.getImage());
+                icon = new ImageIcon(file.getAbsolutePath());
+                profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(50, 70, 5)));
             }
         });
+
+        profileButton.setIcon(icon);
 
         setSize(600,1000);
     

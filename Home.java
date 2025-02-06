@@ -30,7 +30,7 @@ public class Home extends  JFrame{
         p2.add(read);
         p2.add(toRead);
         add(p1,BorderLayout.NORTH);
-        add(p2,BorderLayout.WEST);
+        add(p2,BorderLayout.CENTER);
         
 
         setSize(600,1000);

@@ -1,5 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
+import java.io.*;
+import java.util.ArrayList;
 
 public class Home extends  JFrame{
     //ciao roberto mi manchi mentre stai spiegando alla lavagna.
@@ -11,6 +13,7 @@ public class Home extends  JFrame{
     private JButton profileButton; 
     private JLabel home,reading,read,toRead; 
     private JPanel p1,p2;
+    private ArrayList<JPanel> readList,readingList,toReadList;
     
     public Home(String titolo){
         super(titolo);
@@ -22,7 +25,10 @@ public class Home extends  JFrame{
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
         p1 = new JPanel(new BorderLayout());
-        p2=new JPanel(new GridLayout(3,0));
+        p2=new JPanel(new GridLayout(6,0));
+        readList=new ArrayList<JPanel>();
+        readingList=new ArrayList<JPanel>();
+        toReadList= new ArrayList<JPanel>();
 
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);

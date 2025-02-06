@@ -17,7 +17,7 @@ public class Home extends  JFrame{
         setLayout(new BorderLayout());
         
         profileButton = new JButton("profilo");
-        home = new JLabel("home");
+        home = new JLabel("    home");
         read= new JLabel("Read");
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
@@ -36,7 +36,7 @@ public class Home extends  JFrame{
         p5.add(p3);
         p5.add(p4);
         add(p1,BorderLayout.NORTH);
-        add(p5,BorderLayout.CENTER);
+        add(p5,BorderLayout.WEST);
         
 
         setSize(600,1000);

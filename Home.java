@@ -9,23 +9,37 @@ public class Home extends  JFrame{
     //muah :3
 
     private JButton profileButton; 
-    private JLabel label; 
-    private JPanel panel;
+    private JLabel home,reading,read,toRead; 
+    private JPanel p1,p2,p3,p4,p5;
     
     public Home(String titolo){
         super(titolo);
         setLayout(new BorderLayout());
         
         profileButton = new JButton("profilo");
-        label = new JLabel("Reading");
-        panel = new JPanel(new BorderLayout());
+        home = new JLabel("home");
+        read= new JLabel("Read");
+        reading = new JLabel("Reading");
+        toRead= new JLabel("To Read");
+        p1 = new JPanel(new BorderLayout());
+        p2=new JPanel(new FlowLayout());
+        p3=new JPanel(new FlowLayout());
+        p4=new JPanel(new FlowLayout());
+        p5=new JPanel(new GridLayout(3,0));
 
-        panel.add(profileButton,BorderLayout.EAST);
-        panel.add(label,BorderLayout.WEST);
-        add(panel,BorderLayout.NORTH);
+        p1.add(profileButton,BorderLayout.EAST);
+        p1.add(home,BorderLayout.WEST);
+        p2.add(reading);
+        p3.add(read);
+        p4.add(toRead);
+        p5.add(p2);
+        p5.add(p3);
+        p5.add(p4);
+        add(p1,BorderLayout.NORTH);
+        add(p5,BorderLayout.CENTER);
         
 
-        setSize(300,200);
+        setSize(600,1000);
     
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

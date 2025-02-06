@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+import java.awt.*;
 import javax.swing.*;
 
 public class Home extends JFrame{
@@ -28,5 +28,13 @@ public class Home extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    /*ToDo:
+     * mettere le altre 3 righe
+     * inserire l'immagine nel JButton
+     * impostare il JButton come un cerchio
+     * creare il Listener
+     * 
+     */
     
 }

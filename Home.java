@@ -10,7 +10,7 @@ public class Home extends  JFrame{
 
     private JButton profileButton; 
     private JLabel home,reading,read,toRead; 
-    private JPanel p1,p5;
+    private JPanel p1,p2;
     
     public Home(String titolo){
         super(titolo);
@@ -22,15 +22,15 @@ public class Home extends  JFrame{
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
         p1 = new JPanel(new BorderLayout());
-        p5=new JPanel(new GridLayout(3,0));
+        p2=new JPanel(new GridLayout(3,0));
 
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
-        p5.add(reading);
-        p5.add(read);
-        p5.add(toRead);
+        p2.add(reading);
+        p2.add(read);
+        p2.add(toRead);
         add(p1,BorderLayout.NORTH);
-        add(p5,BorderLayout.WEST);
+        add(p2,BorderLayout.WEST);
         
 
         setSize(600,1000);

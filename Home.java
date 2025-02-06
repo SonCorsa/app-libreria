@@ -1,7 +1,7 @@
 import java.awt.*;
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
+import javax.swing.*;
 
 public class Home extends  JFrame{
     //ciao roberto mi manchi mentre stai spiegando alla lavagna.
@@ -19,7 +19,7 @@ public class Home extends  JFrame{
         super(titolo);
         setLayout(new BorderLayout());
         
-        profileButton = new JButton("profilo");
+        profileButton = new JButton(icon);
         home = new JLabel("    home");
         read= new JLabel("Read");
         reading = new JLabel("Reading");
@@ -29,6 +29,7 @@ public class Home extends  JFrame{
         readList=new ArrayList<JPanel>();
         readingList=new ArrayList<JPanel>();
         toReadList= new ArrayList<JPanel>();
+        
 
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
@@ -38,6 +39,17 @@ public class Home extends  JFrame{
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.CENTER);
         
+       
+        profileButton.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            int result = fileChooser.showOpenDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                ImageIcon imageIcon = new ImageIcon(file.getAbsolutePath());
+                Icon icon = new ImageIcon(imageIcon.getImage());
+            }
+        });
 
         setSize(600,1000);
     

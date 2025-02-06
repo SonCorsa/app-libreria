@@ -30,9 +30,9 @@ public class Home extends  JFrame{
         readList=new ArrayList<JPanel>();
         readingList=new ArrayList<JPanel>();
         toReadList= new ArrayList<JPanel>();
-        readPanel = new JPanel(new FlowLayout());
-        readingPanel = new JPanel(new FlowLayout());
-        toReadPanel = new JPanel(new FlowLayout());
+        readPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        readingPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        toReadPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         
 
         p1.add(profileButton,BorderLayout.EAST);

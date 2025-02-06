@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import javax.swing.*;
 
 public class Home extends JFrame{
@@ -10,18 +9,19 @@ public class Home extends JFrame{
     //muah :3
     
     private JButton profileButton; 
-    private JTextPane tp; 
+    private JLabel label; 
     private JPanel panel;
     
     public Home(String titolo){
         super(titolo);
         setLayout(new BorderLayout());
         
-        profileButton = new JButton("pulsante del profilo");
-        tp=new JTextPane();
-        panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        profileButton = new JButton("profilo");
+        label = new JLabel("Reading");
+        panel = new JPanel(new BorderLayout());
 
-        panel.add(profileButton);
+        panel.add(profileButton,BorderLayout.EAST);
+        panel.add(label,BorderLayout.WEST);
         add(panel,BorderLayout.NORTH);
 
         setSize(300,200);

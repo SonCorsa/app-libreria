@@ -11,22 +11,23 @@ public class Home extends  JFrame implements ActionListener{
     //i test li facciamo quando facciamo il merge
     //muah :3
 
-    private JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
-    private JLabel home,reading,read,toRead; 
-    private JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
-    private ArrayList<JPanel> readList,readingList,toReadList;
+    private final JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
+    private final JLabel home,reading,read,toRead; 
+    private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
+    private final ArrayList<JPanel> readList;
+    private final ArrayList<JPanel> readingList,toReadList;
     private ImageIcon icon;
-    private Aggiungi addPage;
-    private String profileIcon;
+    private final Aggiungi addPage;
+    private final File fileicon;
     
     public Home(String titolo){
         super(titolo);
         setLayout(new BorderLayout());
-
-        profileIcon = new String();
-        profileIcon= "user.png";
-        icon = new ImageIcon("user.png");
+        //IMAGINE PROFILO
+        fileicon = new File("user.png");
+        icon = new ImageIcon(fileicon.getAbsolutePath());
         
+
         //istanzio JButton
         profileButton = new JButton();
         aggiungiRead = new JButton("+");
@@ -57,11 +58,19 @@ public class Home extends  JFrame implements ActionListener{
         //istanzio Aggiungi
         addPage=new Aggiungi("aggiungi un libro");
 
+
+        //IMMAGINE PROFILO 2
+        profileButton.setOpaque(false);
+        profileButton.setBorderPainted(false);
+        profileButton.setContentAreaFilled(false);
+       
+
         //aggiunta dei Listener
         aggiungiRead.addActionListener(this);
         aggiungiReading.addActionListener(this);
         aggiungiToRead.addActionListener(this);
         indietro.addActionListener(this);
+        
 
         //aggiunta ai pannelli
         p1.add(profileButton,BorderLayout.EAST);
@@ -108,7 +117,7 @@ public class Home extends  JFrame implements ActionListener{
                 profileButton.setContentAreaFilled(false);
             }
         });
-        profileButton.setIcon(icon);
+        profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));
 
         //operazioni finali
         setExtendedState(JFrame.MAXIMIZED_BOTH);

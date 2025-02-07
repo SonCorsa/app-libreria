@@ -10,7 +10,7 @@ public class Libri {
     //attributo per il punteggio(recensione)
 
     
-    public Libri(String autore, String nome, String genere, int pagine,String trama) {
+    public Libri(String autore, String nome, String genere, int pagine) {
         this.autore = autore;
         this.nome = nome;
         this.genere = genere;

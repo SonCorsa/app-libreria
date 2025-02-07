@@ -22,27 +22,38 @@ public class Home extends  JFrame implements ActionListener{
         super(titolo);
         setLayout(new BorderLayout());
         
+        //istanzio JButton
         profileButton = new JButton();
         aggiungiRead = new JButton("+");
         indietro=new JButton("indietro");
+
+        //istanzio JLabel
         home = new JLabel("    home");
         read= new JLabel("Read");
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
         p1 = new JPanel(new BorderLayout());
         p2=new JPanel(new GridLayout(6,0));
+
+        //istanzio JPanel
         aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        readList=new ArrayList<JPanel>();
-        readingList=new ArrayList<JPanel>();
-        toReadList= new ArrayList<JPanel>();
         readPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         readingPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         toReadPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
+        
+        //istanzio ArrayList
+        readList=new ArrayList<JPanel>();
+        readingList=new ArrayList<JPanel>();
+        toReadList= new ArrayList<JPanel>();
+
+        //istanzio Aggiungi
         addPage=new Aggiungi("aggiungi un libro");
 
+        //aggiunta dei Listener
         aggiungiRead.addActionListener(this);
         indietro.addActionListener(this);
 
+        //aggiunta ai pannelli
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
         p2.add(reading);
@@ -67,7 +78,7 @@ public class Home extends  JFrame implements ActionListener{
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.CENTER);
         
-       
+       //Listener per l'aggiunta delle immagini
         profileButton.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -81,9 +92,9 @@ public class Home extends  JFrame implements ActionListener{
                 profileButton.setContentAreaFilled(false);
             }
         });
-
         profileButton.setIcon(icon);
 
+        //operazioni finali
         setSize(600,1000);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -17,10 +17,15 @@ public class Home extends  JFrame implements ActionListener{
     private ArrayList<JPanel> readList,readingList,toReadList;
     private ImageIcon icon;
     private Aggiungi addPage;
+    private String profileIcon;
     
     public Home(String titolo){
         super(titolo);
         setLayout(new BorderLayout());
+
+        profileIcon = new String();
+        profileIcon= "user.png";
+        icon = new ImageIcon("user.png");
         
         //istanzio JButton
         profileButton = new JButton();
@@ -28,6 +33,7 @@ public class Home extends  JFrame implements ActionListener{
         indietro=new JButton("indietro");
         aggiungiReading= new JButton("+");
         aggiungiToRead = new JButton("+");
+        
 
         //istanzio JLabel
         home = new JLabel("    home");
@@ -36,7 +42,7 @@ public class Home extends  JFrame implements ActionListener{
         toRead= new JLabel("To Read");
         p1 = new JPanel(new BorderLayout());
         p2=new JPanel(new GridLayout(6,0));
-
+        
         //istanzio JPanel
         aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         readPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));

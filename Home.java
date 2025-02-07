@@ -11,14 +11,14 @@ public class Home extends  JFrame implements ActionListener{
     //i test li facciamo quando facciamo il merge
     //muah :3
 
-    private final JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
+    private JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
     private final ArrayList<JPanel> readList;
     private final ArrayList<JPanel> readingList,toReadList;
     private ImageIcon icon;
     private final Aggiungi addPage;
-    private final File fileicon;
+    private File fileicon;
     
     public Home(String titolo){
         super(titolo);
@@ -60,9 +60,9 @@ public class Home extends  JFrame implements ActionListener{
 
 
         //IMMAGINE PROFILO 2
-        profileButton.setOpaque(false);
+        /*profileButton.setOpaque(false);
         profileButton.setBorderPainted(false);
-        profileButton.setContentAreaFilled(false);
+        profileButton.setContentAreaFilled(false);*/
        
 
         //aggiunta dei Listener

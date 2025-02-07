@@ -11,7 +11,7 @@ public class Home extends  JFrame implements ActionListener{
     //i test li facciamo quando facciamo il merge
     //muah :3
 
-    private JButton profileButton,aggiungiRead,indietro; 
+    private JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
     private JLabel home,reading,read,toRead; 
     private JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
     private ArrayList<JPanel> readList,readingList,toReadList;
@@ -26,6 +26,8 @@ public class Home extends  JFrame implements ActionListener{
         profileButton = new JButton();
         aggiungiRead = new JButton("+");
         indietro=new JButton("indietro");
+        aggiungiReading= new JButton("+");
+        aggiungiToRead = new JButton("+");
 
         //istanzio JLabel
         home = new JLabel("    home");
@@ -51,25 +53,33 @@ public class Home extends  JFrame implements ActionListener{
 
         //aggiunta dei Listener
         aggiungiRead.addActionListener(this);
+        aggiungiReading.addActionListener(this);
+        aggiungiToRead.addActionListener(this);
         indietro.addActionListener(this);
 
         //aggiunta ai pannelli
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
-        p2.add(reading);
+        
         aggiungiPanel.add(indietro);
         addPage.add(aggiungiPanel);
+        
+        p2.add(reading);
+        readingPanel.add(aggiungiReading);
         for(JPanel l:readingList){
             readingPanel.add(l);
         }
         p2.add(readingPanel);
+
         p2.add(read);
         readPanel.add(aggiungiRead);
         for(JPanel l:readList){
             readPanel.add(l);
         }
         p2.add(readPanel);
+        
         p2.add(toRead);
+        toReadPanel.add(aggiungiToRead);
         for(JPanel l:toReadList){
             toReadPanel.add(l);
         }
@@ -102,7 +112,7 @@ public class Home extends  JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource()==aggiungiRead){
+        if(e.getSource()==aggiungiRead || e.getSource()==aggiungiReading || e.getSource()== aggiungiToRead){
             addPage.setVisible(true);
             this.setVisible(false);
         }else if(e.getSource()== indietro){

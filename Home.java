@@ -105,7 +105,7 @@ public class Home extends  JFrame implements ActionListener{
         profileButton.setIcon(icon);
 
         //operazioni finali
-        setSize(600,1000);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

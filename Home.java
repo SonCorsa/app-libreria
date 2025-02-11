@@ -24,8 +24,8 @@ public class Home extends  JFrame implements ActionListener{
         super(titolo);
         setLayout(new BorderLayout());
         //IMAGINE PROFILO
-        fileicon = new File("C:\\Users\\lupin\\Desktop\\Francesco\\scuola\\SUPERIORI\\TRIENNIO\\informatica\\Java\\user.png");  //se stai leggendo questo messaggio, significa che ho trovato la fonte del problema: in windows il path si scrive con il backslash, non con lo slash e per intero. PORCODIO
-        icon = new ImageIcon(fileicon.getAbsolutePath());  //!!PORCAMADONNA
+        fileicon = new File("app-libreria/user.png");  
+        icon = new ImageIcon(fileicon.getAbsolutePath());  
 
         //istanzio JButton
         profileButton = new JButton();

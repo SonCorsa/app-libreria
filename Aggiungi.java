@@ -14,8 +14,8 @@ public class Aggiungi extends JFrame{
         setLayout(new BorderLayout());
 
         //istanzio JButton
-        JButton aggiungi = new JButton("aggiungi");
-        JButton indietro = new JButton("<");
+        aggiungi = new JButton("aggiungi");
+        indietro = new JButton("indietro");
 
         //istanzio JTextField
         JTextField nome = new JTextField();

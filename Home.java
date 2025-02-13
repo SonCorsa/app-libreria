@@ -53,7 +53,7 @@ public class Home extends JFrame{
         fileicon = new File("app-libreria/user.png");
         icon = new ImageIcon(fileicon.getAbsolutePath());
         profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));
-        profileButton.setOpaque(false);
+                profileButton.setOpaque(false);
         profileButton.setBorderPainted(false);
         profileButton.setContentAreaFilled(false);
 

@@ -4,24 +4,25 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class Home{
+public class Home extends JFrame{
     //ciao roberto mi manchi mentre stai spiegando alla lavagna.
     //ricordati di NON toccare nessuno degli altri file,ho mi fotti il lavoro.
     //ho già creato la branch, lavorato sopra, fatto il merge ed eliminato la branch perciò qualsiasi cosa fai lavora SOLO su questo file.
     //i test li facciamo quando facciamo il merge
     //muah :3
     
-    private JFrame frame;
+    
     private JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
     private ImageIcon icon;
     private final Aggiungi addPage;
     private File fileicon;
+    private ArrayList<JPanel> readList,readingList,toReadList;
 
     public Home(String titolo){
         //istanzio il frame
-        frame = new JFrame(titolo);
+        super(titolo);
         
         //istanzio i JButton
         profileButton = new JButton();
@@ -47,8 +48,56 @@ public class Home{
         
         //istanzio Aggiungi
         addPage=new Aggiungi("aggiungi un libro");  //!!da gestire con controller
-        /*fileicon = new File("app-libreria/user.png");
-        icon = new ImageIcon(fileicon.getAbsolutePath());*/
+
+        //IMMAGINE PROFILO
+        fileicon = new File("app-libreria/user.png");
+        icon = new ImageIcon(fileicon.getAbsolutePath());
+        profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));
+        profileButton.setOpaque(false);
+        profileButton.setBorderPainted(false);
+        profileButton.setContentAreaFilled(false);
+
+
+        //istanzio ArrayList
+        readList=new ArrayList<JPanel>();
+        readingList=new ArrayList<JPanel>();
+        toReadList= new ArrayList<JPanel>();
+
+        //aggiunta dei panel
+        p1.add(profileButton,BorderLayout.EAST);
+        p1.add(home,BorderLayout.WEST);
+        
+        aggiungiPanel.add(indietro);
+        addPage.add(aggiungiPanel);
+        
+        p2.add(reading);
+        readingPanel.add(aggiungiReading);
+        for(JPanel l:readingList){
+            readingPanel.add(l);
+        }
+        p2.add(readingPanel);
+
+        p2.add(read);
+        readPanel.add(aggiungiRead);
+        for(JPanel l:readList){
+            readPanel.add(l);
+        }
+        p2.add(readPanel);
+        
+        p2.add(toRead);
+        toReadPanel.add(aggiungiToRead);
+        for(JPanel l:toReadList){
+            toReadPanel.add(l);
+        }
+        p2.add(toReadPanel);
+
+        add(p1,BorderLayout.NORTH);
+        add(p2,BorderLayout.CENTER);
+
+        //operazioni finali
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
     

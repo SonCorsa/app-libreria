@@ -7,13 +7,14 @@ public class Model {
     public Model(Aggiungi addPage, Home home){
         this.addPage=addPage;
         this.home=home;
+        libreria=new Libreria();
     }
 
     public void cambiaPagina(){
         if(home.isVisible()){
             home.setVisible(false);
             addPage.setVisible(true);
-        }else{
+        }else if(addPage.isVisible()){
             addPage.setVisible(false);
             home.setVisible(true);
         }
@@ -25,6 +26,10 @@ public class Model {
 
     public void eliminaLibro(Libri l){
         libreria.eliminaLibro(l);
+    }
+
+    public void cambiaImmagineProfilo(){
+        //da implementare
     }
     
     

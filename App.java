@@ -1,9 +1,12 @@
+
 public class App{
     public static void main(String args[]){
-        Libreria libreria= new Libreria();
-        Home home= new Home("prova");
-        Aggiungi prova=new Aggiungi("prova");
-        prova.setVisible(true);
+        Home home = new Home("Libreria");
+        Aggiungi addPage = new Aggiungi("Aggiungi libro");
+        Controller controller = new Controller(addPage, home);
+        controller.ActionListener();
+        Model model = new Model(addPage, home);
+        home.setVisible(true);
 
     }
 }

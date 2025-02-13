@@ -47,4 +47,13 @@ public class Aggiungi extends JFrame{
 
     }
 
+    //get dei JButton
+    public JButton getAggiungi() {
+        return aggiungi;
+    }
+
+    public JButton getIndietro() {
+        return indietro;
+    }
+
 }

@@ -7,7 +7,8 @@ public class Libreria {
         libri=new ArrayList<Libri>();
     }
 
-    public boolean aggiungiLibro(Libri l){
+    public boolean aggiungiLibro(String nome,String autore,String genere,int npag){
+        Libri l=new Libri(nome,autore,genere,npag);
         boolean presente=false;
         for(Libri li:libri){
             if(li.equals(libri)){

@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -100,6 +99,29 @@ public class Home extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
+    //get dei JButton
+
+    public JButton getProfileButton() {
+        return profileButton;
+    }
+
+    public JButton getAggiungiRead() {
+        return aggiungiRead;
+    }
+
+    public JButton getAggiungiReading() {
+        return aggiungiReading;
+    }
+
+    public JButton getAggiungiToRead() {
+        return aggiungiToRead;
+    }
+
+    public JButton getIndietro() {
+        return indietro;
+    }
+
     
     /*public Home(String titolo){
         super(titolo);

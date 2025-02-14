@@ -18,10 +18,17 @@ public class Controller {
             }
         };
 
+        ActionListener cambiaImmagineProfilo = new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                model.cambiaImmagineProfilo();
+            }
+        };
+
         home.getAggiungiRead().addActionListener(cambiaPagina);
         home.getAggiungiReading().addActionListener(cambiaPagina);
         home.getAggiungiToRead().addActionListener(cambiaPagina);
         addPage.getIndietro().addActionListener(cambiaPagina);
-
+        home.getProfileButton().addActionListener(cambiaImmagineProfilo);
     }
+    
 }

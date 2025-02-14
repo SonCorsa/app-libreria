@@ -1,3 +1,9 @@
+import java.awt.image.ImagingOpException;
+import java.io.File;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 public class Model {
     private Aggiungi addPage;
     private Home home;
@@ -29,8 +35,14 @@ public class Model {
     }
 
     public void cambiaImmagineProfilo(){
-        //da implementare
+        ImageIcon x = new ImageIcon();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int result = fileChooser.showOpenDialog(home.getProfileButton());
+        if (result == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            x = new ImageIcon(file.getAbsolutePath());
+            home.getProfileButton().setIcon(x);
+        }
     }
-    
-    
 }

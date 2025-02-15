@@ -129,7 +129,7 @@ public class Aggiungi extends JFrame{
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
+        
 
     }
 

@@ -42,7 +42,7 @@ public class Model {
         if (result == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             x = new ImageIcon(file.getAbsolutePath());
-            home.getProfileButton().setIcon(x);
+            home.getProfileButton().setIcon(new ImageIcon(x.getImage().getScaledInstance(75, 75, 5)));
         }
     }
 

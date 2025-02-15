@@ -48,11 +48,6 @@ public class Aggiungi extends JFrame{
         JPanel aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         JPanel p1 = new JPanel();
 
-        
-
-        //aggiungo i componenti ai JPanel
-       // indietroPanel.add(indietro);
-       // aggiungiPanel.add(aggiungi);
 
       //TASTO INDIETRO
        c.weightx = 0.5;
@@ -120,11 +115,6 @@ public class Aggiungi extends JFrame{
        c.insets = new Insets(0,0,0,0);
        c.anchor = GridBagConstraints.LAST_LINE_END;
        add(aggiungi,c);
-
-        //aggiungo al JFrame
-        //add(indietroPanel,BorderLayout.NORTH);
-        //add(aggiungiPanel,BorderLayout.SOUTH);
-        //add(copertina, BorderLayout.WEST);
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);

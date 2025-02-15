@@ -49,6 +49,8 @@ public class Aggiungi extends JFrame{
         JPanel p1 = new JPanel();
 
 
+      
+        nome.setPreferredSize(new Dimension(20, 30));
       //TASTO INDIETRO
        c.weightx = 0.5;
        c.weighty = 0.5;
@@ -68,11 +70,12 @@ public class Aggiungi extends JFrame{
        //NOME
        c.gridx = 2;
        c.gridy = 1;
-       c.weightx = 20 ;
+       c.weightx = 0 ;
+
        add(lnome,c); 
        
-       c.insets = new Insets(20,0,0,1000);
-       c.fill = GridBagConstraints.HORIZONTAL;
+       c.insets = new Insets(20,0,0,1);
+       c.weightx = 5;
        add(nome,c);
 
        //AUTORE 

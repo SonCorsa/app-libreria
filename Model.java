@@ -1,6 +1,4 @@
-import java.awt.image.ImagingOpException;
 import java.io.File;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -54,7 +52,7 @@ public class Model {
         if (result == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             x = new ImageIcon(file.getAbsolutePath());
-            addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(285, 370, 5)));
+            addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(285, 390, 5)));
         }
     }
 }

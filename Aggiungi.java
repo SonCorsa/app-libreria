@@ -132,4 +132,8 @@ public class Aggiungi extends JFrame{
         return indietro;
     }
 
+    public JButton getCopertina() {
+        return copertina;
+    }
+
 }

@@ -45,4 +45,16 @@ public class Model {
             home.getProfileButton().setIcon(x);
         }
     }
+
+    public void cambiaImmagineCopertina(){
+        ImageIcon x = new ImageIcon();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int result = fileChooser.showOpenDialog(addPage.getCopertina());
+        if (result == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            x = new ImageIcon(file.getAbsolutePath());
+            addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(285, 370, 5)));
+        }
+    }
 }

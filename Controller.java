@@ -23,12 +23,19 @@ public class Controller {
                 model.cambiaImmagineProfilo();
             }
         };
+        
+        ActionListener cambiaImmagineCopertina = new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                model.cambiaImmagineCopertina();
+            }
+        };
 
         home.getAggiungiRead().addActionListener(cambiaPagina);
         home.getAggiungiReading().addActionListener(cambiaPagina);
         home.getAggiungiToRead().addActionListener(cambiaPagina);
         addPage.getIndietro().addActionListener(cambiaPagina);
         home.getProfileButton().addActionListener(cambiaImmagineProfilo);
+        addPage.getCopertina().addActionListener(cambiaImmagineCopertina);
     }
     
 }

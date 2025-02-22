@@ -49,6 +49,7 @@ public class Aggiungi extends JFrame{
         c = new GridBagConstraints();
         setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
+        nome.setPreferredSize(new Dimension(250,20));
        //TASTI INDIETRO E AGGIUNGI
         indietroPanel.add(indietro);
         aggiungiPanel.add(aggiungi);

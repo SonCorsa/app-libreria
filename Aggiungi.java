@@ -35,12 +35,14 @@ public class Aggiungi extends JFrame{
         JTextField autore = new JTextField();
         JTextField genere = new JTextField();
         JTextField npag = new JTextField();
+        JTextField trama = new JTextField();
 
         //istanzio JLabel
         JLabel lnome = new JLabel("Nome");
         JLabel lautore = new JLabel("Autore");
         JLabel lgenere = new JLabel("Genere");
         JLabel lnpag = new JLabel("Numero pagine");
+        JLabel ltrama= new JLabel("Trama");
 
         //istanzio JPanel
         JPanel indietroPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -50,6 +52,10 @@ public class Aggiungi extends JFrame{
         setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 
         nome.setPreferredSize(new Dimension(250,20));
+        autore.setPreferredSize(new Dimension(250,20));
+        genere.setPreferredSize(new Dimension(250,20));
+        npag.setPreferredSize(new Dimension(250,20));
+
        //TASTI INDIETRO E AGGIUNGI
         indietroPanel.add(indietro);
         aggiungiPanel.add(aggiungi);
@@ -61,7 +67,6 @@ public class Aggiungi extends JFrame{
         c.gridx = 0;
         c.gridy = 0;
         c.gridheight = 2;
-        
         p1.add(copertina,c);
         
         //NOME E JTEXTFIELD
@@ -70,8 +75,39 @@ public class Aggiungi extends JFrame{
         c.gridheight = 1;
         p1.add(lnome,c);
 
-        c.insets = new Insets(40,0,0,0);
+        c.insets = new Insets(35,0,0,0);
         p1.add(nome,c);
+
+        //AUTORE E JTEXTFIELD
+        c.gridx = 1;
+        c.gridy = 0;
+        c.insets = new Insets(65,0,0,0);
+        p1.add(lautore,c);
+
+        c.insets = new Insets(100,0,0,0);
+        p1.add(autore,c);
+
+        //GENERE E JTEXTFIELD  
+        c.gridx = 1;
+        c.gridy = 0;
+        c.insets = new Insets(130,0,0,0);
+        p1.add(lgenere,c);
+
+        c.insets = new Insets(165,0,0,0);
+        p1.add(genere,c);
+
+        //NUMERO PAGINE E JTEXTFIELD
+        c.gridx = 1;
+        c.gridy = 0;
+        c.insets = new Insets(195,0,0,0);
+        p1.add(lnpag,c);
+
+        c.insets = new Insets(230,0,0,0);
+        p1.add(npag,c);
+
+        //TRAMA E JTEXTFIELD
+        add(ltrama,BorderLayout.EAST.;
+
         
         
         

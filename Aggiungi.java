@@ -48,71 +48,80 @@ public class Aggiungi extends JFrame{
         JPanel indietroPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JPanel aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         JPanel p1 = new JPanel(new GridBagLayout());
-        c = new GridBagConstraints();
-        setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-
+        
         nome.setPreferredSize(new Dimension(250,20));
         autore.setPreferredSize(new Dimension(250,20));
         genere.setPreferredSize(new Dimension(250,20));
         npag.setPreferredSize(new Dimension(250,20));
-
-       //TASTI INDIETRO E AGGIUNGI
+        trama.setPreferredSize(new Dimension(250,100));
+        
+        //TASTI INDIETRO E AGGIUNGI
         indietroPanel.add(indietro);
         aggiungiPanel.add(aggiungi);
         add(indietroPanel,BorderLayout.NORTH);
         add(aggiungiPanel,BorderLayout.SOUTH);
-
-
+        
+        
         //PANNELLO GRIDBAGLAYOUT
+        c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
-        c.gridheight = 2;
+        c.weightx = 0.1;
+        c.gridheight = 11;
+        c.anchor = GridBagConstraints.CENTER;
         p1.add(copertina,c);
         
-        //NOME E JTEXTFIELD
-        c.gridx = 1;
-        c.gridy = 0;
-        c.gridheight = 1;
-        p1.add(lnome,c);
+        //LABEL NOME E TEXTFIELD NOME
+        GridBagConstraints x= new GridBagConstraints();
+        x.weightx = 0.5;
+        x.gridx = 1;
+        x.gridy = 0;
+        x.anchor = GridBagConstraints.PAGE_START;
+        p1.add(lnome,x);
 
-        c.insets = new Insets(35,0,0,0);
-        p1.add(nome,c);
+        x.gridx = 1;
+        x.gridy = 1;
+        p1.add(nome,x);
 
-        //AUTORE E JTEXTFIELD
-        c.gridx = 1;
-        c.gridy = 0;
-        c.insets = new Insets(65,0,0,0);
-        p1.add(lautore,c);
+        //LABEL AUTORE E TEXTFIELD AUTORE
+        x.gridx = 1;
+        x.gridy = 2;
+        p1.add(lautore,x);
 
-        c.insets = new Insets(100,0,0,0);
-        p1.add(autore,c);
+        x.gridx = 1;
+        x.gridy = 3;
+        p1.add(autore,x);
 
-        //GENERE E JTEXTFIELD  
-        c.gridx = 1;
-        c.gridy = 0;
-        c.insets = new Insets(130,0,0,0);
-        p1.add(lgenere,c);
+        //LABEL GENERE E TEXTFIELD GENERE
+        x.gridx = 1;
+        x.gridy = 4;
+        p1.add(lgenere,x);
 
-        c.insets = new Insets(165,0,0,0);
-        p1.add(genere,c);
+        x.gridx = 1;
+        x.gridy = 5;
+        p1.add(genere,x);
 
-        //NUMERO PAGINE E JTEXTFIELD
-        c.gridx = 1;
-        c.gridy = 0;
-        c.insets = new Insets(195,0,0,0);
-        p1.add(lnpag,c);
+        //LABEL NUMERO PAGINE E TEXTFIELD NUMERO PAGINE
+        x.gridx = 1;
+        x.gridy = 6;
+        p1.add(lnpag,x);
 
-        c.insets = new Insets(230,0,0,0);
-        p1.add(npag,c);
+        x.gridx = 1;
+        x.gridy = 7;
+        p1.add(npag,x);
 
-        //TRAMA E JTEXTFIELD
-        add(ltrama,BorderLayout.EAST.;
+        //LABEL TRAMA E TEXTFIELD TRAMA
+        x.gridx = 1;
+        x.gridy = 8;
+        p1.add(ltrama,x);
+    
+        x.gridx = 1;
+        x.gridy = 9;
+        x.gridheight = 2;
+        p1.add(trama,x);
 
-        
-        
-        
-        
-        add(p1,BorderLayout.WEST);
+        add(p1,BorderLayout.CENTER);
+
         
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);

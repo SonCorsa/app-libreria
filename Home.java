@@ -94,7 +94,7 @@ public class Home extends JFrame{
         add(p2,BorderLayout.CENTER);
 
         //operazioni finali
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

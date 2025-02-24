@@ -17,9 +17,13 @@ public class Model {
     public void cambiaPagina(){
         if(home.isVisible()){
             home.setVisible(false);
+            addPage.setSize(home.getSize());
+            addPage.setLocation(home.getLocation());
             addPage.setVisible(true);
         }else if(addPage.isVisible()){
             addPage.setVisible(false);
+            home.setSize(addPage.getSize());
+            home.setLocation(addPage.getLocation());
             home.setVisible(true);
         }
     }

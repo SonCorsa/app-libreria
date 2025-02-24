@@ -22,7 +22,7 @@ public class Aggiungi extends JFrame{
         copertina = new JButton();
        
         //copertina del libro
-        File fileicon = new File("app-libreria/Aggiungi.png");
+        File fileicon = new File("Images/Aggiungi.png");
         ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
         copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
                 copertina.setOpaque(false);

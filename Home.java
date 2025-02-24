@@ -18,6 +18,7 @@ public class Home extends JFrame{
     private final Aggiungi addPage;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
+    private Font ToThePointRegular;
 
     public Home(String titolo){
         //istanzio il frame
@@ -30,12 +31,22 @@ public class Home extends JFrame{
         aggiungiToRead = new JButton("+");
         indietro=new JButton("indietro"); 
         
+        //FONT
+        try {
+            ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("ToThePoint-Regular.ttf")).deriveFont(40f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ToThePoint-Regular.ttf")));
+        }
+         catch (FontFormatException |IOException e) {
+        }      
+        
         //istanzio i JLabel
-        home = new JLabel("    home");
+        home = new JLabel("home");
+        home.setFont(ToThePointRegular);
         read= new JLabel("Read");
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
-        
+
         
         //istanzio i JPanel
         p1 = new JPanel(new BorderLayout());
@@ -49,7 +60,7 @@ public class Home extends JFrame{
         addPage=new Aggiungi("aggiungi un libro");  //!!da gestire con controller
 
         //IMMAGINE PROFILO
-        fileicon = new File("app-libreria/user.png");
+        fileicon = new File("Images/user.png");
         icon = new ImageIcon(fileicon.getAbsolutePath());
         profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));
                 profileButton.setOpaque(false);

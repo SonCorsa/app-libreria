@@ -6,6 +6,7 @@ public class Libri {
     protected int[] dataI;
     protected int[] dataF;
     protected String trama;
+    protected String path;
     //attributo per gli stati
     //attributo per il punteggio(recensione)
 
@@ -18,6 +19,7 @@ public class Libri {
         dataI = new int[3];
         dataF = new int[3];
         this.trama = trama;
+        path= new String();
     }
     
     public String getAutore() {
@@ -80,11 +82,19 @@ public class Libri {
     }
 
     public boolean equals(Libri l){
-        if(this.toString().equals(l.toString()) && dataI == l.getDataI() && dataF == l.getDataF()){
+        if(this.toString().equals(l.toString())){
             return true;
         }else{
             return false;
         }
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
     
     

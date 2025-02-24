@@ -6,12 +6,15 @@ public class Model {
     private Aggiungi addPage;
     private Home home;
     private Libreria libreria;
+    private JFileChooser fileChooser;
+    private String path;
 
 
     public Model(Aggiungi addPage, Home home,Libreria libri){
         this.addPage=addPage;
         this.home=home;
         this.libreria=libri;
+        fileChooser = new JFileChooser();
         libreria=new Libreria();
     }
 
@@ -34,7 +37,16 @@ public class Model {
         String autore= addPage.getAutore().getText();
         String Genere=addPage.getGenere().getText();
         int npag = Integer.parseInt(addPage.getNpag().getText());
-        this.libreria.aggiungiLibro(nome, autore, Genere, npag);
+        addPage.getNome().setText(" ");
+        addPage.getAutore().setText(" ");
+        addPage.getGenere().setText(" ");
+        addPage.getNpag().setText(" ");
+        Libri l= new Libri(autore, nome, Genere, npag);
+        l.setPath(this.path);
+        this.SetImmagineCopertina();
+        this.libreria.aggiungiLibro(l);
+
+        
 
     }
 
@@ -56,13 +68,22 @@ public class Model {
 
     public void cambiaImmagineCopertina(){
         ImageIcon x = new ImageIcon();
-        JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int result = fileChooser.showOpenDialog(addPage.getCopertina());
         if (result == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             x = new ImageIcon(file.getAbsolutePath());
+            path= file.getAbsolutePath();
             addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(255, 330, 5)));
         }
+    }
+
+    public void SetImmagineCopertina(){
+        File fileicon = new File("app-libreria/Aggiungi.png");
+        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
+        addPage.getCopertina().setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
+        addPage.getCopertina().setOpaque(false);
+        addPage.getCopertina().setBorderPainted(false);
+        addPage.getCopertina().setContentAreaFilled(false);
     }
 }

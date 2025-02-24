@@ -15,24 +15,28 @@ public class Controller {
 
     public void ActionListener(){
         ActionListener cambiaPagina = new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e){
                 model.cambiaPagina();
             }
         };
 
         ActionListener cambiaImmagineProfilo = new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e) {
                 model.cambiaImmagineProfilo();
             }
         };
         
         ActionListener cambiaImmagineCopertina = new ActionListener(){
+            @Override
             public void actionPerformed(ActionEvent e) {
                 model.cambiaImmagineCopertina();
             }
         };
 
         ActionListener aggiungiLibro= new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e){
                 model.aggiungiLibro();
             }

@@ -5,8 +5,8 @@ import javax.swing.*;
 public class Aggiungi extends JFrame{
 
     private JButton aggiungi,indietro,copertina;
-    private JTextField nome,autore,genere,npag;
-    private JLabel lnome,lautore,lgenere,lnpag;
+    private JTextField nome,autore,genere,npag,trama;
+    private JLabel lnome,lautore,lgenere,lnpag,ltrama;
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
     
@@ -31,23 +31,23 @@ public class Aggiungi extends JFrame{
 
 
         //istanzio JTextField
-        JTextField nome = new JTextField();
-        JTextField autore = new JTextField();
-        JTextField genere = new JTextField();
-        JTextField npag = new JTextField();
-        JTextField trama = new JTextField();
+        nome = new JTextField();
+        autore = new JTextField();
+        genere = new JTextField();
+        npag = new JTextField();
+        trama = new JTextField();
 
         //istanzio JLabel
-        JLabel lnome = new JLabel("Nome");
-        JLabel lautore = new JLabel("Autore");
-        JLabel lgenere = new JLabel("Genere");
-        JLabel lnpag = new JLabel("Numero pagine");
-        JLabel ltrama= new JLabel("Trama");
+        lnome = new JLabel("Nome");
+        lautore = new JLabel("Autore");
+        lgenere = new JLabel("Genere");
+        lnpag = new JLabel("Numero pagine");
+        ltrama= new JLabel("Trama");
 
         //istanzio JPanel
-        JPanel indietroPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JPanel aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
-        JPanel p1 = new JPanel(new GridBagLayout());
+        indietroPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+        p1 = new JPanel(new GridBagLayout());
         
         nome.setPreferredSize(new Dimension(250,20));
         autore.setPreferredSize(new Dimension(250,20));

@@ -18,7 +18,7 @@ public class Home extends JFrame{
     private final Aggiungi addPage;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
-    private Font ToThePointRegular;
+    private Font ToThePointRegular,PoppinsBlack;
 
     public Home(String titolo){
         //istanzio il frame
@@ -33,19 +33,31 @@ public class Home extends JFrame{
         
         //FONT
         try {
-            ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("ToThePoint-Regular.ttf")).deriveFont(40f);
+            ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")).deriveFont(50f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("ToThePoint-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")));
         }
-         catch (FontFormatException |IOException e) {
+         catch ( IOException | FontFormatException e ) {
         }      
         
+        try {
+            PoppinsBlack =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")).deriveFont(50f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")));
+        }
+         catch ( IOException | FontFormatException e ) {
+        }      
+
+
         //istanzio i JLabel
-        home = new JLabel("home");
-        home.setFont(ToThePointRegular);
+        home = new JLabel("Welcome");
+        home.setFont(PoppinsBlack);
         read= new JLabel("Read");
+        read.setFont(PoppinsBlack.deriveFont(30f));
         reading = new JLabel("Reading");
+        reading.setFont(PoppinsBlack.deriveFont(30f));
         toRead= new JLabel("To Read");
+        toRead.setFont(PoppinsBlack.deriveFont(30f));
 
         
         //istanzio i JPanel

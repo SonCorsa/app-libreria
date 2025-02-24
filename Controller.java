@@ -4,11 +4,13 @@ public class Controller {
     private Aggiungi addPage;
     private Home home;
     private Model model;
+    private Libreria libri;
 
-    public Controller(Aggiungi addPage, Home home){
+    public Controller(Aggiungi addPage, Home home,Libreria libri){
         this.addPage=addPage;
         this.home=home;
-        model=new Model(addPage,home);
+        this.libri=libri;
+        model=new Model(addPage,home,libri);
     }
 
     public void ActionListener(){
@@ -27,6 +29,12 @@ public class Controller {
         ActionListener cambiaImmagineCopertina = new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 model.cambiaImmagineCopertina();
+            }
+        };
+
+        ActionListener aggiungiLibro= new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                model.aggiungiLibro();
             }
         };
 

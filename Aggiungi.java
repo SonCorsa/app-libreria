@@ -143,4 +143,20 @@ public class Aggiungi extends JFrame{
         return copertina;
     }
 
+    public JTextField getNome() {
+        return nome;
+    }
+
+    public JTextField getAutore() {
+        return autore;
+    }
+
+    public JTextField getGenere() {
+        return genere;
+    }
+
+    public JTextField getNpag() {
+        return npag;
+    }
+
 }

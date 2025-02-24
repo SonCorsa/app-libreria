@@ -8,9 +8,10 @@ public class Model {
     private Libreria libreria;
 
 
-    public Model(Aggiungi addPage, Home home){
+    public Model(Aggiungi addPage, Home home,Libreria libri){
         this.addPage=addPage;
         this.home=home;
+        this.libreria=libri;
         libreria=new Libreria();
     }
 
@@ -28,8 +29,13 @@ public class Model {
         }
     }
 
-    public void aggiungiLibro(String nome,String autore,String genere,int npag){
-        libreria.aggiungiLibro(nome,autore,genere,npag);
+    public void aggiungiLibro(){
+        String nome= addPage.getNome().getText();
+        String autore= addPage.getAutore().getText();
+        String Genere=addPage.getGenere().getText();
+        int npag = Integer.parseInt(addPage.getNpag().getText());
+        this.libreria.aggiungiLibro(nome, autore, Genere, npag);
+
     }
 
     public void eliminaLibro(Libri l){

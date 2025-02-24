@@ -123,7 +123,7 @@ public class Aggiungi extends JFrame{
         add(p1,BorderLayout.CENTER);
 
         
-        setSize(1920,1080);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

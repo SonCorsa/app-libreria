@@ -44,6 +44,7 @@ public class Controller {
         addPage.getIndietro().addActionListener(cambiaPagina);
         home.getProfileButton().addActionListener(cambiaImmagineProfilo);
         addPage.getCopertina().addActionListener(cambiaImmagineCopertina);
+        addPage.getAggiungi().addActionListener(aggiungiLibro);
     }
     
 }

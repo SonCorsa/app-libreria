@@ -3,6 +3,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 public class Model {
+    private JFramePrincipale finestra;
     private Aggiungi addPage;
     private Home home;
     private Libreria libreria;
@@ -10,7 +11,8 @@ public class Model {
     private String path;
 
 
-    public Model(Aggiungi addPage, Home home,Libreria libri){
+    public Model(JFramePrincipale finestra,Aggiungi addPage, Home home,Libreria libri){
+        this.finestra=finestra;
         this.addPage=addPage;
         this.home=home;
         this.libreria=libri;
@@ -19,17 +21,17 @@ public class Model {
     }
 
     public void cambiaPagina(){
-        if(home.isVisible()){
-            home.setVisible(false);
-            addPage.setSize(home.getSize());
-            addPage.setLocation(home.getLocation());
-            addPage.setVisible(true);
-        }else if(addPage.isVisible()){
-            addPage.setVisible(false);
-            home.setSize(addPage.getSize());
-            home.setLocation(addPage.getLocation());
-            home.setVisible(true);
+        if(finestra.isHome()){
+            finestra.setHome(false);
+            finestra.setAddPage(true);
+            finestra.getCardLayout().show(finestra.getPannelli(), "addPage");
+            System.out.println("ciao");
+        }else if (finestra.isAddPage()){
+            finestra.setHome(true);
+            finestra.setAddPage(false);
+            finestra.getCardLayout().show(finestra.getPannelli(), "home");
         }
+       
     }
 
     public void aggiungiLibro(){

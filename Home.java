@@ -3,27 +3,22 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class Home extends JFrame{
-    //ciao roberto mi manchi mentre stai spiegando alla lavagna.
-    //ricordati di NON toccare nessuno degli altri file,ho mi fotti il lavoro.
-    //ho già creato la branch, lavorato sopra, fatto il merge ed eliminato la branch perciò qualsiasi cosa fai lavora SOLO su questo file.
-    //i test li facciamo quando facciamo il merge
-    //muah :3
-    
-    
+public class Home extends JPanel{
+
     private JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
     private ImageIcon icon;
-    private final Aggiungi addPage;
+    //private final Aggiungi addPage;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
     private Font ToThePointRegular,PoppinsBlack;
 
-    public Home(String titolo){
+    public Home(JFramePrincipale finestra){
+        setLayout(new BorderLayout());
         //istanzio il frame
-        super(titolo);
-    
+        
+        
         //FONT
         try {
             ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")).deriveFont(50f);
@@ -69,7 +64,7 @@ public class Home extends JFrame{
         toReadPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         
         //istanzio Aggiungi
-        addPage=new Aggiungi("aggiungi un libro");  //!!da gestire con controller
+        //addPage=new Aggiungi();  //!!da gestire con controller
 
         //IMMAGINE PROFILO
         fileicon = new File("Images/user.png");
@@ -90,7 +85,7 @@ public class Home extends JFrame{
         p1.add(home,BorderLayout.WEST);
         
         aggiungiPanel.add(indietro);
-        addPage.add(aggiungiPanel);
+        //addPage.add(aggiungiPanel);
         
         p2.add(reading);
         readingPanel.add(aggiungiReading);
@@ -117,9 +112,6 @@ public class Home extends JFrame{
         add(p2,BorderLayout.CENTER);
 
         //operazioni finali
-        setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
 

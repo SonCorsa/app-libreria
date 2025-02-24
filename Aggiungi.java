@@ -2,7 +2,7 @@ import java.awt.*;
 import java.io.File;
 import javax.swing.*;
 
-public class Aggiungi extends JFrame{
+public class Aggiungi extends JPanel{
 
     private JButton aggiungi,indietro,copertina;
     private JTextField nome,autore,genere,npag,trama;
@@ -10,11 +10,9 @@ public class Aggiungi extends JFrame{
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
     
-    public Aggiungi(String titolo){
-        super(titolo);
-
-        //c = new GridBagConstraints();
-        //setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+    public Aggiungi(JFramePrincipale finestra){
+        setLayout(new BorderLayout());
+        //istanzio il panel
 
         //istanzio JButton
         aggiungi = new JButton("aggiungi");
@@ -124,8 +122,7 @@ public class Aggiungi extends JFrame{
 
         
         setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    ;
         
 
     }

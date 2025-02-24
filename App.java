@@ -2,12 +2,13 @@
 public class App{
     public static void main(String args[]){
         Libreria libri= new Libreria();
-        Home home = new Home("Libreria");
-        Aggiungi addPage = new Aggiungi("Aggiungi libro");
-        Model model = new Model(addPage, home,libri);
-        Controller controller = new Controller(addPage, home,libri);
+        JFramePrincipale finestra = new JFramePrincipale();
+        Home home = new Home(finestra);
+        Aggiungi addPage = new Aggiungi(finestra);
+        Model model = new Model(finestra,addPage, home,libri);
+        Controller controller = new Controller(finestra,addPage, home,libri);
         controller.ActionListener();
-        home.setVisible(true);
+        finestra.setVisible(true);
 
     }
 }

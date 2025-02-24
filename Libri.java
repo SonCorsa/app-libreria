@@ -18,7 +18,7 @@ public class Libri {
         this.pagine = pagine;
         dataI = new int[3];
         dataF = new int[3];
-        this.trama = trama;
+        trama = "";
         path= new String();
     }
     

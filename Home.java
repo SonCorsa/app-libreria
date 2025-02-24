@@ -23,14 +23,7 @@ public class Home extends JFrame{
     public Home(String titolo){
         //istanzio il frame
         super(titolo);
-        
-        //istanzio i JButton
-        profileButton = new JButton();
-        aggiungiRead = new JButton("+");
-        aggiungiReading= new JButton("+");
-        aggiungiToRead = new JButton("+");
-        indietro=new JButton("indietro"); 
-        
+    
         //FONT
         try {
             ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")).deriveFont(50f);
@@ -47,6 +40,13 @@ public class Home extends JFrame{
         }
          catch ( IOException | FontFormatException e ) {
         }      
+        
+        //istanzio i JButton
+        profileButton = new JButton();
+        aggiungiRead = new JButton("+");
+        aggiungiReading= new JButton("+");
+        aggiungiToRead = new JButton("+");
+        indietro=new JButton("indietro"); 
 
 
         //istanzio i JLabel

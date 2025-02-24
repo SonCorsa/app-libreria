@@ -18,6 +18,7 @@ public class Home extends JFrame{
     private final Aggiungi addPage;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
+    private Font ToThePointRegular,PoppinsBlack;
 
     public Home(String titolo){
         //istanzio il frame
@@ -30,12 +31,34 @@ public class Home extends JFrame{
         aggiungiToRead = new JButton("+");
         indietro=new JButton("indietro"); 
         
-        //istanzio i JLabel
-        home = new JLabel("    home");
-        read= new JLabel("Read");
-        reading = new JLabel("Reading");
-        toRead= new JLabel("To Read");
+        //FONT
+        try {
+            ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")).deriveFont(50f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")));
+        }
+         catch ( IOException | FontFormatException e ) {
+        }      
         
+        try {
+            PoppinsBlack =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")).deriveFont(50f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")));
+        }
+         catch ( IOException | FontFormatException e ) {
+        }      
+
+
+        //istanzio i JLabel
+        home = new JLabel("Welcome");
+        home.setFont(PoppinsBlack);
+        read= new JLabel("Read");
+        read.setFont(PoppinsBlack.deriveFont(30f));
+        reading = new JLabel("Reading");
+        reading.setFont(PoppinsBlack.deriveFont(30f));
+        toRead= new JLabel("To Read");
+        toRead.setFont(PoppinsBlack.deriveFont(30f));
+
         
         //istanzio i JPanel
         p1 = new JPanel(new BorderLayout());
@@ -49,7 +72,7 @@ public class Home extends JFrame{
         addPage=new Aggiungi("aggiungi un libro");  //!!da gestire con controller
 
         //IMMAGINE PROFILO
-        fileicon = new File("app-libreria/user.png");
+        fileicon = new File("Images/user.png");
         icon = new ImageIcon(fileicon.getAbsolutePath());
         profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));
                 profileButton.setOpaque(false);

@@ -11,10 +11,10 @@ public class Model {
     private String path;
 
 
-    public Model(JFramePrincipale finestra,Aggiungi addPage, Home home,Libreria libri){
+    public Model(JFramePrincipale finestra,Libreria libri){
         this.finestra=finestra;
-        this.addPage=addPage;
-        this.home=home;
+        this.addPage=finestra.getAddPage();
+        this.home=finestra.getHome();
         this.libreria=libri;
         fileChooser = new JFileChooser();
         libreria=new Libreria();
@@ -25,7 +25,6 @@ public class Model {
             finestra.setHome(false);
             finestra.setAddPage(true);
             finestra.getCardLayout().show(finestra.getPannelli(), "addPage");
-            System.out.println("ciao");
         }else if (finestra.isAddPage()){
             finestra.setHome(true);
             finestra.setAddPage(false);

@@ -2,17 +2,13 @@ import java.awt.event.*;
 
 public class Controller {
     private JFramePrincipale finestra;
-    private Aggiungi addPage;
-    private Home home;
     private Model model;
     private Libreria libri;
 
-    public Controller(JFramePrincipale finestra,Aggiungi addPage, Home home,Libreria libri){
+    public Controller(JFramePrincipale finestra,Libreria libri){
         this.finestra=finestra;
-        this.addPage=addPage;
-        this.home=home;
         this.libri=libri;
-        model=new Model(finestra,addPage,home,libri);
+        model=new Model(finestra,libri);
     }
 
     public void ActionListener(){

@@ -112,7 +112,6 @@ public class Home extends JPanel{
         add(p2,BorderLayout.CENTER);
 
         //operazioni finali
-
     }
 
     //get dei JButton

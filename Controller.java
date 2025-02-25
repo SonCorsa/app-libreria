@@ -45,12 +45,13 @@ public class Controller {
         };
 
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
-        home.getAggiungiReading().addActionListener(cambiaPagina);
-        home.getAggiungiToRead().addActionListener(cambiaPagina);
-        addPage.getIndietro().addActionListener(cambiaPagina);
-        home.getProfileButton().addActionListener(cambiaImmagineProfilo);
-        addPage.getCopertina().addActionListener(cambiaImmagineCopertina);
-        addPage.getAggiungi().addActionListener(aggiungiLibro);
+        finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
+        finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);
+        finestra.getHome().getProfileButton().addActionListener(cambiaImmagineProfilo);
+        
+        finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
+        finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
+        finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
     }
     
 }

@@ -121,11 +121,7 @@ public class Aggiungi extends JPanel{
         add(p1,BorderLayout.CENTER);
 
         
-        setSize(Toolkit.getDefaultToolkit().getScreenSize());
-    ;
-        
-
-    }
+        }
 
     //get dei JButton
     public JButton getAggiungi() {

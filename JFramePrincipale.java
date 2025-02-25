@@ -1,6 +1,6 @@
 import java.awt.CardLayout;
 import java.awt.Toolkit;
-
+import java.awt.*;
 import javax.swing.*;
 
 
@@ -17,8 +17,8 @@ public class JFramePrincipale extends JFrame {
         pannelli = new JPanel(cardLayout);
         
         //Instazio i pannelli Home & Aggiungi
-        Home home = new Home(this);
-        Aggiungi addPage = new Aggiungi(this);
+        home = new Home(this);
+        addPage = new Aggiungi(this);
         
         //Instazio i valori booleani
         isHome = true;
@@ -36,6 +36,8 @@ public class JFramePrincipale extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
+    
+    
     public Home getHome() {
         return home;
     }
@@ -68,7 +70,5 @@ public class JFramePrincipale extends JFrame {
     public JPanel getPannelli() {
         return pannelli;
     }
-
-    
     
 }

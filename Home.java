@@ -12,22 +12,14 @@ public class Home extends JPanel{
     //private final Aggiungi addPage;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
-    private Font ToThePointRegular,PoppinsBlack;
+    private Font PoppinsBlack;
 
-    public Home(JFramePrincipale finestra){
+    public Home(){
         setLayout(new BorderLayout());
         //istanzio il frame
         
         
         //FONT
-        try {
-            ToThePointRegular =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")).deriveFont(50f);
-            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/ToThePointRegular-n9y4.ttf")));
-        }
-         catch ( IOException | FontFormatException e ) {
-        }      
-        
         try {
             PoppinsBlack =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")).deriveFont(50f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();

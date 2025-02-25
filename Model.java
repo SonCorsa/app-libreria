@@ -46,6 +46,7 @@ public class Model {
         l.setPath(this.path);
         this.SetImmagineCopertina();
         this.libreria.aggiungiLibro(l);
+        addPage.setImmagineCopertina();
 
         
 

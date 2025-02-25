@@ -17,7 +17,7 @@ public class JFramePrincipale extends JFrame {
         pannelli = new JPanel(cardLayout);
         
         //Instazio i pannelli Home & Aggiungi
-        home = new Home(this);
+        home = new Home();
         addPage = new Aggiungi(this);
         
         //Instazio i valori booleani

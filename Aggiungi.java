@@ -18,15 +18,10 @@ public class Aggiungi extends JPanel{
         aggiungi = new JButton("aggiungi");
         indietro = new JButton("indietro");
         copertina = new JButton();
-       
-        //copertina del libro
-        File fileicon = new File("Images/Aggiungi.png");
-        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
-        copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
-                copertina.setOpaque(false);
-        copertina.setBorderPainted(false);
-        copertina.setContentAreaFilled(false);
 
+        //setto l'immagine del bottone copertina
+        setImmagineCopertina();
+       
 
         //istanzio JTextField
         nome = new JTextField();
@@ -150,6 +145,16 @@ public class Aggiungi extends JPanel{
 
     public JTextField getNpag() {
         return npag;
+    }
+
+    public void setImmagineCopertina(){
+        File fileicon = new File("Images/Aggiungi.png");
+        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
+        copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
+        copertina.setOpaque(false);
+        copertina.setBorderPainted(false);
+        copertina.setContentAreaFilled(false);
+
     }
 
 }

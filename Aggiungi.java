@@ -5,7 +5,8 @@ import javax.swing.*;
 public class Aggiungi extends JPanel{
 
     private JButton aggiungi,indietro,copertina;
-    private JTextField nome,autore,genere,npag,trama;
+    private JTextField nome,autore,genere,npag;
+    private JTextArea trama;
     private JLabel lnome,lautore,lgenere,lnpag,ltrama;
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
@@ -28,8 +29,10 @@ public class Aggiungi extends JPanel{
         autore = new JTextField();
         genere = new JTextField();
         npag = new JTextField();
-        trama = new JTextField();
-
+        trama = new JTextArea();
+        trama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        trama.setLineWrap(true);
+        
         //istanzio JLabel
         lnome = new JLabel("Nome");
         lautore = new JLabel("Autore");
@@ -47,7 +50,8 @@ public class Aggiungi extends JPanel{
         genere.setPreferredSize(new Dimension(250,20));
         npag.setPreferredSize(new Dimension(250,20));
         trama.setPreferredSize(new Dimension(250,100));
-        
+        aggiungi.setPreferredSize(new Dimension(200,45));
+    
         //TASTI INDIETRO E AGGIUNGI
         indietroPanel.add(indietro);
         aggiungiPanel.add(aggiungi);
@@ -112,7 +116,6 @@ public class Aggiungi extends JPanel{
         x.gridy = 9;
         x.gridheight = 2;
         p1.add(trama,x);
-
         add(p1,BorderLayout.CENTER);
 
         

@@ -1,6 +1,5 @@
-import java.io.File;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
+import java.io.*;
+import javax.swing.*;
 
 public class Model {
     private JFramePrincipale finestra;
@@ -34,22 +33,42 @@ public class Model {
     }
 
     public void aggiungiLibro(){
+        //lettura dalle textfield
         String nome= addPage.getNome().getText();
         String autore= addPage.getAutore().getText();
         String Genere=addPage.getGenere().getText();
         int npag = Integer.parseInt(addPage.getNpag().getText());
+
+        //svuoto le textfield
         addPage.getNome().setText(" ");
         addPage.getAutore().setText(" ");
         addPage.getGenere().setText(" ");
         addPage.getNpag().setText(" ");
+
+        //istanzio il libro
         Libri l= new Libri(autore, nome, Genere, npag);
+
+        //salvo il path dell'immagine
         l.setPath(this.path);
-        this.SetImmagineCopertina();
+
+        //resetto l'immmagine di copertina
         this.libreria.aggiungiLibro(l);
+
+        //aggiungo il libro alla libreria
         addPage.setImmagineCopertina();
 
-        
-
+        //salvataggio su file
+        try{
+            File file = new File(String.format("File/%s.txt",nome));
+            FileWriter fw= new FileWriter(file);
+            file.createNewFile();
+            fw.write(String.format("%s&%s&%s&%d&%s",nome,autore,Genere,npag,path));
+            fw.flush();
+            fw.close();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void eliminaLibro(Libri l){

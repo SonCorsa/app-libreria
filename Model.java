@@ -103,11 +103,6 @@ public class Model {
     }
 
     public void SetImmagineCopertina(){
-        File fileicon = new File("app-libreria/Aggiungi.png");
-        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
-        addPage.getCopertina().setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
-        addPage.getCopertina().setOpaque(false);
-        addPage.getCopertina().setBorderPainted(false);
-        addPage.getCopertina().setContentAreaFilled(false);
+        addPage.setImmagineCopertina();
     }
 }

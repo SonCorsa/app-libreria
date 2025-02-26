@@ -3,9 +3,11 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
+import ComponentiRotondi.RoundedButton;
+
 public class Home extends JPanel{
 
-    private JButton profileButton,aggiungiRead,aggiungiReading,aggiungiToRead,indietro; 
+    private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
     private ImageIcon icon;
@@ -13,6 +15,7 @@ public class Home extends JPanel{
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
     private Font PoppinsBlack;
+    
 
     public Home(){
         setLayout(new BorderLayout());
@@ -30,10 +33,10 @@ public class Home extends JPanel{
         
         //istanzio i JButton
         profileButton = new JButton();
-        aggiungiRead = new JButton("+");
+        aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new JButton("+");
         aggiungiToRead = new JButton("+");
-        indietro=new JButton("indietro"); 
+
 
 
         //istanzio i JLabel
@@ -76,7 +79,6 @@ public class Home extends JPanel{
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
         
-        aggiungiPanel.add(indietro);
         //addPage.add(aggiungiPanel);
         
         p2.add(reading);
@@ -124,9 +126,6 @@ public class Home extends JPanel{
         return aggiungiToRead;
     }
 
-    public JButton getIndietro() {
-        return indietro;
-    }
 
     /*ToDo:
      * Creare interfaccia per l'aggiunta di un libro;

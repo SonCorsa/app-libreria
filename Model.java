@@ -20,11 +20,13 @@ public class Model {
     }
 
     public void cambiaPagina(){
-        if(finestra.isHome()){
-            finestra.setHome(false);
+        if(finestra.isHome()){  //controllo dello stato della finestra
+            //aggiornamento degli stati
+            finestra.setHome(false);  
             finestra.setAddPage(true);
             finestra.getCardLayout().show(finestra.getPannelli(), "addPage");
-        }else if (finestra.isAddPage()){
+        }else if (finestra.isAddPage()){ //controllo dello stato della finestra
+            //aggiornamento degli stati
             finestra.setHome(true);
             finestra.setAddPage(false);
             finestra.getCardLayout().show(finestra.getPannelli(), "home");
@@ -61,8 +63,9 @@ public class Model {
         try{
             File file = new File(String.format("File/%s.txt",nome));
             FileWriter fw= new FileWriter(file);
+            file.mkdir();
             file.createNewFile();
-            fw.write(String.format("%s&%s&%s&%d&%s",nome,autore,Genere,npag,path));
+            fw.write(String.format("%s&%s&%s&%d",nome,autore,Genere,npag));
             fw.flush();
             fw.close();
         }

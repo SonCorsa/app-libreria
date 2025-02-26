@@ -2,6 +2,9 @@ import java.awt.*;
 import java.io.File;
 import javax.swing.*;
 
+import ComponentiRotondi.RoundedTextArea;
+import ComponentiRotondi.RoundedTextField;
+
 public class Aggiungi extends JPanel{
 
     private JButton aggiungi,indietro,copertina;
@@ -17,19 +20,20 @@ public class Aggiungi extends JPanel{
 
         //istanzio JButton
         aggiungi = new JButton("aggiungi");
-        indietro = new JButton("indietro");
+        indietro = new JButton();
         copertina = new JButton();
 
         //setto l'immagine del bottone copertina
         setImmagineCopertina();
+        setImmagineBottone(indietro, "Images/Freccia.png", 100, 60);
        
 
         //istanzio JTextField
-        nome = new JTextField();
-        autore = new JTextField();
-        genere = new JTextField();
-        npag = new JTextField();
-        trama = new JTextArea();
+        nome = new RoundedTextField(10,10);
+        autore = new RoundedTextField(10,10);
+        genere = new RoundedTextField(10,10);
+        npag = new RoundedTextField(10,10);
+        trama = new RoundedTextArea(10,10);
         trama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         trama.setLineWrap(true);
         
@@ -73,47 +77,57 @@ public class Aggiungi extends JPanel{
         x.weightx = 0.5;
         x.gridx = 1;
         x.gridy = 0;
+        x.insets = new Insets(0,0,0,200);
         x.anchor = GridBagConstraints.PAGE_START;
         p1.add(lnome,x);
-
+        
         x.gridx = 1;
         x.gridy = 1;
+        x.insets = new Insets(0,0,0,0);
         p1.add(nome,x);
 
         //LABEL AUTORE E TEXTFIELD AUTORE
         x.gridx = 1;
         x.gridy = 2;
+        x.insets = new Insets(0,0,0,200);
         p1.add(lautore,x);
 
         x.gridx = 1;
         x.gridy = 3;
+        x.insets = new Insets(0,0,0,0);
         p1.add(autore,x);
 
         //LABEL GENERE E TEXTFIELD GENERE
         x.gridx = 1;
         x.gridy = 4;
+        x.insets = new Insets(0,0,0,200);
         p1.add(lgenere,x);
 
         x.gridx = 1;
         x.gridy = 5;
+        x.insets = new Insets(0,0,0,0);
         p1.add(genere,x);
 
         //LABEL NUMERO PAGINE E TEXTFIELD NUMERO PAGINE
         x.gridx = 1;
         x.gridy = 6;
+        x.insets = new Insets(0,0,0,150);
         p1.add(lnpag,x);
 
         x.gridx = 1;
         x.gridy = 7;
+        x.insets = new Insets(0,0,0,0);
         p1.add(npag,x);
 
         //LABEL TRAMA E TEXTFIELD TRAMA
         x.gridx = 1;
         x.gridy = 8;
+        x.insets = new Insets(0,0,0,200);
         p1.add(ltrama,x);
     
         x.gridx = 1;
         x.gridy = 9;
+        x.insets = new Insets(0,0,0,0);
         x.gridheight = 2;
         p1.add(trama,x);
         add(p1,BorderLayout.CENTER);
@@ -159,16 +173,17 @@ public class Aggiungi extends JPanel{
         copertina.setContentAreaFilled(false);
 
     }
-        public void setImmagineBottone(JButton b,String path, int x ,int y){
+    
+    public void setImmagineBottone(JButton b,String path, int x ,int y){
         File fileicon = new File(path);
         ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
         b.setIcon(new ImageIcon(icon.getImage().getScaledInstance(x, y, 5)));
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
-
     }
 
 }
+
 
 

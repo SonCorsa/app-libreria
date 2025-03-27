@@ -1,4 +1,7 @@
-public class Libri {
+import java.io.Serializable;
+
+
+public class Libri implements Serializable {
     protected String autore;
     protected String nome;
     protected String genere;
@@ -6,7 +9,7 @@ public class Libri {
     protected int[] dataI;
     protected int[] dataF;
     protected String trama;
-    protected String path;
+    protected byte[] immagine;
     //attributo per gli stati
     //attributo per il punteggio(recensione)
 
@@ -19,7 +22,6 @@ public class Libri {
         dataI = new int[3];
         dataF = new int[3];
         trama = "";
-        path= new String();
     }
     
     public String getAutore() {
@@ -89,13 +91,7 @@ public class Libri {
         }
     }
 
-    public String getPath() {
-        return path;
-    }
+    public void setImmagineLibro(){
 
-    public void setPath(String path) {
-        this.path = path;
     }
-    
-    
 }

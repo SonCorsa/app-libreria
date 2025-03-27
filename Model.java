@@ -53,25 +53,37 @@ public class Model {
         //salvo il path dell'immagine
         l.setPath(this.path);
 
-        //resetto l'immmagine di copertina
-        this.libreria.aggiungiLibro(l);
-
         //aggiungo il libro alla libreria
+        this.libreria.aggiungiLibro(l);
+        
+        //resetto l'immmagine di copertina
         addPage.setImmagineCopertina();
-
+        
         //salvataggio su file
         try{
-            File file = new File(String.format("Files/%s.txt",nome));
-            FileWriter fw= new FileWriter(file);
-            file.mkdir();
-            file.createNewFile();
-            fw.write(String.format("%s&%s&%s&%d",nome,autore,Genere,npag));
-            fw.flush();
-            fw.close();
+            File file = new File("Files/Libri.txt");
+            ObjectOutputStream scrivi = new ObjectOutputStream(new FileOutputStream(file));
+            scrivi.writeObject(l);
+            scrivi.close();
         }
         catch(IOException e){
             e.printStackTrace();
         }
+
+
+
+        /*  try{
+        File file = new File(String.format("Files/%s.txt",nome));
+        FileWriter fw= new FileWriter(file);
+        file.mkdir();
+        file.createNewFile();
+        fw.write(String.format("%s&%s&%s&%d",nome,autore,Genere,npag));
+        fw.flush();
+        fw.close();
+    }
+    catch(IOException e){
+            e.printStackTrace();
+        }*/
     }
 
     public void eliminaLibro(Libri l){

@@ -1,4 +1,5 @@
 import java.awt.event.*;
+import java.io.IOException;
 
 public class Controller {
     private JFramePrincipale finestra;
@@ -36,7 +37,12 @@ public class Controller {
         ActionListener aggiungiLibro= new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
+                try{
                 model.aggiungiLibro();
+                }catch(IOException x){
+                    x.printStackTrace();
+                }
+                    
             }
         };
 

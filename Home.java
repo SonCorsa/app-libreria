@@ -9,7 +9,7 @@ public class Home extends JPanel{
     private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
     private JButton[] libriButtons;
     private final JLabel home,reading,read,toRead; 
-    private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
+    private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
     private ImageIcon icon;
     //private final Aggiungi addPage;
     private File fileicon;
@@ -17,7 +17,7 @@ public class Home extends JPanel{
     private Font PoppinsBlack;
     
 
-    public Home(){
+    public Home(int n){
         setLayout(new BorderLayout());
         //FONT
         try {
@@ -28,52 +28,61 @@ public class Home extends JPanel{
          catch ( IOException | FontFormatException e ) {
         }      
         
-        
+        //array di JButtons
         
         //istanzio i JButton
         profileButton = new JButton();
         aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new RoundedButton("+",20,20);
         aggiungiToRead = new RoundedButton("+",20,20);
-
-
-
+        libriButtons = new JButton[n];
+        
+        
+        
         //istanzio i JLabel
         home = new JLabel("Welcome");
-        home.setFont(PoppinsBlack);
         read= new JLabel("Read");
-        read.setFont(PoppinsBlack.deriveFont(30f));
         reading = new JLabel("Reading");
-        reading.setFont(PoppinsBlack.deriveFont(30f));
         toRead= new JLabel("To Read");
+        //cambio i font
+        home.setFont(PoppinsBlack);
+        read.setFont(PoppinsBlack.deriveFont(30f));
+        reading.setFont(PoppinsBlack.deriveFont(30f));
         toRead.setFont(PoppinsBlack.deriveFont(30f));
-
+        
         
         //istanzio i JPanel
         p1 = new JPanel(new BorderLayout());
         p2=new JPanel(new GridLayout(6,0));
-        aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.LEFT)); //!!da mettere in Aggiungi
         readPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         readingPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         toReadPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         
-
-        //addPage=new Aggiungi();  //!!da gestire con controller
-
+        //Ordino gli elementi da destra a sinistra all'interno dei JPanel 
+        readPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        readingPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        toReadPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        
+        //Instanzio l'array di bottoni per la lettura da file
+        for(int i = 0; i<n; i++){
+            libriButtons[i] = new JButton();
+            toReadPanel.add(libriButtons[i]);
+        }
+                
         //IMMAGINE PROFILO
         fileicon = new File("Images/user.png");
         icon = new ImageIcon(fileicon.getAbsolutePath());
         profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));
-                profileButton.setOpaque(false);
+        profileButton.setOpaque(false);
         profileButton.setBorderPainted(false);
         profileButton.setContentAreaFilled(false);
-
-
+        
+        
         //istanzio ArrayList
         readList=new ArrayList<JPanel>();
         readingList=new ArrayList<JPanel>();
         toReadList= new ArrayList<JPanel>();
-
+        
         //aggiunta dei panel
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
@@ -86,7 +95,7 @@ public class Home extends JPanel{
             readingPanel.add(l);
         }
         p2.add(readingPanel);
-
+        
         p2.add(read);
         readPanel.add(aggiungiRead);
         for(JPanel l:readList){
@@ -100,23 +109,23 @@ public class Home extends JPanel{
             toReadPanel.add(l);
         }
         p2.add(toReadPanel);
-
+        
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.CENTER);
-
+        
         //operazioni finali
     }
-
+    
     //get dei JButton
-
+    
     public JButton getProfileButton() {
         return profileButton;
     }
-
+    
     public JButton getAggiungiRead() {
         return aggiungiRead;
     }
-
+    
     public JButton getAggiungiReading() {
         return aggiungiReading;
     }
@@ -126,10 +135,8 @@ public class Home extends JPanel{
     }
 
 
-    /*ToDo:
-     * Creare interfaccia per l'aggiunta di un libro;
-     * Implementare la possibilità di aggiungere i dati di un libro(inclusa una foto);
-     * Migliorare l'interfaccia grafica principale per renderla molto più userfriendly;
-     */
+    //*ToDo:
+    //*Implementare l'interfaccia che permetta di leggere i dati del libro;
+    
     
 }

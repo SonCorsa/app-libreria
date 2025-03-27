@@ -1,6 +1,5 @@
 import java.awt.CardLayout;
 import java.awt.Toolkit;
-import java.awt.*;
 import javax.swing.*;
 
 
@@ -17,7 +16,7 @@ public class JFramePrincipale extends JFrame {
         pannelli = new JPanel(cardLayout);
         
         //Instazio i pannelli Home & Aggiungi
-        home = new Home();
+        home = new Home(1);
         addPage = new Aggiungi(this);
         
         //Instazio i valori booleani

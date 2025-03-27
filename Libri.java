@@ -1,6 +1,6 @@
+import java.io.*;
 import java.io.Serializable;
-
-
+import java.nio.file.Files;
 public class Libri implements Serializable {
     protected String autore;
     protected String nome;
@@ -14,11 +14,12 @@ public class Libri implements Serializable {
     //attributo per il punteggio(recensione)
 
     
-    public Libri(String autore, String nome, String genere, int pagine) {
+    public Libri(String autore, String nome, String genere, int pagine,File immagine) throws IOException {
         this.autore = autore;
         this.nome = nome;
         this.genere = genere;
         this.pagine = pagine;
+        this.immagine = Files.readAllBytes(immagine.toPath());
         dataI = new int[3];
         dataF = new int[3];
         trama = "";
@@ -91,7 +92,11 @@ public class Libri implements Serializable {
         }
     }
 
-    public void setImmagineLibro(){
+    public byte[] getImmagine(){
+        return this.immagine;
+    }
 
+    public void salvaCopertinaLibro(String path)throws IOException{
+        Files.write(new File(path).toPath(),immagine);   
     }
 }

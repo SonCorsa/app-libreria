@@ -7,7 +7,7 @@ public class Model {
     private Home home;
     private Libreria libreria;
     private JFileChooser fileChooser;
-    private String path;
+    private File immagineLibro;
 
 
     public Model(JFramePrincipale finestra,Libreria libri){
@@ -34,7 +34,7 @@ public class Model {
        
     }
 
-    public void aggiungiLibro(){
+    public void aggiungiLibro() throws IOException{
         //lettura dalle textfield
         String nome= addPage.getNome().getText();
         String autore= addPage.getAutore().getText();
@@ -47,43 +47,19 @@ public class Model {
         addPage.getGenere().setText(" ");
         addPage.getNpag().setText(" ");
 
-        //istanzio il libro
-        Libri l= new Libri(autore, nome, Genere, npag);
-
-        //salvo il path dell'immagine
-        l.setPath(this.path);
-
-        //aggiungo il libro alla libreria
+        //istanzio il libro e aggiungo alla libreria
+        Libri l= new Libri(autore, nome, Genere, npag,immagineLibro);
         this.libreria.aggiungiLibro(l);
         
         //resetto l'immmagine di copertina
         addPage.setImmagineCopertina();
         
         //salvataggio su file
-        try{
-            File file = new File("Files/Libri.txt");
-            ObjectOutputStream scrivi = new ObjectOutputStream(new FileOutputStream(file));
-            scrivi.writeObject(l);
-            scrivi.close();
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-
-
-
-        /*  try{
-        File file = new File(String.format("Files/%s.txt",nome));
-        FileWriter fw= new FileWriter(file);
-        file.mkdir();
-        file.createNewFile();
-        fw.write(String.format("%s&%s&%s&%d",nome,autore,Genere,npag));
-        fw.flush();
-        fw.close();
-    }
-    catch(IOException e){
-            e.printStackTrace();
-        }*/
+        File file = new File("Files/Libri.txt");
+        ObjectOutputStream scrivi = new ObjectOutputStream(new FileOutputStream(file));
+        scrivi.writeObject(l);
+        scrivi.flush();
+        scrivi.close();
     }
 
     public void eliminaLibro(Libri l){
@@ -109,7 +85,7 @@ public class Model {
         if (result == JFileChooser.APPROVE_OPTION){
             File file = fileChooser.getSelectedFile();
             x = new ImageIcon(file.getAbsolutePath());
-            path= file.getAbsolutePath();
+            immagineLibro = new File(file.getAbsolutePath());
             addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(255, 330, 5)));
         }
     }

@@ -2,12 +2,12 @@ import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.*;
-
 import ComponentiRotondi.RoundedButton;
 
 public class Home extends JPanel{
 
     private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
+    private JButton[] libriButtons;
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel,aggiungiPanel;
     private ImageIcon icon;
@@ -19,9 +19,6 @@ public class Home extends JPanel{
 
     public Home(){
         setLayout(new BorderLayout());
-        //istanzio il frame
-        
-        
         //FONT
         try {
             PoppinsBlack =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")).deriveFont(50f);
@@ -31,11 +28,13 @@ public class Home extends JPanel{
          catch ( IOException | FontFormatException e ) {
         }      
         
+        
+        
         //istanzio i JButton
         profileButton = new JButton();
         aggiungiRead = new RoundedButton("+",20,20);
-        aggiungiReading= new JButton("+");
-        aggiungiToRead = new JButton("+");
+        aggiungiReading= new RoundedButton("+",20,20);
+        aggiungiToRead = new RoundedButton("+",20,20);
 
 
 
@@ -58,7 +57,7 @@ public class Home extends JPanel{
         readingPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         toReadPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         
-        //istanzio Aggiungi
+
         //addPage=new Aggiungi();  //!!da gestire con controller
 
         //IMMAGINE PROFILO

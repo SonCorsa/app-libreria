@@ -61,7 +61,7 @@ public class Model {
 
         //salvataggio su file
         try{
-            File file = new File(String.format("File/%s.txt",nome));
+            File file = new File(String.format("Files/%s.txt",nome));
             FileWriter fw= new FileWriter(file);
             file.mkdir();
             file.createNewFile();

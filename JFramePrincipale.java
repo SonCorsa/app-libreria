@@ -5,20 +5,23 @@ import javax.swing.*;
 
 public class JFramePrincipale extends JFrame {
     private CardLayout cardLayout;
+    private Model model;
     private JPanel pannelli;
     private boolean isHome;
     private boolean isAddPage;
     private Home home;
     private Aggiungi addPage;
+    private LibroGUI libroGUI;
     
     public JFramePrincipale() {
         cardLayout = new CardLayout();
         pannelli = new JPanel(cardLayout);
         
         //Instazio i pannelli Home & Aggiungi
-        home = new Home(1);
+        home = new Home(model.getN());
         addPage = new Aggiungi(this);
-        
+        libroGUI = new LibroGUI(this);
+
         //Instazio i valori booleani
         isHome = true;
         isAddPage = false;
@@ -26,6 +29,7 @@ public class JFramePrincipale extends JFrame {
         //Aggiungo i Pannelli al CardLayout
         pannelli.add(home, "home");
         pannelli.add(addPage, "addPage");
+        pannelli.add(libroGUI, "libroGUI");
         cardLayout.show(pannelli,"home");
         add(pannelli);
         
@@ -43,6 +47,10 @@ public class JFramePrincipale extends JFrame {
 
     public Aggiungi getAddPage() {
         return addPage;
+    }
+    
+    public LibroGUI getLibroGUI(){
+        return libroGUI;
     }
     public boolean isHome() {
         return isHome;

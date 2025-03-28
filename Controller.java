@@ -1,15 +1,33 @@
 import java.awt.event.*;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
+
 public class Controller {
     private JFramePrincipale finestra;
     private Model model;
     private Libreria libri;
 
-    public Controller(JFramePrincipale finestra,Libreria libri){
+    public Controller(JFramePrincipale finestra,Libreria libri) throws Exception{
         this.finestra=finestra;
         this.libri=libri;
         model=new Model(finestra,libri);
+        this.ActionListener();
+        this.Setup();
+
+    }
+
+    private void Setup() throws IOException, ClassNotFoundException{
+        model.leggiLibro();
+        /*for(Libri l : libri.getLibri()){
+            finestra.getLibroGUI().getLautore().setText(l.autore);
+            finestra.getLibroGUI().getLgenere().setText(l.genere);
+            finestra.getLibroGUI().getLnome().setText(l.nome);
+            finestra.getLibroGUI().getLnpag().setText(String.valueOf(l.pagine));
+            ImageIcon copertina= new ImageIcon(l.getImmagine());
+            finestra.getLibroGUI().getCopertina().setIcon(copertina);
+        }*/
+        finestra.getHome().getLibriButtons();
     }
 
     public void ActionListener(){
@@ -37,13 +55,12 @@ public class Controller {
         ActionListener aggiungiLibro= new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                try{
+            try{
                 model.aggiungiLibro();
-                }catch(IOException x){
-                    x.printStackTrace();
-                }
-                    
+            }catch( IOException x){
+                x.printStackTrace();
             }
+        }
         };
 
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);

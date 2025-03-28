@@ -117,7 +117,10 @@ public class Home extends JPanel{
     }
     
     //get dei JButton
-    
+    public JButton[] getLibriButtons() {
+        return libriButtons;
+    }
+
     public JButton getProfileButton() {
         return profileButton;
     }

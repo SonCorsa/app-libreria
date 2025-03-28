@@ -1,6 +1,11 @@
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.io.Serializable;
 import java.nio.file.Files;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 public class Libri implements Serializable {
     protected String autore;
     protected String nome;
@@ -92,8 +97,9 @@ public class Libri implements Serializable {
         }
     }
 
-    public byte[] getImmagine(){
-        return this.immagine;
+    public BufferedImage getImmagine()throws IOException{
+        ByteArrayInputStream im = new ByteArrayInputStream(immagine);
+        return ImageIO.read(im);
     }
 
     public void salvaCopertinaLibro(String path)throws IOException{

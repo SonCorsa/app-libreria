@@ -36,7 +36,9 @@ public class Libreria {
             return false;
         }
     }
-    
 
+    public ArrayList<Libri> getLibri() {
+        return libri;
+    }
     
 }

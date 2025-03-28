@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.swing.*;
 
@@ -5,6 +6,7 @@ public class Model {
     private JFramePrincipale finestra;
     private Aggiungi addPage;
     private Home home;
+    private LibroGUI libroGUI;
     private Libreria libreria;
     private JFileChooser fileChooser;
     private File immagineLibro;
@@ -14,6 +16,7 @@ public class Model {
         this.finestra=finestra;
         this.addPage=finestra.getAddPage();
         this.home=finestra.getHome();
+        this.libroGUI = finestra.getLibroGUI();
         this.libreria=libri;
         fileChooser = new JFileChooser();
         libreria=new Libreria();
@@ -61,6 +64,21 @@ public class Model {
         scrivi.flush();
         scrivi.close();
     }
+
+
+    public void leggiLibro()throws IOException, ClassNotFoundException{
+        File file = new File("Files/Libri.txt");
+        ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
+        Libri l =(Libri) leggi.readObject();
+        this.libreria.aggiungiLibro(l);
+        leggi.close();
+    }
+    
+
+    public int getN(){
+        return libreria.libri.size();
+    }
+
 
     public void eliminaLibro(Libri l){
         libreria.eliminaLibro(l);

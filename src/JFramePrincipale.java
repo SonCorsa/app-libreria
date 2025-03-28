@@ -14,6 +14,7 @@ public class JFramePrincipale extends JFrame {
     private LibroGUI libroGUI;
     
     public JFramePrincipale() {
+        model = new Model(this, new Libreria());
         cardLayout = new CardLayout();
         pannelli = new JPanel(cardLayout);
         

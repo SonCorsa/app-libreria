@@ -37,46 +37,65 @@ public class Model {
        
     }
 
-    public void aggiungiLibro() throws IOException{
-        //lettura dalle textfield
-        String nome= addPage.getNome().getText();
-        String autore= addPage.getAutore().getText();
-        String Genere=addPage.getGenere().getText();
+    public void aggiungiLibro() throws IOException {
+        // Lettura dalle textfield
+        String nome = addPage.getNome().getText();
+        String autore = addPage.getAutore().getText();
+        String Genere = addPage.getGenere().getText();
         int npag = Integer.parseInt(addPage.getNpag().getText());
 
-        //svuoto le textfield
+        // Svuoto le textfield
         addPage.getNome().setText(" ");
         addPage.getAutore().setText(" ");
         addPage.getGenere().setText(" ");
         addPage.getNpag().setText(" ");
 
-        //istanzio il libro e aggiungo alla libreria
-        Libri l= new Libri(autore, nome, Genere, npag,immagineLibro);
+        // Istanzio il libro e aggiungo alla libreria
+        Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
         this.libreria.aggiungiLibro(l);
-        
-        //resetto l'immmagine di copertina
+
+        // Resetto l'immagine di copertina
         addPage.setImmagineCopertina();
-        
-        //salvataggio su file
+
+        // Salvataggio su file in modalità append
         File file = new File("Files/Libri.txt");
-        ObjectOutputStream scrivi = new ObjectOutputStream(new FileOutputStream(file));
-        scrivi.writeObject(l);
-        scrivi.flush();
-        scrivi.close();
+        boolean append = file.exists(); // Controlla se il file esiste già
+        try (FileOutputStream fos = new FileOutputStream(file, true);
+             ObjectOutputStream scrivi = append
+                 ? new ObjectOutputStream(fos) {
+                     @Override
+                     protected void writeStreamHeader() throws IOException {
+                         reset(); // Evita di riscrivere l'intestazione
+                     }
+                 }
+                 : new ObjectOutputStream(fos)) {
+            scrivi.writeObject(l);
+        }
     }
 
-
+ 
     public void leggiLibro()throws IOException, ClassNotFoundException{
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
-        Libri l =(Libri) leggi.readObject();
-        this.libreria.aggiungiLibro(l);
+        while(true){ //finchè ci sono oggetti da leggere
+            try{//leggo il file e lo aggiungo alla libreria
+                Libri l =(Libri) leggi.readObject();
+                libreria.aggiungiLibro(l);
+            }catch(EOFException e){ //se non ci sono più oggetti da leggere esco
+                break;
+        }
+        //aggiorno i bottoni della home
+        for(int i=0; i<libreria.getLibri().size();i++){
+            home.getLibriButtons()[i].setIcon(new ImageIcon(libreria.getLibri().get(i).getImmagine().getScaledInstance(100, 150, 5)));
+        }
+        //resetto i bottoni non utilizzati
         leggi.close();
+    }
     }
     
 
     public int getN(){
-        return libreria.libri.size();
+        return libreria.getLibri().size();
     }
 
 

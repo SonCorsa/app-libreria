@@ -14,7 +14,6 @@ public class Controller {
         model=new Model(finestra,libri);
         this.ActionListener();
         this.Setup();
-
     }
 
     private void Setup() throws IOException, ClassNotFoundException{
@@ -27,7 +26,6 @@ public class Controller {
             ImageIcon copertina= new ImageIcon(l.getImmagine());
             finestra.getLibroGUI().getCopertina().setIcon(copertina);
         }*/
-        finestra.getHome().getLibriButtons();
     }
 
     public void ActionListener(){
@@ -57,7 +55,8 @@ public class Controller {
             public void actionPerformed(ActionEvent e){
             try{
                 model.aggiungiLibro();
-            }catch( IOException x){
+                model.leggiLibro();
+            }catch( IOException | ClassNotFoundException x){
                 x.printStackTrace();
             }
         }

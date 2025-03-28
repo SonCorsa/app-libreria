@@ -4,7 +4,11 @@ public class App{
         Libreria libri= new Libreria();
         JFramePrincipale finestra = new JFramePrincipale();
         Model model = new Model(finestra,libri);
-        Controller controller = new Controller(finestra,libri);
+        try{
+            Controller controller = new Controller(finestra,libri);
+        }catch(Exception e ){
+            e.printStackTrace();
+        }
         finestra.setVisible(true);
 
     }

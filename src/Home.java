@@ -7,7 +7,7 @@ import ComponentiRotondi.RoundedButton;
 public class Home extends JPanel{
 
     private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
-    private JButton[] libriButtons;
+    private ArrayList<JButton> libriButtons;
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
     private ImageIcon icon;
@@ -17,7 +17,7 @@ public class Home extends JPanel{
     private Font PoppinsBlack;
     
 
-    public Home(int n){
+    public Home(){
         setLayout(new BorderLayout());
         //FONT
         try {
@@ -35,7 +35,7 @@ public class Home extends JPanel{
         aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new RoundedButton("+",20,20);
         aggiungiToRead = new RoundedButton("+",20,20);
-        libriButtons = new JButton[n];
+        libriButtons = new ArrayList<JButton>();
         
         
         
@@ -64,10 +64,6 @@ public class Home extends JPanel{
         toReadPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         
         //Instanzio l'array di bottoni per la lettura da file
-        for(int i = 0; i<n; i++){
-            libriButtons[i] = new JButton();
-            toReadPanel.add(libriButtons[i]);
-        }
                 
         //IMMAGINE PROFILO
         fileicon = new File("Images/user.png");
@@ -88,6 +84,12 @@ public class Home extends JPanel{
         p1.add(home,BorderLayout.WEST);
         
         //addPage.add(aggiungiPanel);
+
+        for(JButton b : libriButtons){
+            toReadPanel.add(b);
+        }
+
+
         
         p2.add(reading);
         readingPanel.add(aggiungiReading);
@@ -116,8 +118,15 @@ public class Home extends JPanel{
         //operazioni finali
     }
     
+    public void InstaziaLibri(){
+        toReadPanel.removeAll();
+        for(JButton b : libriButtons){
+            toReadPanel.add(b);
+        }
+        toReadPanel.add(aggiungiToRead);
+    }
     //get dei JButton
-    public JButton[] getLibriButtons() {
+    public ArrayList<JButton> getLibriButtons() {
         return libriButtons;
     }
 

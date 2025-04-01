@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Libreria {
+public class Libreria implements Serializable {
     protected ArrayList<Libri> libri;
 
     public Libreria(){

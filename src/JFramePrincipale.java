@@ -13,13 +13,13 @@ public class JFramePrincipale extends JFrame {
     private Aggiungi addPage;
     private LibroGUI libroGUI;
     
-    public JFramePrincipale() {
-        model = new Model(this, new Libreria());
+    public JFramePrincipale(Libreria libri){
         cardLayout = new CardLayout();
         pannelli = new JPanel(cardLayout);
         
         //Instazio i pannelli Home & Aggiungi
-        home = new Home(model.getN());
+    
+        home = new Home();
         addPage = new Aggiungi(this);
         libroGUI = new LibroGUI(this);
 

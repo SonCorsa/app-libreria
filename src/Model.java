@@ -52,16 +52,16 @@ public class Model {
 
         // Istanzio il libro e aggiungo alla libreria
         Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
-        this.libreria.aggiungiLibro(l);
+        libreria.aggiungiLibro(l);
 
         // Resetto l'immagine di copertina
         addPage.setImmagineCopertina();
 
         // Salvataggio su file in modalità append
         File file = new File("Files/Libri.txt");
-        try (FileOutputStream fos = new FileOutputStream(file, true);
+        try (FileOutputStream fos = new FileOutputStream(file);
                 ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
-                scrivi.writeObject(l);//scrivo l'oggetto libro
+                scrivi.writeObject(libreria);//scrivo l'oggetto libro
                 scrivi.flush(); //svuoto il buffer
                 scrivi.close(); //chiudo lo stream
         }
@@ -71,14 +71,18 @@ public class Model {
     public void leggiLibro()throws IOException, ClassNotFoundException{
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
-        Libri l =(Libri) leggi.readObject();
-        this.libreria.aggiungiLibro(l);
-        //aggiorno i bottoni della home
-        for(int i=0; i<libreria.getLibri().size();i++){
-            home.getLibriButtons()[i].setIcon(new ImageIcon(libreria.getLibri().get(i).getImmagine().getScaledInstance(100, 150, 5)));
-        }
-        //resetto i bottoni non utilizzati
+        Libreria l =(Libreria) leggi.readObject();
+        libreria = l;
         leggi.close();
+        //aggiorno i bottoni della home
+        System.out.println(libreria.getLibri().size());
+        for(Libri l1 :libreria.getLibri()){
+            //home.getLibriButtons()[i].setIcon(new ImageIcon());;
+            JButton b = new JButton();
+            b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+            home.getLibriButtons().add(b);
+        }
+        home.InstaziaLibri();
     }
     
 

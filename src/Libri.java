@@ -1,11 +1,9 @@
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.io.Serializable;
 import java.nio.file.Files;
-
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
+
 public class Libri implements Serializable {
     protected String autore;
     protected String nome;

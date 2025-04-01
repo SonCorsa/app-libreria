@@ -59,17 +59,11 @@ public class Model {
 
         // Salvataggio su file in modalità append
         File file = new File("Files/Libri.txt");
-        boolean append = file.exists(); // Controlla se il file esiste già
         try (FileOutputStream fos = new FileOutputStream(file, true);
-             ObjectOutputStream scrivi = append
-                 ? new ObjectOutputStream(fos) {
-                     @Override
-                     protected void writeStreamHeader() throws IOException {
-                         reset(); // Evita di riscrivere l'intestazione
-                     }
-                 }
-                 : new ObjectOutputStream(fos)) {
-            scrivi.writeObject(l);
+                ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
+                scrivi.writeObject(l);//scrivo l'oggetto libro
+                scrivi.flush(); //svuoto il buffer
+                scrivi.close(); //chiudo lo stream
         }
     }
 
@@ -77,20 +71,14 @@ public class Model {
     public void leggiLibro()throws IOException, ClassNotFoundException{
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
-        while(true){ //finchè ci sono oggetti da leggere
-            try{//leggo il file e lo aggiungo alla libreria
-                Libri l =(Libri) leggi.readObject();
-                libreria.aggiungiLibro(l);
-            }catch(EOFException e){ //se non ci sono più oggetti da leggere esco
-                break;
-        }
+        Libri l =(Libri) leggi.readObject();
+        this.libreria.aggiungiLibro(l);
         //aggiorno i bottoni della home
         for(int i=0; i<libreria.getLibri().size();i++){
             home.getLibriButtons()[i].setIcon(new ImageIcon(libreria.getLibri().get(i).getImmagine().getScaledInstance(100, 150, 5)));
         }
         //resetto i bottoni non utilizzati
         leggi.close();
-    }
     }
     
 

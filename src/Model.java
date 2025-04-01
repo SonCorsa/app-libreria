@@ -45,10 +45,10 @@ public class Model {
         int npag = Integer.parseInt(addPage.getNpag().getText());
 
         // Svuoto le textfield
-        addPage.getNome().setText(" ");
-        addPage.getAutore().setText(" ");
-        addPage.getGenere().setText(" ");
-        addPage.getNpag().setText(" ");
+        addPage.getNome().setText("");
+        addPage.getAutore().setText("");
+        addPage.getGenere().setText("");
+        addPage.getNpag().setText("");
 
         // Istanzio il libro e aggiungo alla libreria
         Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);

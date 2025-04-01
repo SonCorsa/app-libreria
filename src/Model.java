@@ -66,8 +66,7 @@ public class Model {
                 scrivi.close(); //chiudo lo stream
         }
     }
-
- 
+    
     public void leggiLibro()throws IOException, ClassNotFoundException{
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
@@ -76,6 +75,7 @@ public class Model {
         leggi.close();
         //aggiorno i bottoni della home
         System.out.println(libreria.getLibri().size());
+        home.getLibriButtons().clear();
         for(Libri l1 :libreria.getLibri()){
             //home.getLibriButtons()[i].setIcon(new ImageIcon());;
             JButton b = new JButton();

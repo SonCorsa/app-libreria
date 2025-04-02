@@ -1,6 +1,5 @@
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.io.Serializable;
 import java.nio.file.Files;
 import javax.imageio.ImageIO;
 
@@ -13,6 +12,7 @@ public class Libri implements Serializable {
     protected int[] dataF;
     protected String trama;
     protected byte[] immagine;
+    protected boolean read,reading,toRead;
     //attributo per gli stati
     //attributo per il punteggio(recensione)
 
@@ -26,6 +26,9 @@ public class Libri implements Serializable {
         dataI = new int[3];
         dataF = new int[3];
         trama = "";
+        read=false;
+        reading=false;
+        toRead=false;
     }
     
     public String getAutore() {
@@ -78,6 +81,18 @@ public class Libri implements Serializable {
 
     public String getTrama() {
         return trama;
+    }
+
+    public void setRead(boolean n){
+        read=n;
+    }
+    
+    public void setReading(boolean n){
+        reading=n;
+    }
+
+    public void setToRead(boolean n){
+        toRead=n;
     }
 
     public void setTrama(String trama) {

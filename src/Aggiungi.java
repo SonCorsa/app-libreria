@@ -13,6 +13,7 @@ public class Aggiungi extends JPanel{
     private JLabel lnome,lautore,lgenere,lnpag,ltrama;
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
+    private JCheckBox read;
     
     public Aggiungi(JFramePrincipale finestra){
         setLayout(new BorderLayout());
@@ -131,6 +132,17 @@ public class Aggiungi extends JPanel{
         x.gridheight = 2;
         p1.add(trama,x);
         add(p1,BorderLayout.CENTER);
+
+        //test
+        read = new JCheckBox("read");
+        x.gridx=1;
+        x.gridy=2;
+        x.insets = new Insets(0,0,0,0);
+        x.gridheight = 2;
+        p1.add(read,x);
+
+
+
 
         
         }

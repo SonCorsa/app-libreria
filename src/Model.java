@@ -95,6 +95,7 @@ public class Model {
         for(Libri l1 :libreria.getLibri()){
             //home.getLibriButtons()[i].setIcon(new ImageIcon());;
             if(l1.isRead()){
+                
                 JButton b = new JButton();
                 b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
                 home.getLibriButtonsRead().add(b);

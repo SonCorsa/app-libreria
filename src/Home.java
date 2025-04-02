@@ -151,11 +151,11 @@ public class Home extends JPanel{
     }
 
     public ArrayList<JButton> getLibriButtonsReading() {
-        return libriButtonsRead;
+        return libriButtonsReading;
     }
 
     public ArrayList<JButton> getLibriButtonsToRead() {
-        return libriButtonsRead;
+        return libriButtonsToRead;
     }
 
     public JButton getProfileButton() {

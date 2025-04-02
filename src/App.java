@@ -6,6 +6,7 @@ public class App{
         Model model = new Model(finestra,libri);
         try{
             Controller controller = new Controller(finestra,libri);
+            controller.Setup();
         }catch(Exception e ){
             e.printStackTrace();
         }

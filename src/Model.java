@@ -7,7 +7,7 @@ public class Model {
     private Aggiungi addPage;
     private Home home;
     private LibroGUI libroGUI;
-    private Libreria libreria,libreriaRead,libreriaReading,libreriaToRead;
+    private Libreria libreria;
     private JFileChooser fileChooser;
     private File immagineLibro;
 
@@ -20,9 +20,6 @@ public class Model {
         this.libreria=libri;
         fileChooser = new JFileChooser();
         libreria=new Libreria();
-        libreriaRead = new Libreria();
-        libreriaReading = new Libreria();
-        libreriaToRead = new Libreria();
     }
 
     public void cambiaPagina(){ 
@@ -75,11 +72,11 @@ public class Model {
 
         // Salvataggio su file in modalità append
         File file = new File("Files/Libri.txt");
-        try (FileOutputStream fos = new FileOutputStream(file);
-                ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
-                scrivi.writeObject(libreria);//scrivo l'oggetto libro
-                scrivi.flush(); //svuoto il buffer
-                scrivi.close(); //chiudo lo stream
+        try (FileOutputStream fos = new FileOutputStream(file, false);
+        ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
+            scrivi.writeObject(libreria);//scrivo l'oggetto libro
+            scrivi.flush(); //svuoto il buffer
+            scrivi.close(); //chiudo lo stream
         }
     }
 
@@ -88,11 +85,19 @@ public class Model {
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
         Libreria l =(Libreria) leggi.readObject();
-        libreria = l;
         leggi.close();
+        System.out.println("Libro letto: "+libreria.getLibri().size());
+        libreria.getLibri().clear(); //svuoto la libreria
+        libreria.getLibri().addAll(l.getLibri()); //aggiungo i libri letti alla libreria
+        System.out.println("Libro letto: "+libreria.getLibri().size());
         //aggiorno i bottoni della home
+        home.getLibriButtonsRead().clear(); //svuoto i bottoni letti\
+        home.getLibriButtonsReading().clear(); //svuoto i bottoni letti
+        home.getLibriButtonsToRead().clear(); //svuoto i bottoni letti
+
         for(Libri l1 :libreria.getLibri()){  //per ogni libro della libreria
             if(l1.isRead()){  //se il libro è letto
+                System.out.println("Libro letto: "+l1.getNome());
 
                 //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
@@ -118,7 +123,7 @@ public class Model {
                 home.getLibriButtonsToRead().add(b);
             }
         }
-        home.InstaziaLibri();
+        home.InstaziaLibri(); 
     }
     
 

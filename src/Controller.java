@@ -1,5 +1,8 @@
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.Set;
+
+import javax.print.DocFlavor.SERVICE_FORMATTED;
 
 public class Controller {
     private JFramePrincipale finestra;
@@ -12,10 +15,9 @@ public class Controller {
         this.libri=libri;
         model=new Model(finestra,libri);
         this.ActionListener();
-        this.Setup();
     }
-
-    private void Setup() throws IOException, ClassNotFoundException{
+    
+    public void Setup() throws IOException, ClassNotFoundException{
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
@@ -60,6 +62,7 @@ public class Controller {
             public void actionPerformed(ActionEvent e){
             try{
                 model.aggiungiLibro(x);
+                System.out.println("Aggiunto libro alla libreria"+1);
                 Setup();
             }catch( Exception x){
                 x.printStackTrace();

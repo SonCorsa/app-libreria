@@ -112,6 +112,7 @@ public class Libri implements Serializable {
     public boolean isToRead() {
         return toRead;
     }
+ 
 
     public boolean equals(Libri l){
         if(this.toString().equals(l.toString())){

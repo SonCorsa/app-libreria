@@ -13,8 +13,8 @@ public class Aggiungi extends JPanel{
     private JLabel lnome,lautore,lgenere,lnpag,ltrama;
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
-    private JCheckBox read;
-    
+    private JCheckBox read,reading,toRead;
+
     public Aggiungi(JFramePrincipale finestra){
         setLayout(new BorderLayout());
         //istanzio il panel
@@ -135,17 +135,25 @@ public class Aggiungi extends JPanel{
 
         //test
         read = new JCheckBox("read");
-        x.gridx=1;
-        x.gridy=2;
+        read.setSize(10, 10);
+        x.gridx=2;
+        x.gridy=1;
         x.insets = new Insets(0,0,0,0);
-        x.gridheight = 2;
+        x.gridheight = 1;
         p1.add(read,x);
-
-
-
-
         
-        }
+        reading = new JCheckBox("reading");
+        x.gridy=2;
+        x.insets = new Insets(10,0,0,0);
+        x.gridheight = 1;
+        p1.add(reading,x);
+
+        toRead= new JCheckBox(" to read");
+        x.gridy=3;
+        x.insets = new Insets(10,0,0,0);
+        x.gridheight = 1;
+        p1.add(toRead,x);
+    }
 
     //get dei JButton
     public JButton getAggiungi() {
@@ -192,6 +200,45 @@ public class Aggiungi extends JPanel{
         b.setOpaque(false);
         b.setBorderPainted(false);
         b.setContentAreaFilled(false);
+    }
+
+    public void Checkbox(){
+        if(reading.isSelected()){
+            toRead.setSelected(false);        //PORCODIO MBA. Qualunque if si trova in cima, sovrasta gli altri. 
+            read.setSelected(false);          //Perciò se reading è selezionata, gli altri non si possono selezionare
+        }
+        if(read.isSelected()){
+            toRead.setSelected(false);
+            reading.setSelected(false);
+        }
+        if(toRead.isSelected()){
+            read.setSelected(false);
+            reading.setSelected(false);
+        }
+    }
+
+    public JCheckBox getRead() {
+        return read;
+    }
+
+    public void setRead(JCheckBox read) {
+        this.read = read;
+    }
+
+    public JCheckBox getReading() {
+        return reading;
+    }
+
+    public void setReading(JCheckBox reading) {
+        this.reading = reading;
+    }
+
+    public JCheckBox getToRead() {
+        return toRead;
+    }
+
+    public void setToRead(JCheckBox toRead) {
+        this.toRead = toRead;
     }
 
 }

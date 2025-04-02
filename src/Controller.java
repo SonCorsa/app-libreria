@@ -1,8 +1,6 @@
 import java.awt.event.*;
 import java.io.IOException;
 
-import javax.swing.ImageIcon;
-
 public class Controller {
     private JFramePrincipale finestra;
     private Model model;
@@ -62,6 +60,13 @@ public class Controller {
         }
         };
 
+        ActionListener test = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                finestra.getAddPage().Checkbox();
+            }
+        };
+
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);
@@ -70,6 +75,9 @@ public class Controller {
         finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
+        finestra.getAddPage().getRead().addActionListener(test);
+        finestra.getAddPage().getReading().addActionListener(test);
+        finestra.getAddPage().getToRead().addActionListener(test);
     }
     
 }

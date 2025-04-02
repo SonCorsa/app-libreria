@@ -56,7 +56,7 @@ public class Model {
         // Resetto l'immagine di copertina
         addPage.setImmagineCopertina();
 
-        // Salvataggio su file in modalità append
+        // Salvataggio su file
         File file = new File("Files/Libri.txt");
         try (FileOutputStream fos = new FileOutputStream(file);
                 ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
@@ -124,4 +124,5 @@ public class Model {
     public void SetImmagineCopertina(){
         addPage.setImmagineCopertina();
     }
+    
 }

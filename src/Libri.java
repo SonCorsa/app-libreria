@@ -12,6 +12,8 @@ public class Libri implements Serializable {
     protected int[] dataF;
     protected String trama;
     protected byte[] immagine;
+    private boolean read,reading,toRead;
+    private static final long serialVersionUID = 1L;
     //protected boolean read,reading,toRead;
     //attributo per gli stati
     //attributo per il punteggio(recensione)
@@ -26,11 +28,11 @@ public class Libri implements Serializable {
         dataI = new int[3];
         dataF = new int[3];
         trama = "";
-        /*read=false;
-        reading=false;
-        toRead=false;*/
+        read = false;
+        reading = false;
+        toRead = false;
     }
-    
+        
     public String getAutore() {
         return autore;
     }
@@ -83,7 +85,7 @@ public class Libri implements Serializable {
         return trama;
     }
 
-    /*public void setRead(boolean n){
+    public void setRead(boolean n){
         read=n;
     }
     
@@ -93,7 +95,7 @@ public class Libri implements Serializable {
 
     public void setToRead(boolean n){
         toRead=n;
-    }*/
+    }
 
     public void setTrama(String trama) {
         this.trama = trama;
@@ -102,6 +104,17 @@ public class Libri implements Serializable {
         return String.format("%s %s %s %d",autore,nome, genere,pagine);
     }
 
+
+    public boolean isRead() {
+        return read;
+    }
+    public boolean isReading() {
+        return reading;
+    }
+    public boolean isToRead() {
+        return toRead;
+    }
+    
     public boolean equals(Libri l){
         if(this.toString().equals(l.toString())){
             return true;

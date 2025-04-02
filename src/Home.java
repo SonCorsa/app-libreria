@@ -7,7 +7,7 @@ import ComponentiRotondi.RoundedButton;
 public class Home extends JPanel{
 
     private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
-    private ArrayList<JButton> libriButtons;
+    private ArrayList<JButton> libriButtonsRead,libriButtonsReading,libriButtonsToRead;
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
     private ImageIcon icon;
@@ -35,7 +35,9 @@ public class Home extends JPanel{
         aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new RoundedButton("+",20,20);
         aggiungiToRead = new RoundedButton("+",20,20);
-        libriButtons = new ArrayList<JButton>();
+        libriButtonsRead = new ArrayList<JButton>();
+        libriButtonsReading = new ArrayList<JButton>();
+        libriButtonsToRead = new ArrayList<JButton>();
         
         
         
@@ -85,10 +87,19 @@ public class Home extends JPanel{
         
         //addPage.add(aggiungiPanel);
 
-        for(JButton b : libriButtons){
+        for(JButton b : libriButtonsRead){
+            readPanel.add(b);
+        }
+        for(JButton b : libriButtonsReading){
+            readingPanel.add(b);
+        }
+        for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);
         }
+
         p2.add(reading);
+
+
         readingPanel.add(aggiungiReading);
         for(JPanel l:readingList){
             readingPanel.add(l);
@@ -116,15 +127,35 @@ public class Home extends JPanel{
     }
     
     public void InstaziaLibri(){
+        readPanel.removeAll();
+        for(JButton b : libriButtonsRead){
+            readPanel.add(b);
+        }
+        readPanel.add(aggiungiRead);
+
+        readingPanel.removeAll();
+        for(JButton b : libriButtonsReading){
+            readingPanel.add(b);
+        }
+        readingPanel.add(aggiungiReading);
+
         toReadPanel.removeAll();
-        for(JButton b : libriButtons){
+        for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);
         }
         toReadPanel.add(aggiungiToRead);
     }
     //get dei JButton
-    public ArrayList<JButton> getLibriButtons() {
-        return libriButtons;
+    public ArrayList<JButton> getLibriButtonsRead() {
+        return libriButtonsRead;
+    }
+
+    public ArrayList<JButton> getLibriButtonsReading() {
+        return libriButtonsRead;
+    }
+
+    public ArrayList<JButton> getLibriButtonsToRead() {
+        return libriButtonsRead;
     }
 
     public JButton getProfileButton() {
@@ -143,6 +174,9 @@ public class Home extends JPanel{
         return aggiungiToRead;
     }
 
+    public void JbuttonsRead(Libri l){
+
+    }
 
     //*ToDo:
     //*Implementare l'interfaccia che permetta di leggere i dati del libro;

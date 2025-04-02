@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.swing.*;
 
@@ -6,7 +7,7 @@ public class Model {
     private Aggiungi addPage;
     private Home home;
     private LibroGUI libroGUI;
-    private Libreria libreria;
+    private Libreria libreria,libreriaRead,libreriaReading,libreriaToRead;
     private JFileChooser fileChooser;
     private File immagineLibro;
 
@@ -19,6 +20,9 @@ public class Model {
         this.libreria=libri;
         fileChooser = new JFileChooser();
         libreria=new Libreria();
+        libreriaRead = new Libreria();
+        libreriaReading = new Libreria();
+        libreriaToRead = new Libreria();
     }
 
     public void cambiaPagina(){
@@ -48,18 +52,29 @@ public class Model {
         addPage.getAutore().setText("");
         addPage.getGenere().setText("");
         addPage.getNpag().setText("");
-        addPage.getToRead().setSelected(false);
-        addPage.getReading().setSelected(false);
-        addPage.getRead().setSelected(false);
 
         // Istanzio il libro e aggiungo alla libreria
         Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
+        if(addPage.getSelectedCheckbox()== 1){
+            l.setRead(true);
+            libreriaRead.aggiungiLibro(l);
+        }else if(addPage.getSelectedCheckbox()== 2){
+            l.setReading(true);
+            libreriaReading.aggiungiLibro(l);
+        }else if(addPage.getSelectedCheckbox()== 3){
+            l.setToRead(true);
+            libreriaToRead.aggiungiLibro(l);
+        }
+        // Resetto le checkbox
+        addPage.getRead().setSelected(false);
+        addPage.getReading().setSelected(false);
+        addPage.getToRead().setSelected(false);
         libreria.aggiungiLibro(l);
 
         // Resetto l'immagine di copertina
         addPage.setImmagineCopertina();
 
-        // Salvataggio su file
+        // Salvataggio su file in modalità append
         File file = new File("Files/Libri.txt");
         try (FileOutputStream fos = new FileOutputStream(file);
                 ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
@@ -68,7 +83,8 @@ public class Model {
                 scrivi.close(); //chiudo lo stream
         }
     }
-    
+
+ 
     public void leggiLibro()throws IOException, ClassNotFoundException{
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
@@ -76,16 +92,21 @@ public class Model {
         libreria = l;
         leggi.close();
         //aggiorno i bottoni della home
-        //System.out.println(libreria.getLibri().size());
-        home.getLibriButtons().clear();
         for(Libri l1 :libreria.getLibri()){
             //home.getLibriButtons()[i].setIcon(new ImageIcon());;
-            JButton b = new JButton();
-            b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(90, 110, 5)));
-            home.getLibriButtons().add(b);
-            b.setOpaque(false);
-            b.setBorderPainted(false);
-            b.setContentAreaFilled(false);
+            if(l1.isRead()){
+                JButton b = new JButton();
+                b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+                home.getLibriButtonsRead().add(b);
+            }else if(l1.isReading()){
+                JButton b = new JButton();
+                b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+                home.getLibriButtonsReading().add(b);
+            }else if(l1.isToRead()){
+                JButton b = new JButton();
+                b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+                home.getLibriButtonsToRead().add(b);
+            }
         }
         home.InstaziaLibri();
     }
@@ -127,5 +148,4 @@ public class Model {
     public void SetImmagineCopertina(){
         addPage.setImmagineCopertina();
     }
-    
 }

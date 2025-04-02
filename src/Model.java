@@ -78,7 +78,7 @@ public class Model {
         for(Libri l1 :libreria.getLibri()){
             //home.getLibriButtons()[i].setIcon(new ImageIcon());;
             JButton b = new JButton();
-            b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+            b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(90, 110, 5)));
             home.getLibriButtons().add(b);
             b.setOpaque(false);
             b.setBorderPainted(false);

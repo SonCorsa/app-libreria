@@ -88,9 +88,6 @@ public class Home extends JPanel{
         for(JButton b : libriButtons){
             toReadPanel.add(b);
         }
-
-
-        
         p2.add(reading);
         readingPanel.add(aggiungiReading);
         for(JPanel l:readingList){

@@ -202,18 +202,30 @@ public class Aggiungi extends JPanel{
         b.setContentAreaFilled(false);
     }
 
-    public void Checkbox(){
-        if(reading.isSelected()){
-            toRead.setSelected(false);        //PORCODIO MBA. Qualunque if si trova in cima, sovrasta gli altri. 
-            read.setSelected(false);          //Perciò se reading è selezionata, gli altri non si possono selezionare
-        }
+    public void CheckboxRead(){
+        toRead.setSelected(false);
+        reading.setSelected(false);        
+    }
+
+    public void CheckboxReading(){
+        toRead.setSelected(false);
+        read.setSelected(false);        
+    }
+
+    public void CheckboxToRead(){
+        read.setSelected(false);
+        reading.setSelected(false);        
+    }
+
+    public int getSelectedCheckbox(){
         if(read.isSelected()){
-            toRead.setSelected(false);
-            reading.setSelected(false);
-        }
-        if(toRead.isSelected()){
-            read.setSelected(false);
-            reading.setSelected(false);
+            return 1;
+        }else if(reading.isSelected()){
+            return 2;
+        }else if(toRead.isSelected()){
+            return 3;
+        }else{
+            return 0;
         }
     }
 

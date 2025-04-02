@@ -60,12 +60,26 @@ public class Controller {
         }
         };
 
-        ActionListener test = new ActionListener() {
+        ActionListener readActionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                finestra.getAddPage().Checkbox();
+                finestra.getAddPage().CheckboxRead();
             }
         };
+
+        ActionListener readingActionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                finestra.getAddPage().CheckboxReading();
+            }
+        };
+
+        ActionListener toReadActionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                finestra.getAddPage().CheckboxToRead();
+            }
+        };  
 
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
@@ -75,9 +89,9 @@ public class Controller {
         finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
-        finestra.getAddPage().getRead().addActionListener(test);
-        finestra.getAddPage().getReading().addActionListener(test);
-        finestra.getAddPage().getToRead().addActionListener(test);
+        finestra.getAddPage().getRead().addActionListener(readActionListener);
+        finestra.getAddPage().getReading().addActionListener(readingActionListener);
+        finestra.getAddPage().getToRead().addActionListener(toReadActionListener);
     }
     
 }

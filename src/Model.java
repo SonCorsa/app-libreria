@@ -48,6 +48,9 @@ public class Model {
         addPage.getAutore().setText("");
         addPage.getGenere().setText("");
         addPage.getNpag().setText("");
+        addPage.getToRead().setSelected(false);
+        addPage.getReading().setSelected(false);
+        addPage.getRead().setSelected(false);
 
         // Istanzio il libro e aggiungo alla libreria
         Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);

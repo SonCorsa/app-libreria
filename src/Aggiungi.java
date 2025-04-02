@@ -134,6 +134,13 @@ public class Aggiungi extends JPanel{
         add(p1,BorderLayout.CENTER);
 
         //test
+
+        reading = new JCheckBox("reading");
+        x.gridy=2;
+        x.insets = new Insets(10,0,0,0);
+        x.gridheight = 1;
+        p1.add(reading,x);
+
         read = new JCheckBox("read");
         read.setSize(10, 10);
         x.gridx=2;
@@ -141,12 +148,6 @@ public class Aggiungi extends JPanel{
         x.insets = new Insets(0,0,0,0);
         x.gridheight = 1;
         p1.add(read,x);
-        
-        reading = new JCheckBox("reading");
-        x.gridy=2;
-        x.insets = new Insets(10,0,0,0);
-        x.gridheight = 1;
-        p1.add(reading,x);
 
         toRead= new JCheckBox(" to read");
         x.gridy=3;

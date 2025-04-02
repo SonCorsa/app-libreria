@@ -10,12 +10,13 @@ public class Home extends JPanel{
     private ArrayList<JButton> libriButtonsRead,libriButtonsReading,libriButtonsToRead; //ArrayList di JButton che contengono i libri letti, in lettura e da leggere
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
+    
     private ImageIcon icon;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
     private Font PoppinsBlack;
     
-
+    
     public Home(){
         setLayout(new BorderLayout());
         //FONT
@@ -24,7 +25,7 @@ public class Home extends JPanel{
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")));
         }
-         catch ( IOException | FontFormatException e ) {
+        catch ( IOException | FontFormatException e ) {
         }      
         
         
@@ -91,7 +92,7 @@ public class Home extends JPanel{
         for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);
         }
-
+        
         //aggiunta dei JPanel ai JPanel principali
         p2.add(reading);
         readingPanel.add(aggiungiReading);
@@ -116,13 +117,13 @@ public class Home extends JPanel{
             readPanel.add(b);
         }
         readPanel.add(aggiungiRead);
-
+        
         readingPanel.removeAll();
         for(JButton b : libriButtonsReading){
             readingPanel.add(b);
         }
         readingPanel.add(aggiungiReading);
-
+        
         toReadPanel.removeAll();
         for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);
@@ -133,15 +134,15 @@ public class Home extends JPanel{
     public ArrayList<JButton> getLibriButtonsRead() {
         return libriButtonsRead;
     }
-
+    
     public ArrayList<JButton> getLibriButtonsReading() {
         return libriButtonsReading;
     }
-
+    
     public ArrayList<JButton> getLibriButtonsToRead() {
         return libriButtonsToRead;
     }
-
+    
     public JButton getProfileButton() {
         return profileButton;
     }
@@ -153,15 +154,31 @@ public class Home extends JPanel{
     public JButton getAggiungiReading() {
         return aggiungiReading;
     }
-
+    
     public JButton getAggiungiToRead() {
         return aggiungiToRead;
     }
-
-    public void JbuttonsRead(Libri l){
-
+    
+    public JPanel getP1() {
+        return p1;
     }
 
+    public JPanel getP2() {
+        return p2;
+    }
+
+    public JPanel getReadPanel() {
+        return readPanel;
+    }
+
+    public JPanel getReadingPanel() {
+        return readingPanel;
+    }
+
+    public JPanel getToReadPanel() {
+        return toReadPanel;
+    }
+    
     //*ToDo:
     
     

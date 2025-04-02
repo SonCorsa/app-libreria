@@ -40,7 +40,7 @@ public class Model {
        
     }
 
-    public void aggiungiLibro() throws IOException {
+    public void aggiungiLibro(int x) throws IOException {
         // Lettura dalle textfield
         String nome = addPage.getNome().getText();
         String autore = addPage.getAutore().getText();
@@ -53,17 +53,16 @@ public class Model {
         addPage.getGenere().setText("");
         addPage.getNpag().setText("");
 
+        //?DA CAMBIARE
+
         // Istanzio il libro e aggiungo alla libreria
         Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
-        if(addPage.getSelectedCheckbox()== 1){
+        if(x == 1){
             l.setRead(true);
-            libreriaRead.aggiungiLibro(l);
-        }else if(addPage.getSelectedCheckbox()== 2){
+        }else if(x == 2){
             l.setReading(true);
-            libreriaReading.aggiungiLibro(l);
-        }else if(addPage.getSelectedCheckbox()== 3){
+        }else if(x== 3){
             l.setToRead(true);
-            libreriaToRead.aggiungiLibro(l);
         }
         // Resetto le checkbox
         addPage.getRead().setSelected(false);

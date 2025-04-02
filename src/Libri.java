@@ -14,8 +14,6 @@ public class Libri implements Serializable {
     protected byte[] immagine;
     private boolean read,reading,toRead;
     private static final long serialVersionUID = 1L;
-    //protected boolean read,reading,toRead;
-    //attributo per gli stati
     //attributo per il punteggio(recensione)
 
     
@@ -114,7 +112,7 @@ public class Libri implements Serializable {
     public boolean isToRead() {
         return toRead;
     }
-    
+
     public boolean equals(Libri l){
         if(this.toString().equals(l.toString())){
             return true;

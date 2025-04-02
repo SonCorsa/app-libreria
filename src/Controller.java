@@ -16,14 +16,6 @@ public class Controller {
 
     private void Setup() throws IOException, ClassNotFoundException{
         model.leggiLibro();
-        /*for(Libri l : libri.getLibri()){
-            finestra.getLibroGUI().getLautore().setText(l.autore);
-            finestra.getLibroGUI().getLgenere().setText(l.genere);
-            finestra.getLibroGUI().getLnome().setText(l.nome);
-            finestra.getLibroGUI().getLnpag().setText(String.valueOf(l.pagine));
-            ImageIcon copertina= new ImageIcon(l.getImmagine());
-            finestra.getLibroGUI().getCopertina().setIcon(copertina);
-        }*/
     }
 
     public void ActionListener(){
@@ -31,6 +23,25 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e){
                 model.cambiaPagina();
+                if(e.getSource() == finestra.getHome().getAggiungiRead()){  //controllo quale pulsante è stato premuto
+
+                    finestra.getAddPage().getRead().setSelected(true);  
+                    finestra.getAddPage().getReading().setSelected(false);
+                    finestra.getAddPage().getToRead().setSelected(false);
+
+                }else if(e.getSource() == finestra.getHome().getAggiungiReading()){
+
+                    finestra.getAddPage().getReading().setSelected(true);
+                    finestra.getAddPage().getRead().setSelected(false);
+                    finestra.getAddPage().getToRead().setSelected(false);
+
+                }else if(e.getSource() == finestra.getHome().getAggiungiToRead()){
+
+                    finestra.getAddPage().getToRead().setSelected(true);
+                    finestra.getAddPage().getReading().setSelected(false);
+                    finestra.getAddPage().getRead().setSelected(false);
+
+                }
             }
         };
 

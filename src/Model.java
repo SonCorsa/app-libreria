@@ -25,7 +25,7 @@ public class Model {
         libreriaToRead = new Libreria();
     }
 
-    public void cambiaPagina(){
+    public void cambiaPagina(){ 
         if(finestra.isHome()){  //controllo dello stato della finestra
             //aggiornamento degli stati
             finestra.setHome(false);  
@@ -85,27 +85,37 @@ public class Model {
     }
 
  
-    public void leggiLibro()throws IOException, ClassNotFoundException{
+    public void leggiLibro()throws IOException, ClassNotFoundException{  //Lettura della libreria da file
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
         Libreria l =(Libreria) leggi.readObject();
         libreria = l;
         leggi.close();
         //aggiorno i bottoni della home
-        for(Libri l1 :libreria.getLibri()){
-            //home.getLibriButtons()[i].setIcon(new ImageIcon());;
-            if(l1.isRead()){
-                
+        for(Libri l1 :libreria.getLibri()){  //per ogni libro della libreria
+            if(l1.isRead()){  //se il libro è letto
+
+                //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
                 b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+
+                //e lo aggiungo alla home
                 home.getLibriButtonsRead().add(b);
-            }else if(l1.isReading()){
+            }else if(l1.isReading()){ //se il libro è in lettura
+
+                //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
                 b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+
+                //e lo aggiungo alla home
                 home.getLibriButtonsReading().add(b);
-            }else if(l1.isToRead()){
+            }else if(l1.isToRead()){ //se il libro è da leggere
+
+                //creo un bottone e lo aggiungo alla lista dei bottoni da leggere
                 JButton b = new JButton();
                 b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
+                
+                //e lo aggiungo alla home
                 home.getLibriButtonsToRead().add(b);
             }
         }
@@ -144,9 +154,5 @@ public class Model {
             immagineLibro = new File(file.getAbsolutePath());
             addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(255, 330, 5)));
         }
-    }
-
-    public void SetImmagineCopertina(){
-        addPage.setImmagineCopertina();
     }
 }

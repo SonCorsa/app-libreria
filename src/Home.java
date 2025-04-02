@@ -7,11 +7,10 @@ import ComponentiRotondi.RoundedButton;
 public class Home extends JPanel{
 
     private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
-    private ArrayList<JButton> libriButtonsRead,libriButtonsReading,libriButtonsToRead;
+    private ArrayList<JButton> libriButtonsRead,libriButtonsReading,libriButtonsToRead; //ArrayList di JButton che contengono i libri letti, in lettura e da leggere
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
     private ImageIcon icon;
-    //private final Aggiungi addPage;
     private File fileicon;
     private ArrayList<JPanel> readList,readingList,toReadList;
     private Font PoppinsBlack;
@@ -28,16 +27,13 @@ public class Home extends JPanel{
          catch ( IOException | FontFormatException e ) {
         }      
         
-        //array di JButtons
         
         //istanzio i JButton
         profileButton = new JButton();
         aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new RoundedButton("+",20,20);
         aggiungiToRead = new RoundedButton("+",20,20);
-        libriButtonsRead = new ArrayList<JButton>();
-        libriButtonsReading = new ArrayList<JButton>();
-        libriButtonsToRead = new ArrayList<JButton>();
+        
         
         
         
@@ -65,8 +61,14 @@ public class Home extends JPanel{
         readingPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         toReadPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         
-        //Instanzio l'array di bottoni per la lettura da file
-                
+        //istanzio ArrayList
+        libriButtonsRead = new ArrayList<JButton>();
+        libriButtonsReading = new ArrayList<JButton>();
+        libriButtonsToRead = new ArrayList<JButton>();
+        readList=new ArrayList<JPanel>();
+        readingList=new ArrayList<JPanel>();
+        toReadList= new ArrayList<JPanel>();
+        
         //IMMAGINE PROFILO
         fileicon = new File("Images/user.png");
         icon = new ImageIcon(fileicon.getAbsolutePath());
@@ -75,18 +77,11 @@ public class Home extends JPanel{
         profileButton.setBorderPainted(false);
         profileButton.setContentAreaFilled(false);
         
-        
-        //istanzio ArrayList
-        readList=new ArrayList<JPanel>();
-        readingList=new ArrayList<JPanel>();
-        toReadList= new ArrayList<JPanel>();
-        
         //aggiunta dei panel
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
         
-        //addPage.add(aggiungiPanel);
-
+        //aggiunta dei button degli ArrayList ai JPanel
         for(JButton b : libriButtonsRead){
             readPanel.add(b);
         }
@@ -97,33 +92,22 @@ public class Home extends JPanel{
             toReadPanel.add(b);
         }
 
+        //aggiunta dei JPanel ai JPanel principali
         p2.add(reading);
-
-
         readingPanel.add(aggiungiReading);
-        for(JPanel l:readingList){
-            readingPanel.add(l);
-        }
         p2.add(readingPanel);
         
         p2.add(read);
         readPanel.add(aggiungiRead);
-        for(JPanel l:readList){
-            readPanel.add(l);
-        }
         p2.add(readPanel);
         
         p2.add(toRead);
         toReadPanel.add(aggiungiToRead);
-        for(JPanel l:toReadList){
-            toReadPanel.add(l);
-        }
         p2.add(toReadPanel);
         
         
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.CENTER);
-        //operazioni finali
     }
     
     public void InstaziaLibri(){
@@ -179,7 +163,6 @@ public class Home extends JPanel{
     }
 
     //*ToDo:
-    //*Implementare l'interfaccia che permetta di leggere i dati del libro;
     
     
 }

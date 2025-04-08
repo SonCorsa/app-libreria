@@ -14,7 +14,7 @@ public class Controller {
     public Controller(JFramePrincipale finestra,Libreria libri) throws Exception{
         this.finestra=finestra;
         this.libri=libri;
-        model=new Model(finestra,libri);
+        this.model=new Model(finestra,libri);
         this.ActionListener();
     }
     
@@ -74,8 +74,8 @@ public class Controller {
         ActionListener apriLibro = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
-                JButton b = e.getSource().
-                model.apriLibro(e.getSource());
+                JButton b = (JButton)e.getSource();
+                model.apriLibro(b);
             }
         };
 

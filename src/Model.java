@@ -83,7 +83,7 @@ public class Model {
     public void apriLibro(JButton b){
         for(Libri l: libreria.getLibri()){
             try{
-                if(b.getIcon().equals(new ImageIcon(l.getImmagine()))){
+                if(){
                     LibroGUI li = new LibroGUI(finestra,l);
                     finestra.setLibroGUI(li);
                 }
@@ -106,31 +106,35 @@ public class Model {
         home.getLibriButtonsRead().clear(); //svuoto i bottoni letti\
         home.getLibriButtonsReading().clear(); //svuoto i bottoni letti
         home.getLibriButtonsToRead().clear(); //svuoto i bottoni letti
-
+        int x =0;
         for(Libri l1 :libreria.getLibri()){  //per ogni libro della libreria
             if(l1.isRead()){  //se il libro è letto
                 System.out.println("Libro letto: "+l1.getNome());
 
                 //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
-                b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
-
+                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
+                im.setDescription(String.valueOf(x));
+                b.setIcon(im);
+                x++;
                 //e lo aggiungo alla home
                 home.getLibriButtonsRead().add(b);
             }else if(l1.isReading()){ //se il libro è in lettura
 
-                //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
-                b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
-
-                //e lo aggiungo alla home
+                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
+                im.setDescription(String.valueOf(x));
+                b.setIcon(im);
+                x++;
+                 //e lo aggiungo alla home
                 home.getLibriButtonsReading().add(b);
             }else if(l1.isToRead()){ //se il libro è da leggere
 
-                //creo un bottone e lo aggiungo alla lista dei bottoni da leggere
                 JButton b = new JButton();
-                b.setIcon(new ImageIcon(l1.getImmagine().getScaledInstance(100, 150, 5)));
-                
+                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
+                im.setDescription(String.valueOf(x));
+                b.setIcon(im);
+                x++;
                 //e lo aggiungo alla home
                 home.getLibriButtonsToRead().add(b);
             }

@@ -5,11 +5,11 @@ import javax.swing.*;
 
 public class LibroGUI extends JPanel{
 
-    private JButton indietro;
+    private JButton indietro,salva;
     private JLabel lnome,lautore,lgenere,lnpag,ltrama,copertina;
     private JPanel p1,p2,p3;
     
-    public LibroGUI(JFramePrincipale finestra){
+    public LibroGUI(JFramePrincipale finestra,Libri l){
         setLayout(new BorderLayout());
         //istanzio il panel
         p1=new JPanel(new GridLayout(1,2 ));
@@ -17,15 +17,16 @@ public class LibroGUI extends JPanel{
         p3=new JPanel(new GridLayout(4,1 ));
         //istanzio i bottoni
         indietro=new JButton("⬅️");
+        salva= new JButton("SALVA");
         
         //instanzio i label
         copertina=new JLabel();
         p2.add(copertina,BorderLayout.EAST);
-        lautore=new JLabel();
-        lnome=new JLabel();
-        lgenere=new JLabel();
-        lnpag=new JLabel();
-        ltrama=new JLabel();
+        lautore=new JLabel(l.getAutore());
+        lnome=new JLabel(l.getNome());
+        lgenere=new JLabel(l.getGenere());
+        lnpag=new JLabel(String.format("%d",l.getPagine()));
+        ltrama=new JLabel(l.getTrama());
         p3.add(lautore);
         p3.add(lnome);
         p3.add(lgenere);

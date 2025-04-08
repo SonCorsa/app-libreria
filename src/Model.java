@@ -80,6 +80,18 @@ public class Model {
         }
     }
 
+    public void apriLibro(JButton b){
+        for(Libri l: libreria.getLibri()){
+            try{
+                if(b.getIcon().equals(new ImageIcon(l.getImmagine()))){
+                    LibroGUI li = new LibroGUI(finestra,l);
+                    finestra.setLibroGUI(li);
+                }
+            } catch (Exception e){
+                System.out.println("errore nel confronto");
+            }
+        }
+    }
  
     public void leggiLibro()throws IOException, ClassNotFoundException{  //Lettura della libreria da file
         File file = new File("Files/Libri.txt");

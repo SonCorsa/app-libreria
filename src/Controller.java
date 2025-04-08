@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import javax.print.DocFlavor.SERVICE_FORMATTED;
+import javax.swing.JButton;
 
 public class Controller {
     private JFramePrincipale finestra;
@@ -70,6 +71,13 @@ public class Controller {
         }
         };
 
+        ActionListener apriLibro = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                JButton b = e.getSource().
+                model.apriLibro(e.getSource());
+            }
+        };
 
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
@@ -79,6 +87,18 @@ public class Controller {
         finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
+
+        for(JButton b: finestra.getHome().getLibriButtonsRead()){
+            b.addActionListener(apriLibro);
+        }
+
+        for(JButton b: finestra.getHome().getLibriButtonsReading()){
+            b.addActionListener(apriLibro);
+        }
+
+        for(JButton b: finestra.getHome().getLibriButtonsToRead()){
+            b.addActionListener(apriLibro);
+        }
     }
     
 }

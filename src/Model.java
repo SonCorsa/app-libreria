@@ -117,6 +117,7 @@ public class Model {
                 im.setDescription(String.valueOf(x));
                 b.setIcon(im);
                 x++;
+                l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsRead().add(b);
             }else if(l1.isReading()){ //se il libro è in lettura
@@ -126,6 +127,7 @@ public class Model {
                 im.setDescription(String.valueOf(x));
                 b.setIcon(im);
                 x++;
+                l1.setButton(b);
                  //e lo aggiungo alla home
                 home.getLibriButtonsReading().add(b);
             }else if(l1.isToRead()){ //se il libro è da leggere
@@ -135,6 +137,7 @@ public class Model {
                 im.setDescription(String.valueOf(x));
                 b.setIcon(im);
                 x++;
+                l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsToRead().add(b);
             }

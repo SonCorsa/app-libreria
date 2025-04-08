@@ -2,6 +2,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import javax.imageio.ImageIO;
+import javax.swing.*;
 
 public class Libri implements Serializable {
     protected String autore;
@@ -14,6 +15,7 @@ public class Libri implements Serializable {
     protected byte[] immagine;
     private boolean read,reading,toRead;
     private static final long serialVersionUID = 1L;
+    private JButton button;
     //attributo per il punteggio(recensione)
 
     
@@ -31,6 +33,13 @@ public class Libri implements Serializable {
         toRead = false;
     }
         
+    public void setButton(JButton b){
+        this.button = b;
+    }
+
+    public JButton getButton(){
+        return button;
+    }
     public String getAutore() {
         return autore;
     }

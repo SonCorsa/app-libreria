@@ -21,7 +21,7 @@ public class JFramePrincipale extends JFrame {
     
         home = new Home();
         addPage = new Aggiungi(this);
-        libroGUI = new LibroGUI(this);
+        //libroGUI = new LibroGUI(this);
 
         //Instazio i valori booleani
         isHome = true;
@@ -30,7 +30,7 @@ public class JFramePrincipale extends JFrame {
         //Aggiungo i Pannelli al CardLayout
         pannelli.add(home, "home");
         pannelli.add(addPage, "addPage");
-        pannelli.add(libroGUI, "libroGUI");
+        //pannelli.add(libroGUI, "libroGUI");
         cardLayout.show(pannelli,"home");
         add(pannelli);
         
@@ -77,6 +77,11 @@ public class JFramePrincipale extends JFrame {
     }
     public JPanel getPannelli() {
         return pannelli;
+    }
+
+    public void setLibroGUI(LibroGUI libro){
+        pannelli.add(libroGUI,"libro");
+        cardLayout.show(pannelli,"libro");
     }
     
 }

@@ -107,6 +107,15 @@ public class Libri implements Serializable {
     public void setTrama(String trama) {
         this.trama = trama;
     }
+
+    public int getNpagine() {
+        return pagine;
+    }
+    public void setNpagine(int npagine) {
+        this.pagine = npagine;
+    }
+
+
     public String toString(){
         return String.format("%s %s %s %d",autore,nome, genere,pagine);
     }

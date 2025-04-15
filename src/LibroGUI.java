@@ -1,83 +1,269 @@
 import java.awt.*;
+import java.io.File;
 import javax.swing.*;
 
-;
+import ComponentiRotondi.RoundedTextArea;
+import ComponentiRotondi.RoundedTextField;
 
 public class LibroGUI extends JPanel{
 
-    private JButton indietro,salva;
-    private JLabel lnome,lautore,lgenere,lnpag,ltrama,copertina;
-    private JPanel p1,p2,p3;
-    
+    private JButton salva,indietro,copertina;
+    private JTextField nome,autore,genere,npag;
+    private JTextArea trama;
+    private JLabel lnome,lautore,lgenere,lnpag,ltrama;
+    private JPanel indietroPanel,aggiungiPanel,p1;
+    private GridBagConstraints c;
+    private JCheckBox read,reading,toRead;
+
     public LibroGUI(JFramePrincipale finestra,Libri l){
         setLayout(new BorderLayout());
         //istanzio il panel
-        p1=new JPanel(new GridLayout(1,2 ));
-        p2=new JPanel();
-        p3=new JPanel(new GridLayout(4,1 ));
-        //istanzio i bottoni
-        indietro=new JButton("⬅️");
-        salva= new JButton("SALVA");
-        
-        //instanzio i label
-        copertina=new JLabel();
-        p2.add(copertina,BorderLayout.EAST);
-        lautore=new JLabel(l.getAutore());
-        lnome=new JLabel(l.getNome());
-        lgenere=new JLabel(l.getGenere());
-        lnpag=new JLabel(String.format("%d",l.getPagine()));
-        ltrama=new JLabel(l.getTrama());
-        p3.add(lautore);
-        p3.add(lnome);
-        p3.add(lgenere);
-        p3.add(lnpag);
-        p3.add(ltrama);
-        
-        //operazioni finali
-        p1.add(p2);
-        p1.add(p3);
-        add(p1);
 
+        //istanzio JButton
+        salva = new JButton("aggiungi");
+        indietro = new JButton();
+        copertina = new JButton();
+        /*try{
+            ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(100, 150, 5)));
+            copertina.setIcon(im);
+        } catch(Exception e){
+            e.printStackTrace();
+        }*/
+
+        //setto l'immagine del bottone copertina
+        setImmagineCopertina();
+        setImmagineBottone(indietro, "Images/Freccia.png", 100, 60);
+       
+
+        //istanzio JTextField
+        nome = new RoundedTextField(10,10);
+        autore = new RoundedTextField(10,10);
+        genere = new RoundedTextField(10,10);
+        npag = new RoundedTextField(10,10);
+        trama = new RoundedTextArea(10,10);
+        trama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        trama.setLineWrap(true);
+
+        nome.setText(l.getNome());
+        autore.setText(l.getAutore());
+        genere.setText(l.getGenere());
+        npag.setText(String.valueOf(l.getPagine()));
+        trama.setText(l.getTrama());
+        
+        //istanzio JLabel
+        lnome = new JLabel("Nome");
+        lautore = new JLabel("Autore");
+        lgenere = new JLabel("Genere");
+        lnpag = new JLabel("Numero pagine");
+        ltrama= new JLabel("Trama");
+
+        //istanzio JPanel
+        indietroPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+        p1 = new JPanel(new GridBagLayout());
+        
+        nome.setPreferredSize(new Dimension(250,20));
+        autore.setPreferredSize(new Dimension(250,20));
+        genere.setPreferredSize(new Dimension(250,20));
+        npag.setPreferredSize(new Dimension(250,20));
+        trama.setPreferredSize(new Dimension(250,100));
+        salva.setPreferredSize(new Dimension(200,45));
+    
+        //TASTI INDIETRO E AGGIUNGI
+        indietroPanel.add(indietro);
+        aggiungiPanel.add(salva);
+        add(indietroPanel,BorderLayout.NORTH);
+        add(aggiungiPanel,BorderLayout.SOUTH);
+        
+        
+        //PANNELLO GRIDBAGLAYOUT
+        c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.weightx = 0.1;
+        c.gridheight = 11;
+        c.anchor = GridBagConstraints.CENTER;
+        p1.add(copertina,c);
+        
+        //LABEL NOME E TEXTFIELD NOME
+        GridBagConstraints x= new GridBagConstraints();
+        x.weightx = 0.5;
+        x.gridx = 1;
+        x.gridy = 0;
+        x.insets = new Insets(0,0,0,200);
+        x.anchor = GridBagConstraints.PAGE_START;
+        p1.add(lnome,x);
+        
+        x.gridx = 1;
+        x.gridy = 1;
+        x.insets = new Insets(0,0,0,0);
+        p1.add(nome,x);
+
+        //LABEL AUTORE E TEXTFIELD AUTORE
+        x.gridx = 1;
+        x.gridy = 2;
+        x.insets = new Insets(0,0,0,200);
+        p1.add(lautore,x);
+
+        x.gridx = 1;
+        x.gridy = 3;
+        x.insets = new Insets(0,0,0,0);
+        p1.add(autore,x);
+
+        //LABEL GENERE E TEXTFIELD GENERE
+        x.gridx = 1;
+        x.gridy = 4;
+        x.insets = new Insets(0,0,0,200);
+        p1.add(lgenere,x);
+
+        x.gridx = 1;
+        x.gridy = 5;
+        x.insets = new Insets(0,0,0,0);
+        p1.add(genere,x);
+
+        //LABEL NUMERO PAGINE E TEXTFIELD NUMERO PAGINE
+        x.gridx = 1;
+        x.gridy = 6;
+        x.insets = new Insets(0,0,0,150);
+        p1.add(lnpag,x);
+
+        x.gridx = 1;
+        x.gridy = 7;
+        x.insets = new Insets(0,0,0,0);
+        p1.add(npag,x);
+
+        //LABEL TRAMA E TEXTFIELD TRAMA
+        x.gridx = 1;
+        x.gridy = 8;
+        x.insets = new Insets(0,0,0,200);
+        p1.add(ltrama,x);
+    
+        x.gridx = 1;
+        x.gridy = 9;
+        x.insets = new Insets(0,0,0,0);
+        x.gridheight = 2;
+        p1.add(trama,x);
+        add(p1,BorderLayout.CENTER);
+
+        //test
+
+        reading = new JCheckBox("reading");
+        x.gridx=2;
+        x.gridy=2;
+        x.insets = new Insets(10,0,0,0);
+        x.gridheight = 1;
+        p1.add(reading,x);
+
+        read = new JCheckBox("read");
+        read.setSize(10, 10);
+        x.gridy=1;
+        x.insets = new Insets(0,0,0,0);
+        x.gridheight = 1;
+        p1.add(read,x);
+
+        toRead= new JCheckBox(" to read");
+        x.gridy=3;
+        x.insets = new Insets(10,0,0,0);
+        x.gridheight = 1;
+        p1.add(toRead,x);
+    }
+
+    //get dei JButton
+    public JButton getSalva() {
+        return salva;
     }
 
     public JButton getIndietro() {
         return indietro;
     }
 
-    public JLabel getLnome() {
-        return lnome;
-    }
-
-    public JLabel getLautore() {
-        return lautore;
-    }
-
-    public JLabel getLgenere() {
-        return lgenere;
-    }
-
-    public JLabel getLnpag() {
-        return lnpag;
-    }
-
-    public JLabel getLtrama() {
-        return ltrama;
-    }
-
-    public JLabel getCopertina() {
+    public JButton getCopertina() {
         return copertina;
     }
 
-    public JPanel getP1() {
-        return p1;
+    public JTextField getNome() {
+        return nome;
     }
 
-    public JPanel getP2() {
-        return p2;
+    public JTextField getAutore() {
+        return autore;
     }
 
-    public JPanel getP3() {
-        return p3;
+    public JTextField getGenere() {
+        return genere;
+    }
+
+    public JTextField getNpag() {
+        return npag;
+    }
+
+    public void setImmagineCopertina(){
+        File fileicon = new File("Images/Aggiungi.png");
+        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
+        copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
+        copertina.setOpaque(false);
+        copertina.setBorderPainted(false);
+        copertina.setContentAreaFilled(false);
+    }
+    
+    public void setImmagineBottone(JButton b,String path, int x ,int y){
+        File fileicon = new File(path);
+        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
+        b.setIcon(new ImageIcon(icon.getImage().getScaledInstance(x, y, 5)));
+        b.setOpaque(false);
+        b.setBorderPainted(false);
+        b.setContentAreaFilled(false);
+    }
+
+    public void CheckboxRead(){
+        toRead.setSelected(false);
+        reading.setSelected(false);        
+    }
+
+    public void CheckboxReading(){
+        toRead.setSelected(false);
+        read.setSelected(false);        
+    }
+
+    public void CheckboxToRead(){
+        read.setSelected(false);
+        reading.setSelected(false);        
+    }
+
+    public int getSelectedCheckbox(){
+        if(read.isSelected()){
+            return 1;
+        }else if(reading.isSelected()){
+            return 2;
+        }else if(toRead.isSelected()){
+            return 3;
+        }else{
+            return 0;
+        }
+    }
+
+    public JCheckBox getRead() {
+        return read;
+    }
+
+    public void setRead(JCheckBox read) {
+        this.read = read;
+    }
+
+    public JCheckBox getReading() {
+        return reading;
+    }
+
+    public void setReading(JCheckBox reading) {
+        this.reading = reading;
+    }
+
+    public JCheckBox getToRead() {
+        return toRead;
+    }
+
+    public void setToRead(JCheckBox toRead) {
+        this.toRead = toRead;
     }
 
 }

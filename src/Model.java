@@ -83,18 +83,28 @@ public class Model {
 
     public void apriLibro(Libri l){
         LibroGUI li = new LibroGUI(finestra,l);
-        finestra.setLibroGUI(li);
+        finestra.getPannelli().add(li,"libro");
+        finestra.getCardLayout().show(finestra.getPannelli(),"libro");
+        //finestra.setLibroGUI(li);
 
     }
  
     public void leggiLibro()throws IOException, ClassNotFoundException{  //Lettura della libreria da file
         File file = new File("Files/Libri.txt");
         ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
-        Libreria l =(Libreria) leggi.readObject();
+        while(true){
+            try{
+                libreria = (Libreria) leggi.readObject(); //leggo l'oggetto libro
+                //System.out.println("Libro letto: "+libreria.getLibri().size());
+            }catch(EOFException e){ //eccezione di fine file
+                break;
+            }
+        }
+        //Libreria l =(Libreria) leggi.readObject();
         leggi.close();
         System.out.println("Libro letto: "+libreria.getLibri().size());
-        libreria.getLibri().clear(); //svuoto la libreria
-        libreria.getLibri().addAll(l.getLibri()); //aggiungo i libri letti alla libreria
+        //libreria.getLibri().clear(); //svuoto la libreria
+        //libreria.getLibri().addAll(libreria.getLibri()); //aggiungo i libri letti alla libreria
         System.out.println("Libro letto: "+libreria.getLibri().size());
         //aggiorno i bottoni della home
         home.getLibriButtonsRead().clear(); //svuoto i bottoni letti\

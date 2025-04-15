@@ -11,7 +11,7 @@ public class Controller {
     private Libreria libri;
     private int x;
 
-    public Controller(JFramePrincipale finestra,Libreria libri) throws Exception{
+    public Controller(JFramePrincipale finestra,Libreria libri){
         this.finestra=finestra;
         this.libri=libri;
         this.model=new Model(finestra,libri);
@@ -21,7 +21,11 @@ public class Controller {
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
-        model.leggiLibro();
+        try{
+            model.leggiLibro();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         this.ActionListener();
     }
 
@@ -75,8 +79,8 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e){
                 JButton b = (JButton)e.getSource();
-                System.out.println(libri.getLibri().size()); 
-                for(Libri l: libri.getLibri()){   //!! il bro funziona ma non si vede il libro perchè ho sbgliato LibroGUI DIOPORCOBASTARDO
+                System.out.println(libri.getLibri().size());      //libreria senza libri?
+                for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
                         model.apriLibro(l);
                         System.out.println("funziona");

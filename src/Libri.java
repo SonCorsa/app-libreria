@@ -15,7 +15,7 @@ public class Libri implements Serializable {
     protected byte[] immagine;
     private boolean read,reading,toRead;
     private static final long serialVersionUID = 1L;
-    private JButton button;
+    private JButton button;    //sostituire con un puntatore al pulsante associato
     //attributo per il punteggio(recensione)
 
     

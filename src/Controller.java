@@ -15,7 +15,6 @@ public class Controller {
         this.finestra=finestra;
         this.libri=libri;
         this.model=new Model(finestra,libri);
-        this.ActionListener();
     }
     
     public void Setup() throws IOException, ClassNotFoundException{
@@ -23,6 +22,7 @@ public class Controller {
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
         model.leggiLibro();
+        this.ActionListener();
     }
 
     //?DA CAMBIARE
@@ -71,11 +71,23 @@ public class Controller {
         }
         };
 
-        ActionListener apriLibro = new ActionListener() {
+        ActionListener apriLibro = new ActionListener() {  
             @Override
             public void actionPerformed(ActionEvent e){
                 JButton b = (JButton)e.getSource();
-                model.apriLibro(b);
+                System.out.println("ho cliccato il pulsante");
+                for(Libri l: libri.getLibri()){
+                    try{
+                        if(b.equals(l.getButton())){
+                            model.apriLibro(l);
+                            System.out.println("funziona");
+                        }else{
+                            System.out.println("non funziona");
+                        }
+                    } catch (Exception ex){
+                        System.out.println("errore nel confronto");
+                    }
+                }
             }
         };
 
@@ -88,8 +100,17 @@ public class Controller {
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
-        for(JButton b: finestra.getHome().getLibriButtonsRead()){
+
+        System.out.println(finestra.getHome().getLibriButtonsRead());
+
+
+        //!! NON ASSOCIA 
+        /*for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
+        }*/
+
+        for(int i=0;i<finestra.getHome().getLibriButtonsRead().size();i++){
+            finestra.getHome().getLibriButtonsRead().get(i).addActionListener(apriLibro);
         }
 
         for(JButton b: finestra.getHome().getLibriButtonsReading()){

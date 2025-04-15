@@ -80,17 +80,10 @@ public class Model {
         }
     }
 
-    public void apriLibro(JButton b){
-        for(Libri l: libreria.getLibri()){
-            try{
-                if(){
-                    LibroGUI li = new LibroGUI(finestra,l);
-                    finestra.setLibroGUI(li);
-                }
-            } catch (Exception e){
-                System.out.println("errore nel confronto");
-            }
-        }
+    public void apriLibro(Libri l){
+        LibroGUI li = new LibroGUI(finestra,l);
+        finestra.setLibroGUI(li);
+
     }
  
     public void leggiLibro()throws IOException, ClassNotFoundException{  //Lettura della libreria da file
@@ -142,7 +135,9 @@ public class Model {
                 home.getLibriButtonsToRead().add(b);
             }
         }
+
         home.InstaziaLibri(); 
+
     }
     
 

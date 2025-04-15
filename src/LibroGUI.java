@@ -20,7 +20,7 @@ public class LibroGUI extends JPanel{
         //istanzio il panel
 
         //istanzio JButton
-        salva = new JButton("aggiungi");
+        salva = new JButton("salva");
         indietro = new JButton();
         copertina = new JButton();
         /*try{

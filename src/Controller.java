@@ -78,25 +78,12 @@ public class Controller {
                 System.out.println(libri.getLibri().size());      //libreria senza libri?
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
-                        model.apriLibro(l);
+                        model.apriLibro(l).getIndietro().addActionListener(cambiaPagina);
                         System.out.println("funziona");
                      }else{
                         System.out.println("non funziona");
                     }
                 }
-                
-                /*for(Libri l: libri.getLibri()){
-                    try{
-                        if(b.equals(l.getButton())){
-                            model.apriLibro(l);
-                            System.out.println("funziona");
-                        }else{
-                            System.out.println("non funziona");
-                        }
-                    } catch (Exception ex){
-                        System.out.println("errore nel confronto");
-                    }
-                }*/
             }
         };
 

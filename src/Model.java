@@ -25,13 +25,19 @@ public class Model {
     public void cambiaPagina(){ 
         if(finestra.isHome()){  //controllo dello stato della finestra
             //aggiornamento degli stati
+            System.out.println("Cambia pagina home -> addPage");
             finestra.setHome(false);  
             finestra.setAddPage(true);
             finestra.getCardLayout().show(finestra.getPannelli(), "addPage");
-        }else if (finestra.isAddPage() || finestra.isLibroGUI()){ //controllo dello stato della finestra
+        }else if (finestra.isAddPage()){ //controllo dello stato della finestra
             //aggiornamento degli stati
+            System.out.println("Cambia pagina addPage -> home");
             finestra.setHome(true);
             finestra.setAddPage(false);
+            //finestra.setIsLibroGUI(false);
+            finestra.getCardLayout().show(finestra.getPannelli(), "home");
+        }else if(finestra.isLibroGUI()){
+            System.out.println("Cambia pagina libro -> home");
             finestra.setIsLibroGUI(false);
             finestra.getCardLayout().show(finestra.getPannelli(), "home");
         }
@@ -82,12 +88,15 @@ public class Model {
         }
     }
 
-    public void apriLibro(Libri l){
+    public LibroGUI apriLibro(Libri l){
         LibroGUI li = new LibroGUI(finestra,l);
         finestra.getPannelli().add(li,"libro");
         finestra.getCardLayout().show(finestra.getPannelli(),"libro");
         finestra.setIsLibroGUI(true);
+        finestra.setHome(false);
+        finestra.setAddPage(false);
         finestra.setLibroGUI(li);
+        return li;
 
     }
  

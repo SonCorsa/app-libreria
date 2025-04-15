@@ -5,11 +5,12 @@ public class App{
         JFramePrincipale finestra = new JFramePrincipale(libri);
 
         Model model = new Model(finestra,libri);
-        Controller controller = new Controller(finestra,libri);
-        System.out.println("diopo "+model.getLibreria().getLibri().size());
+        Controller controller = new Controller(finestra,model.getLibreria(),model);
+        //System.out.println("diopo "+model.getLibreria().getLibri().size());
         //controller.setLibreria(model.getLibreria());
         try{
             controller.Setup();
+            controller.setLibreria(model.getLibreria());
         }catch(Exception e ){
             e.printStackTrace();
         }

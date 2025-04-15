@@ -9,6 +9,7 @@ public class JFramePrincipale extends JFrame {
     private JPanel pannelli;
     private boolean isHome;
     private boolean isAddPage;
+    private boolean isLibroGUI;
     private Home home;
     private Aggiungi addPage;
     private LibroGUI libroGUI;
@@ -16,11 +17,13 @@ public class JFramePrincipale extends JFrame {
     public JFramePrincipale(Libreria libri){
         cardLayout = new CardLayout();
         pannelli = new JPanel(cardLayout);
+
         
         //Instazio i pannelli Home & Aggiungi
     
         home = new Home();
         addPage = new Aggiungi(this);
+        
         //libroGUI = new LibroGUI(this);
 
         //Instazio i valori booleani
@@ -80,8 +83,13 @@ public class JFramePrincipale extends JFrame {
     }
 
     public void setLibroGUI(LibroGUI libro){
-        pannelli.add(libroGUI,"libro");
-        cardLayout.show(pannelli,"libro");
+        this.libroGUI = libro;
     }
     
+    public void setIsLibroGUI(boolean isLibroGUI) {
+        this.isLibroGUI = isLibroGUI;
+    }
+    public boolean isLibroGUI() {
+        return isLibroGUI;
+    }
 }

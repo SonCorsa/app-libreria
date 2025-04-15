@@ -11,21 +11,17 @@ public class Controller {
     private Libreria libri;
     private int x;
 
-    public Controller(JFramePrincipale finestra,Libreria libri){
+    public Controller(JFramePrincipale finestra,Libreria libri,Model model){
         this.finestra=finestra;
         this.libri=libri;
-        this.model=new Model(finestra,libri);
+        this.model=model;
     }
     
     public void Setup() throws IOException, ClassNotFoundException{
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
-        try{
-            model.leggiLibro();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        model.leggiLibro();
         this.ActionListener();
     }
 
@@ -113,17 +109,14 @@ public class Controller {
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
+        //finestra.getLibroGUI().getIndietro().addActionListener(cambiaPagina);   
 
         System.out.println(finestra.getHome().getLibriButtonsRead());
 
 
-        //!! NON ASSOCIA 
-        /*for(JButton b: finestra.getHome().getLibriButtonsRead()){
+        
+        for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
-        }*/
-
-        for(int i=0;i<finestra.getHome().getLibriButtonsRead().size();i++){
-            finestra.getHome().getLibriButtonsRead().get(i).addActionListener(apriLibro);
         }
 
         for(JButton b: finestra.getHome().getLibriButtonsReading()){

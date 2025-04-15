@@ -28,10 +28,11 @@ public class Model {
             finestra.setHome(false);  
             finestra.setAddPage(true);
             finestra.getCardLayout().show(finestra.getPannelli(), "addPage");
-        }else if (finestra.isAddPage()){ //controllo dello stato della finestra
+        }else if (finestra.isAddPage() || finestra.isLibroGUI()){ //controllo dello stato della finestra
             //aggiornamento degli stati
             finestra.setHome(true);
             finestra.setAddPage(false);
+            finestra.setIsLibroGUI(false);
             finestra.getCardLayout().show(finestra.getPannelli(), "home");
         }
        
@@ -85,7 +86,8 @@ public class Model {
         LibroGUI li = new LibroGUI(finestra,l);
         finestra.getPannelli().add(li,"libro");
         finestra.getCardLayout().show(finestra.getPannelli(),"libro");
-        //finestra.setLibroGUI(li);
+        finestra.setIsLibroGUI(true);
+        finestra.setLibroGUI(li);
 
     }
  

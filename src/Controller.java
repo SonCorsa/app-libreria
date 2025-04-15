@@ -63,7 +63,6 @@ public class Controller {
             public void actionPerformed(ActionEvent e){
             try{
                 model.aggiungiLibro(x);
-                System.out.println("Aggiunto libro alla libreria"+1);
                 Setup();
             }catch( Exception x){
                 x.printStackTrace();
@@ -75,13 +74,10 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e){
                 JButton b = (JButton)e.getSource();
-                System.out.println(libri.getLibri().size());      //libreria senza libri?
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
                         model.apriLibro(l).getIndietro().addActionListener(cambiaPagina);
-                        System.out.println("funziona");
                      }else{
-                        System.out.println("non funziona");
                     }
                 }
             }
@@ -96,9 +92,7 @@ public class Controller {
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
-        //finestra.getLibroGUI().getIndietro().addActionListener(cambiaPagina);   
 
-        System.out.println(finestra.getHome().getLibriButtonsRead());
 
 
         

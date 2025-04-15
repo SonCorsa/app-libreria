@@ -14,8 +14,10 @@ public class LibroGUI extends JPanel{
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
     private JCheckBox read,reading,toRead;
+    private Libri l; //libro da modificare
 
     public LibroGUI(JFramePrincipale finestra,Libri l){
+        this.l = l;
         setLayout(new BorderLayout());
         //istanzio il panel
 
@@ -23,12 +25,6 @@ public class LibroGUI extends JPanel{
         salva = new JButton("salva");
         indietro = new JButton();
         copertina = new JButton();
-        /*try{
-            ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(100, 150, 5)));
-            copertina.setIcon(im);
-        } catch(Exception e){
-            e.printStackTrace();
-        }*/
 
         //setto l'immagine del bottone copertina
         setImmagineCopertina();
@@ -144,28 +140,6 @@ public class LibroGUI extends JPanel{
         x.gridheight = 2;
         p1.add(trama,x);
         add(p1,BorderLayout.CENTER);
-
-        //test
-
-        reading = new JCheckBox("reading");
-        x.gridx=2;
-        x.gridy=2;
-        x.insets = new Insets(10,0,0,0);
-        x.gridheight = 1;
-        p1.add(reading,x);
-
-        read = new JCheckBox("read");
-        read.setSize(10, 10);
-        x.gridy=1;
-        x.insets = new Insets(0,0,0,0);
-        x.gridheight = 1;
-        p1.add(read,x);
-
-        toRead= new JCheckBox(" to read");
-        x.gridy=3;
-        x.insets = new Insets(10,0,0,0);
-        x.gridheight = 1;
-        p1.add(toRead,x);
     }
 
     //get dei JButton
@@ -198,12 +172,16 @@ public class LibroGUI extends JPanel{
     }
 
     public void setImmagineCopertina(){
-        File fileicon = new File("Images/Aggiungi.png");
-        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
-        copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
-        copertina.setOpaque(false);
-        copertina.setBorderPainted(false);
-        copertina.setContentAreaFilled(false);
+        try{
+
+            ImageIcon icon = new ImageIcon(l.getImmagine());
+            copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
+            copertina.setOpaque(false);
+            copertina.setBorderPainted(false);
+            copertina.setContentAreaFilled(false);
+        }catch(Exception e){
+            System.out.println("Immagine non trovata");
+        }
     }
     
     public void setImmagineBottone(JButton b,String path, int x ,int y){
@@ -215,55 +193,5 @@ public class LibroGUI extends JPanel{
         b.setContentAreaFilled(false);
     }
 
-    public void CheckboxRead(){
-        toRead.setSelected(false);
-        reading.setSelected(false);        
-    }
-
-    public void CheckboxReading(){
-        toRead.setSelected(false);
-        read.setSelected(false);        
-    }
-
-    public void CheckboxToRead(){
-        read.setSelected(false);
-        reading.setSelected(false);        
-    }
-
-    public int getSelectedCheckbox(){
-        if(read.isSelected()){
-            return 1;
-        }else if(reading.isSelected()){
-            return 2;
-        }else if(toRead.isSelected()){
-            return 3;
-        }else{
-            return 0;
-        }
-    }
-
-    public JCheckBox getRead() {
-        return read;
-    }
-
-    public void setRead(JCheckBox read) {
-        this.read = read;
-    }
-
-    public JCheckBox getReading() {
-        return reading;
-    }
-
-    public void setReading(JCheckBox reading) {
-        this.reading = reading;
-    }
-
-    public JCheckBox getToRead() {
-        return toRead;
-    }
-
-    public void setToRead(JCheckBox toRead) {
-        this.toRead = toRead;
-    }
 
 }

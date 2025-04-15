@@ -133,27 +133,6 @@ public class Aggiungi extends JPanel{
         p1.add(trama,x);
         add(p1,BorderLayout.CENTER);
 
-        //test
-
-        reading = new JCheckBox("reading");
-        x.gridx=2;
-        x.gridy=2;
-        x.insets = new Insets(10,0,0,0);
-        x.gridheight = 1;
-        p1.add(reading,x);
-
-        read = new JCheckBox("read");
-        read.setSize(10, 10);
-        x.gridy=1;
-        x.insets = new Insets(0,0,0,0);
-        x.gridheight = 1;
-        p1.add(read,x);
-
-        toRead= new JCheckBox(" to read");
-        x.gridy=3;
-        x.insets = new Insets(10,0,0,0);
-        x.gridheight = 1;
-        p1.add(toRead,x);
     }
 
     //get dei JButton

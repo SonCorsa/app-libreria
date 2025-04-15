@@ -106,17 +106,11 @@ public class Model {
         while(true){
             try{
                 libreria = (Libreria) leggi.readObject(); //leggo l'oggetto libro
-                //System.out.println("Libro letto: "+libreria.getLibri().size());
             }catch(EOFException e){ //eccezione di fine file
                 break;
             }
         }
-        //Libreria l =(Libreria) leggi.readObject();
         leggi.close();
-        System.out.println("Libro letto: "+libreria.getLibri().size());
-        //libreria.getLibri().clear(); //svuoto la libreria
-        //libreria.getLibri().addAll(libreria.getLibri()); //aggiungo i libri letti alla libreria
-        System.out.println("Libro letto: "+libreria.getLibri().size());
         //aggiorno i bottoni della home
         home.getLibriButtonsRead().clear(); //svuoto i bottoni letti\
         home.getLibriButtonsReading().clear(); //svuoto i bottoni letti
@@ -124,12 +118,9 @@ public class Model {
         int x =0;
         for(Libri l1 :libreria.getLibri()){  //per ogni libro della libreria
             if(l1.isRead()){  //se il libro è letto
-                System.out.println("Libro letto: "+l1.getNome());
-
                 //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
-                im.setDescription(String.valueOf(x));
                 b.setIcon(im);
                 x++;
                 l1.setButton(b);
@@ -158,13 +149,11 @@ public class Model {
             }
             try (FileOutputStream fos = new FileOutputStream(file, false);
             ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
-                System.out.println("Suca");
                 scrivi.writeObject(libreria);//scrivo l'oggetto libro
                 scrivi.flush(); //svuoto il buffer
                 scrivi.close(); //chiudo lo stream
             }
         }
-        System.out.println(libreria.getLibri().size());  
 
         home.InstaziaLibri(); 
 

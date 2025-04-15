@@ -83,6 +83,7 @@ public class Controller {
             }
         };
 
+        
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);

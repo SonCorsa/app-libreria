@@ -7,7 +7,7 @@ public class App{
         Model model = new Model(finestra,libri);
 
         try{
-            Controller controller = new Controller(finestra,libri);
+            Controller controller = new Controller(finestra,model.getLibreria());
             controller.Setup();
 
         }catch(Exception e ){

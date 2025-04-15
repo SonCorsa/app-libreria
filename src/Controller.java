@@ -75,8 +75,17 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e){
                 JButton b = (JButton)e.getSource();
-                System.out.println("ho cliccato il pulsante");
-                for(Libri l: libri.getLibri()){
+                System.out.println(libri.getLibri().size()); 
+                for(Libri l: libri.getLibri()){   //!! il bro funziona ma non si vede il libro perchè ho sbgliato LibroGUI DIOPORCOBASTARDO
+                    if(b.equals(l.getButton())){
+                        model.apriLibro(l);
+                        System.out.println("funziona");
+                     }else{
+                        System.out.println("non funziona");
+                    }
+                }
+                
+                /*for(Libri l: libri.getLibri()){
                     try{
                         if(b.equals(l.getButton())){
                             model.apriLibro(l);
@@ -87,7 +96,7 @@ public class Controller {
                     } catch (Exception ex){
                         System.out.println("errore nel confronto");
                     }
-                }
+                }*/
             }
         };
 
@@ -121,5 +130,11 @@ public class Controller {
             b.addActionListener(apriLibro);
         }
     }
-    
+
+    public Libreria getLibreria(){
+        return this.libri;
+    }
+    public void setLibreria(Libreria l){
+        this.libri=l;
+    }
 }

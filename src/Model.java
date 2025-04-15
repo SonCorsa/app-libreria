@@ -19,7 +19,7 @@ public class Model {
         this.libroGUI = finestra.getLibroGUI();
         this.libreria=libri;
         fileChooser = new JFileChooser();
-        libreria=new Libreria();
+        //libreria=new Libreria();
     }
 
     public void cambiaPagina(){ 
@@ -66,6 +66,7 @@ public class Model {
         addPage.getReading().setSelected(false);
         addPage.getToRead().setSelected(false);
         libreria.aggiungiLibro(l);
+
 
         // Resetto l'immagine di copertina
         addPage.setImmagineCopertina();
@@ -134,7 +135,15 @@ public class Model {
                 //e lo aggiungo alla home
                 home.getLibriButtonsToRead().add(b);
             }
+            try (FileOutputStream fos = new FileOutputStream(file, false);
+            ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
+                System.out.println("Suca");
+                scrivi.writeObject(libreria);//scrivo l'oggetto libro
+                scrivi.flush(); //svuoto il buffer
+                scrivi.close(); //chiudo lo stream
+            }
         }
+        System.out.println(libreria.getLibri().size());  
 
         home.InstaziaLibri(); 
 
@@ -172,5 +181,12 @@ public class Model {
             immagineLibro = new File(file.getAbsolutePath());
             addPage.getCopertina().setIcon(new ImageIcon(x.getImage().getScaledInstance(255, 330, 5)));
         }
+    }
+    
+    public Libreria getLibreria(){
+        return libreria;
+    }
+    public void setLibreria(Libreria libreria){
+        this.libreria=libreria;
     }
 }

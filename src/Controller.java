@@ -38,6 +38,7 @@ public class Controller {
                     x = 3;
 
                 }
+                System.out.println(x);
             }
         };
 
@@ -83,15 +84,14 @@ public class Controller {
         
         for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
-            if(finestra.getHome().getLibriButtonsRead().get(0)equals(finestra.getHome().get))
         }
+        finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         for(JButton b: finestra.getHome().getLibriButtonsReading()){
             b.addActionListener(apriLibro);
         }
         for(JButton b: finestra.getHome().getLibriButtonsToRead()){
             b.addActionListener(apriLibro);
         }
-        finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);
         finestra.getHome().getProfileButton().addActionListener(cambiaImmagineProfilo);

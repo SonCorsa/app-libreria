@@ -22,22 +22,27 @@ public class Model {
     }
 
     public void cambiaPagina(){ 
+        System.out.println(finestra.isHome());
+        System.out.println(finestra.isAddPage());
+        System.out.println(finestra.isLibroGUI());
         if(finestra.isHome()){  //controllo dello stato della finestra
             //aggiornamento degli stati
             System.out.println("Cambia pagina home -> addPage");
             finestra.setHome(false);  
             finestra.setAddPage(true);
+            finestra.setIsLibroGUI(false);
             finestra.getCardLayout().show(finestra.getPannelli(), "addPage");
         }else if (finestra.isAddPage()){ //controllo dello stato della finestra
             //aggiornamento degli stati
             System.out.println("Cambia pagina addPage -> home");
             finestra.setHome(true);
             finestra.setAddPage(false);
-            //finestra.setIsLibroGUI(false);
+            finestra.setIsLibroGUI(false);
             finestra.getCardLayout().show(finestra.getPannelli(), "home");
         }else if(finestra.isLibroGUI()){
             System.out.println("Cambia pagina libro -> home");
             finestra.setIsLibroGUI(false);
+            finestra.setHome(true);
             finestra.getCardLayout().show(finestra.getPannelli(), "home");
         }
        

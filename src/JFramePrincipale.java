@@ -23,9 +23,6 @@ public class JFramePrincipale extends JFrame {
     
         home = new Home();
         addPage = new Aggiungi(this);
-        
-        //libroGUI = new LibroGUI(this);
-
         //Instazio i valori booleani
         isHome = true;
         isAddPage = false;

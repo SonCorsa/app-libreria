@@ -94,6 +94,8 @@ public class Model {
 
     public LibroGUI apriLibro(Libri l){
         LibroGUI li = new LibroGUI(finestra,l);
+        finestra.setLibroGUI(li);
+        finestra.getCardLayout().addLayoutComponent(li,"libro");
         finestra.getPannelli().add(li,"libroGUI");
         finestra.getCardLayout().show(finestra.getPannelli(),"libro");
         finestra.setIsLibroGUI(true);
@@ -101,7 +103,6 @@ public class Model {
         finestra.setAddPage(false);
         finestra.setLibroGUI(li);
         return li;
-
     }
  
     public void leggiLibro()throws IOException, ClassNotFoundException{  //Lettura della libreria da file

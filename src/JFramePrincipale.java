@@ -20,9 +20,10 @@ public class JFramePrincipale extends JFrame {
 
         
         //Instazio i pannelli Home & Aggiungi
-    
+
         home = new Home();
         addPage = new Aggiungi(this);
+        libroGUI= new LibroGUI(this, null);
         //Instazio i valori booleani
         isHome = true;
         isAddPage = false;
@@ -30,7 +31,7 @@ public class JFramePrincipale extends JFrame {
         //Aggiungo i Pannelli al CardLayout
         pannelli.add(home, "home");
         pannelli.add(addPage, "addPage");
-        pannelli.add(LibroGUI,"libroGUI");
+        pannelli.add(libroGUI,"libroGUI");
         cardLayout.show(pannelli,"home");
         add(pannelli);
         

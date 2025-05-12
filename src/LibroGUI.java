@@ -40,11 +40,13 @@ public class LibroGUI extends JPanel{
         trama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         trama.setLineWrap(true);
 
-        nome.setText(l.getNome());
-        autore.setText(l.getAutore());
-        genere.setText(l.getGenere());
-        npag.setText(String.valueOf(l.getPagine()));
-        trama.setText(l.getTrama());
+        if(l != null) {
+            nome.setText(l.getNome());
+            autore.setText(l.getAutore());
+            genere.setText(l.getGenere());
+            npag.setText(String.valueOf(l.getPagine()));
+            trama.setText(l.getTrama());
+        }
         
         //istanzio JLabel
         lnome = new JLabel("Nome");

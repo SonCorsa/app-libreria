@@ -81,6 +81,23 @@ public class Controller {
             }
         };
 
+        ActionListener salva = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton b = (JButton)e.getSource();
+                try {
+                    for(Libri l: libri.getLibri()){
+                        if(b.equals(l.getButton())){
+                            model.salvaLibro(l);
+                            System.out.println("Libro modificato");
+                        }
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+
         
         for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
@@ -100,7 +117,7 @@ public class Controller {
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
-
+        //finestra.getLibroGUI().getSalva().addActionListener(salva);
 
 
         

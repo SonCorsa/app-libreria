@@ -94,7 +94,7 @@ public class Model {
 
     public LibroGUI apriLibro(Libri l){
         LibroGUI li = new LibroGUI(finestra,l);
-        finestra.getPannelli().add(li,"libro");
+        finestra.getPannelli().add(li,"libroGUI");
         finestra.getCardLayout().show(finestra.getPannelli(),"libro");
         finestra.setIsLibroGUI(true);
         finestra.setHome(false);
@@ -201,5 +201,12 @@ public class Model {
     }
     public void setLibreria(Libreria libreria){
         this.libreria=libreria;
+    }
+
+    public void salvaLibro(Libri l){
+        l.setAutore(libroGUI.getAutore().getText());
+        l.setNome(libroGUI.getNome().getText());
+        l.setGenere(libroGUI.getGenere().getText());
+        l.setNpagine(Integer.parseInt(libroGUI.getNpag().getText()));
     }
 }

@@ -30,7 +30,7 @@ public class JFramePrincipale extends JFrame {
         //Aggiungo i Pannelli al CardLayout
         pannelli.add(home, "home");
         pannelli.add(addPage, "addPage");
-        //pannelli.add(libroGUI, "libroGUI");
+        pannelli.add(LibroGUI,"libroGUI");
         cardLayout.show(pannelli,"home");
         add(pannelli);
         

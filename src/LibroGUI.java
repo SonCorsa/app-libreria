@@ -172,6 +172,9 @@ public class LibroGUI extends JPanel{
     public JTextField getNpag() {
         return npag;
     }
+    public Libri getLibro(){
+        return l;
+    }
 
     public void setImmagineCopertina(){
         try{

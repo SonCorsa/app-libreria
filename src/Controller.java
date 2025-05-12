@@ -68,6 +68,22 @@ public class Controller {
         }
         };
 
+        
+        ActionListener salva = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton b = (JButton)e.getSource();
+                System.out.println("Libro modificato");
+                for(Libri l: libri.getLibri()){
+                    System.out.println("Libro");
+                    if(b.equals(l.getButton())){
+                        model.salvaLibro(l);
+                        System.out.println("Libro modificato");
+                    }
+                }
+            }
+        };
+        
         ActionListener apriLibro = new ActionListener() {  
             @Override
             public void actionPerformed(ActionEvent e){
@@ -75,29 +91,12 @@ public class Controller {
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
                         model.apriLibro(l).getIndietro().addActionListener(cambiaPagina);
+                        model.apriLibro(l).getSalva().addActionListener(salva);
                     }
                     
                 }
             }
         };
-
-        ActionListener salva = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JButton b = (JButton)e.getSource();
-                try {
-                    for(Libri l: libri.getLibri()){
-                        if(b.equals(l.getButton())){
-                            model.salvaLibro(l);
-                            System.out.println("Libro modificato");
-                        }
-                    }
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        };
-
         
         for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
@@ -117,7 +116,6 @@ public class Controller {
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
-        //finestra.getLibroGUI().getSalva().addActionListener(salva);
 
 
         

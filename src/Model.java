@@ -205,9 +205,11 @@ public class Model {
     }
 
     public void salvaLibro(Libri l){
+        System.out.println(l.getNome());
         l.setAutore(libroGUI.getAutore().getText());
         l.setNome(libroGUI.getNome().getText());
         l.setGenere(libroGUI.getGenere().getText());
         l.setNpagine(Integer.parseInt(libroGUI.getNpag().getText()));
+        System.out.println(l.getNome());
     }
 }

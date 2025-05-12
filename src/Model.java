@@ -1,4 +1,3 @@
-import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.swing.*;
 
@@ -117,7 +116,7 @@ public class Model {
         home.getLibriButtonsToRead().clear(); //svuoto i bottoni letti
         int x =0;
         for(Libri l1 :libreria.getLibri()){  //per ogni libro della libreria
-            if(l1.isRead()){  //se il libro è letto
+            if(l1.isRead() && home.getLibriButtonsRead().size() < 5){  //se il libro è letto
                 //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
@@ -126,17 +125,16 @@ public class Model {
                 l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsRead().add(b);
-            }else if(l1.isReading()){ //se il libro è in lettura
+            }else if(l1.isReading() && home.getLibriButtonsReading().size() < 7){ //se il libro è in lettura
 
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
-                im.setDescription(String.valueOf(x));
                 b.setIcon(im);
                 x++;
                 l1.setButton(b);
-                 //e lo aggiungo alla home
+                //e lo aggiungo alla home
                 home.getLibriButtonsReading().add(b);
-            }else if(l1.isToRead()){ //se il libro è da leggere
+            }else if(l1.isToRead() && home.getLibriButtonsToRead().size() < 7){ //se il libro è da leggere
 
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));

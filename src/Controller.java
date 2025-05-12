@@ -1,8 +1,5 @@
 import java.awt.event.*;
 import java.io.IOException;
-import java.util.Set;
-
-import javax.print.DocFlavor.SERVICE_FORMATTED;
 import javax.swing.JButton;
 
 public class Controller {
@@ -77,13 +74,23 @@ public class Controller {
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
                         model.apriLibro(l).getIndietro().addActionListener(cambiaPagina);
-                     }else{
                     }
+                    
                 }
             }
         };
 
         
+        for(JButton b: finestra.getHome().getLibriButtonsRead()){
+            b.addActionListener(apriLibro);
+            if(finestra.getHome().getLibriButtonsRead().get(0)equals(finestra.getHome().get))
+        }
+        for(JButton b: finestra.getHome().getLibriButtonsReading()){
+            b.addActionListener(apriLibro);
+        }
+        for(JButton b: finestra.getHome().getLibriButtonsToRead()){
+            b.addActionListener(apriLibro);
+        }
         finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);
@@ -97,17 +104,6 @@ public class Controller {
 
 
         
-        for(JButton b: finestra.getHome().getLibriButtonsRead()){
-            b.addActionListener(apriLibro);
-        }
-
-        for(JButton b: finestra.getHome().getLibriButtonsReading()){
-            b.addActionListener(apriLibro);
-        }
-
-        for(JButton b: finestra.getHome().getLibriButtonsToRead()){
-            b.addActionListener(apriLibro);
-        }
     }
 
     public Libreria getLibreria(){

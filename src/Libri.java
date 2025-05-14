@@ -149,4 +149,3 @@ public class Libri implements Serializable {
         Files.write(new File(path).toPath(),immagine);   
     }
 }
-//!pipo grande

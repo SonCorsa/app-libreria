@@ -209,8 +209,8 @@ public class Model {
         l.setAutore(libroGUI.getAutore().getText());
         l.setNome(libroGUI.getNome().getText());
         l.setGenere(libroGUI.getGenere().getText());
-        l.setNpagine(Integer.parseInt(libroGUI.getNpag().getText()));
-        System.out.println(l.getNome());
+        int z =Integer.parseInt(libroGUI.getNpag().getText());
+        System.out.println(z);
     }
     //Suca Roberto
 }

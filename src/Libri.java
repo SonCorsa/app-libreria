@@ -46,6 +46,7 @@ public class Libri implements Serializable {
 
     public void setAutore(String autore) {
         this.autore = autore;
+        System.out.println(autore+"<--Autore dentro setAutore");
     }
 
     public String getNome() {

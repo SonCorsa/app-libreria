@@ -74,7 +74,7 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.salvaLibro(rif);
-                System.out.print(rif);
+                System.out.print(rif+"porocdio");
             }
         };
         

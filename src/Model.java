@@ -212,4 +212,5 @@ public class Model {
         l.setNpagine(Integer.parseInt(libroGUI.getNpag().getText()));
         System.out.println(l.getNome());
     }
+    //Suca Roberto
 }

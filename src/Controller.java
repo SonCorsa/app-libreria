@@ -73,7 +73,7 @@ public class Controller {
         ActionListener salva = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.salvaLibro(rif);
+                model.salvaLibro(rif,model.apriLibro(rif));
                 System.out.print(rif+"porocdio");
             }
         };

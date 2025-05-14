@@ -204,11 +204,11 @@ public class Model {
         this.libreria=libreria;
     }
 
-    public void salvaLibro(Libri l){
+    public void salvaLibro(Libri l,LibroGUI li){
         System.out.println(l.getNome());
-        l.setAutore(libroGUI.getAutore().getText());
-        l.setNome(libroGUI.getNome().getText());
-        l.setGenere(libroGUI.getGenere().getText());
+        l.setAutore(li.getAutore().getText());
+        l.setNome(li.getNome().getText());
+        l.setGenere(li.getGenere().getText());
         //int z =Integer.parseInt(libroGUI.getNpag().getText());
         System.out.println("GAY");
     }

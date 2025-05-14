@@ -7,6 +7,7 @@ public class Controller {
     private Model model;
     private Libreria libri;
     private int x;
+    private Libri rif;
 
     public Controller(JFramePrincipale finestra,Libreria libri,Model model){
         this.finestra=finestra;
@@ -72,15 +73,8 @@ public class Controller {
         ActionListener salva = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JButton b = (JButton)e.getSource();
-                System.out.println("Libro modificato");
-                for(Libri l: libri.getLibri()){
-                    System.out.println("Libro");
-                    if(b.equals(l.getButton())){
-                        model.salvaLibro(l);
-                        System.out.println("Libro modificato");
-                    }
-                }
+                model.salvaLibro(rif);
+                System.out.print(rif);
             }
         };
         
@@ -90,6 +84,9 @@ public class Controller {
                 JButton b = (JButton)e.getSource();
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
+                        rif=l;
+                        System.out.println(l);
+                        System.out.println(rif);
                         model.apriLibro(l).getIndietro().addActionListener(cambiaPagina);
                         model.apriLibro(l).getSalva().addActionListener(salva);
                     }

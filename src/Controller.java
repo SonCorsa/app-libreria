@@ -73,10 +73,11 @@ public class Controller {
         ActionListener salva = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.salvaLibro(rif,model.apriLibro(rif));
-                System.out.print(rif+"porocdio");
+                model.salvaLibro(rif,finestra.getLibroGUI());
+                System.out.print(rif+" <---Bottone salva");
             }
         };
+
         
         ActionListener apriLibro = new ActionListener() {  
             @Override
@@ -87,10 +88,10 @@ public class Controller {
                         rif=l;
                         System.out.println(l);
                         System.out.println(rif);
-                        model.apriLibro(l).getIndietro().addActionListener(cambiaPagina);
-                        model.apriLibro(l).getSalva().addActionListener(salva);
-                    }
-                    
+                        model.apriLibro(l);
+                        finestra.getLibroGUI().getIndietro().addActionListener(cambiaPagina);
+                        finestra.getLibroGUI().getSalva().addActionListener(salva);
+                    }                    
                 }
             }
         };

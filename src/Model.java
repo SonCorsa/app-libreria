@@ -209,8 +209,7 @@ public class Model {
         l.setAutore(li.getAutore().getText());
         l.setNome(li.getNome().getText());
         l.setGenere(li.getGenere().getText());
-        //int z =Integer.parseInt(libroGUI.getNpag().getText());
-        System.out.println("GAY");
+        int z =Integer.parseInt(li.getNpag().getText());
+        l.setPagine(z);
     }
-    //Suca Roberto
 }

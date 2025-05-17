@@ -5,7 +5,6 @@ import javax.swing.*;
 
 public class JFramePrincipale extends JFrame {
     private CardLayout cardLayout;
-    private Model model;
     private JPanel pannelli;
     private boolean isHome;
     private boolean isAddPage;

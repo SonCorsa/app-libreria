@@ -14,7 +14,6 @@ public class Aggiungi extends JPanel{
     private JLabel lnome,lautore,lgenere,lnpag,ltrama;
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
-    private JCheckBox read,reading,toRead;
 
     public Aggiungi(JFramePrincipale finestra){
         //settaggio del layout

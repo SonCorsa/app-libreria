@@ -8,7 +8,8 @@ public class Home extends JPanel{
 
     //attributi
     private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead;
-    private JButton scorriButtonRead , scorriButtonReading, scorriButtonToRead; //questi pulsanti servono per scorrere i libri nella home 
+    private JButton scorriButtonRead , scorriButtonReading, scorriButtonToRead; //questi pulsanti servono per scorrere i libri nella home
+    private JButton scorriInvRead, scorriInvReading , scorriInvToRead;  
     private ArrayList<JButton> libriButtonsRead,libriButtonsReading,libriButtonsToRead; 
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
@@ -41,6 +42,11 @@ public class Home extends JPanel{
         scorriButtonToRead = new RoundedButton(">", 20, 20);
         scorriButtonReading = new RoundedButton(">", 20, 20);
         scorriButtonRead = new RoundedButton(">", 20, 20);
+
+        scorriInvToRead = new RoundedButton("<", 20, 20);
+        scorriInvReading = new RoundedButton("<", 20, 20);
+        scorriInvRead = new RoundedButton("<", 20, 20);
+
         
         //istanza dei JLabel
         home = new JLabel("Welcome");
@@ -140,6 +146,43 @@ public class Home extends JPanel{
         toReadPanel.add(aggiungiToRead);    //aggiunta del pulsante "+" per la creazione di un nuovo libro
     }
 
+    
+    public void aggiungiScorrimentoInvReading(){
+        readingPanel.remove(aggiungiReading);
+        System.out.println("Aggiungo il pulsante di scorrimento inverso per la sezione Reading");
+        readingPanel.add(scorriInvReading);
+    }
+
+    public void aggiungiScorrimentoInvRead(){
+        readPanel.remove(aggiungiRead);
+        System.out.println("Aggiungo il pulsante di scorrimento inverso per la sezione Read");
+        readPanel.add(scorriInvRead);
+    }
+
+    public void aggiungiScorrimentoInvToRead(){
+        toReadPanel.remove(aggiungiToRead);
+        System.out.println("Aggiungo il pulsante di scorrimento inverso per la sezione To Read");
+        toReadPanel.add(scorriInvToRead);
+    }
+
+    public void rimuoviScorrimentoInvReading(){
+        readingPanel.remove(scorriInvReading);
+        System.out.println("Rimuovo il pulsante di scorrimento inverso per la sezione Reading");
+        readingPanel.add(aggiungiReading);
+    }
+
+    public void rimuoviScorrimentoInvRead(){
+        readPanel.remove(scorriInvRead);
+        System.out.println("Rimuovo il pulsante di scorrimento inverso per la sezione Read");
+        readPanel.add(aggiungiRead);
+    }
+
+    public void rimuoviScorrimentoInvToRead(){
+        toReadPanel.remove(scorriInvToRead);
+        System.out.println("Rimuovo il pulsante di scorrimento inverso per la sezione To Read");
+        toReadPanel.add(aggiungiToRead);
+    }
+
 
     //get dei JButton
     public ArrayList<JButton> getLibriButtonsRead() {
@@ -203,5 +246,8 @@ public class Home extends JPanel{
     public JPanel getToReadPanel() {
         return toReadPanel;
     }
-    
+
+    public JButton getScorriInvReading() {
+        return scorriInvReading;
+    }
 }

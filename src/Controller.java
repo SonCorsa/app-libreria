@@ -1,3 +1,4 @@
+import java.awt.Desktop.Action;
 import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.JButton;
@@ -96,24 +97,38 @@ public class Controller {
             }
         };
 
+
         ActionListener scorrimento = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.scorrimento();
-                finestra.getHome().InstaziaLibri();
+                 for(JButton b: finestra.getHome().getLibriButtonsReading()){
+                    b.addActionListener(apriLibro);
+                }
+            }
+        };
+
+        ActionListener scorrimentoInv = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.scorrimentoInv();
+                for(JButton b: finestra.getHome().getLibriButtonsReading()){
+                    b.addActionListener(apriLibro);
+                }
             }
         };
         
+
         for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
         }
-        finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         for(JButton b: finestra.getHome().getLibriButtonsReading()){
             b.addActionListener(apriLibro);
         }
         for(JButton b: finestra.getHome().getLibriButtonsToRead()){
             b.addActionListener(apriLibro);
         }
+        finestra.getHome().getAggiungiRead().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiReading().addActionListener(cambiaPagina);
         finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);
         finestra.getHome().getProfileButton().addActionListener(cambiaImmagineProfilo);
@@ -123,6 +138,7 @@ public class Controller {
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
         finestra.getHome().getScorriButtonReading().addActionListener(scorrimento);
+        finestra.getHome().getScorriInvReading().addActionListener(scorrimentoInv);
     }
 
     public Libreria getLibreria(){

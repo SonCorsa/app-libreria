@@ -52,6 +52,7 @@ public class Model {
         String nome = addPage.getNome().getText();
         String autore = addPage.getAutore().getText();
         String Genere = addPage.getGenere().getText();
+        String trama = addPage.getTrama().getText();
         int npag = Integer.parseInt(addPage.getNpag().getText());
 
         // Svuoto le textfield
@@ -59,11 +60,11 @@ public class Model {
         addPage.getAutore().setText("");
         addPage.getGenere().setText("");
         addPage.getNpag().setText("");
-
-        //?DA CAMBIARE
+        addPage.getTrama().setText(""); 
 
         // Istanzio il libro e aggiungo alla libreria
         Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
+        l.setTrama(trama);
         if(x == 1){
             l.setRead(true);
         }else if(x == 2){
@@ -117,14 +118,12 @@ public class Model {
         home.getLibriButtonsRead().clear(); //svuoto i bottoni letti\
         home.getLibriButtonsReading().clear(); //svuoto i bottoni letti
         home.getLibriButtonsToRead().clear(); //svuoto i bottoni letti
-        int x =0;
         for(Libri l1 :libreria.getLibri()){  //per ogni libro della libreria
             if(l1.isRead() && home.getLibriButtonsRead().size() < 7 ){  //se il libro è letto
                 //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(70, 90, 5)));
                 b.setIcon(im);
-                x++;
                 l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsRead().add(b);
@@ -132,7 +131,6 @@ public class Model {
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(70, 90, 5)));
                 b.setIcon(im);
-                x++;
                 l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsReading().add(b);
@@ -140,9 +138,7 @@ public class Model {
 
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(70, 90, 5)));
-                im.setDescription(String.valueOf(x));
                 b.setIcon(im);
-                x++;
                 l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsToRead().add(b);
@@ -159,11 +155,6 @@ public class Model {
 
     }
     
-
-    public int getN(){
-        return libreria.getLibri().size();
-    }
-
 
     public void eliminaLibro(Libri l){
         libreria.eliminaLibro(l);
@@ -197,6 +188,7 @@ public class Model {
         l.setAutore(li.getAutore().getText());
         l.setNome(li.getNome().getText());
         l.setGenere(li.getGenere().getText());
+        l.setTrama(li.getTrama().getText());
         int z =Integer.parseInt(li.getNpag().getText());
         l.setPagine(z);
         File file = new File("Files/Libri.txt");
@@ -206,8 +198,8 @@ public class Model {
             scrivi.flush(); //svuoto il buffer
             scrivi.close(); //chiudo lo stream
         }
-        
     }
+
     public Libreria getLibreria(){
         return libreria;
     }

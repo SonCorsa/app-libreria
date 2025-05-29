@@ -21,8 +21,6 @@ public class Home extends JPanel{
     public Home(){
 
         setLayout(new BorderLayout());
-
-
         //creazione del font personalizzato
         try {
             PoppinsBlack =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")).deriveFont(50f);

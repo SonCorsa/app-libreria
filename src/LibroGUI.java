@@ -207,5 +207,7 @@ public class LibroGUI extends JPanel{
         b.setContentAreaFilled(false);
     }
 
-
+    public JTextArea getTrama() {
+        return trama;
+    }
 }

@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.io.File;
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
 
 import ComponentiRotondi.RoundedButton;
 import ComponentiRotondi.RoundedTextArea;
@@ -187,6 +188,11 @@ public class Aggiungi extends JPanel{
 
     public JTextField getNpag() {
         return npag;
+    }
+
+
+    public JTextComponent getTrama() {
+        return trama;
     }
 
 

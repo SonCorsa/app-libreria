@@ -98,11 +98,31 @@ public class Controller {
         };
 
 
-        ActionListener scorrimento = new ActionListener() {
+        ActionListener scorrimentoReading = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.scorrimento();
+                model.scorrimentoReading();
                  for(JButton b: finestra.getHome().getLibriButtonsReading()){
+                    b.addActionListener(apriLibro);
+                }
+            }
+        };
+
+        ActionListener scorrimentoRead = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.scorrimentoRead();
+                for(JButton b: finestra.getHome().getLibriButtonsRead()){
+                    b.addActionListener(apriLibro);
+                }
+            }
+        };
+
+        ActionListener scorrimentoToRead = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.scorrimentoToRead();
+                for(JButton b: finestra.getHome().getLibriButtonsToRead()){
                     b.addActionListener(apriLibro);
                 }
             }
@@ -111,8 +131,28 @@ public class Controller {
         ActionListener scorrimentoInv = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.scorrimentoInv();
+                model.scorrimentoInvReading();
                 for(JButton b: finestra.getHome().getLibriButtonsReading()){
+                    b.addActionListener(apriLibro);
+                }
+            }
+        };
+
+        ActionListener scorrimentoInvRead = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.scorrimentoInvRead();
+                for(JButton b: finestra.getHome().getLibriButtonsRead()){
+                    b.addActionListener(apriLibro);
+                }
+            }
+        };
+
+        ActionListener scorrimentoInvToRead = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.scorrimentoInvToRead();
+                for(JButton b: finestra.getHome().getLibriButtonsToRead()){
                     b.addActionListener(apriLibro);
                 }
             }
@@ -137,8 +177,13 @@ public class Controller {
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
-        finestra.getHome().getScorriButtonReading().addActionListener(scorrimento);
+        finestra.getHome().getScorriButtonReading().addActionListener(scorrimentoReading);
         finestra.getHome().getScorriInvReading().addActionListener(scorrimentoInv);
+        finestra.getHome().getScorriButtonRead().addActionListener(scorrimentoRead);
+        finestra.getHome().getScorriInvRead().addActionListener(scorrimentoInvRead);
+        finestra.getHome().getScorriButtonToRead().addActionListener(scorrimentoToRead);
+        finestra.getHome().getScorriInvToRead().addActionListener(scorrimentoInvToRead);
+        
     }
 
     public Libreria getLibreria(){

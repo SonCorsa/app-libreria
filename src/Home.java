@@ -111,39 +111,47 @@ public class Home extends JPanel{
     public void InstaziaLibri(){
 
         readPanel.removeAll();
-        if(libriButtonsRead.size() > 5){
-            readPanel.add(scorriButtonRead);         //svuota il pannello dei bottoni read
+        readPanel.add(scorriButtonRead);
+        scorriButtonRead.setVisible(false);
+        if(libriButtonsRead.size() > 6){
+            scorriButtonRead.setVisible(true);
         }
         for(JButton b : libriButtonsRead){
-            readPanel.add(b);               //aggiunta dei singoli JButton al pannello read
+            readPanel.add(b);               
             b.setOpaque(false);
             b.setContentAreaFilled(false);
             b.setBorderPainted(false);
         }
-        readPanel.add(aggiungiRead);        //aggiunta del pulsante "+" per la creazione di un nuovo libro
+        readPanel.add(aggiungiRead);        
 
-        readingPanel.removeAll();     
-        readingPanel.add(scorriButtonReading);      //svuota pannello reading
+        readingPanel.removeAll();  
+        readingPanel.add(scorriButtonReading);
+        scorriButtonReading.setVisible(false);
+        if(libriButtonsReading.size() > 6){
+            scorriButtonReading.setVisible(true);
+        }   
         for(JButton b : libriButtonsReading){
-            readingPanel.add(b);            //aggiunta dei singoli JButton al pannello reading
+            readingPanel.add(b);            
             b.setOpaque(false);
             b.setContentAreaFilled(false);
             b.setBorderPainted(false);
         }
-        readingPanel.add(aggiungiReading);  //aggiunta del pulsante "+" per la creazione di un nuovo libro
+        readingPanel.add(aggiungiReading);  
         
 
         toReadPanel.removeAll();
-        if(libriButtonsRead.size() > 5){
-            toReadPanel.add(scorriButtonToRead);            //svuota il pannello toRead
+        toReadPanel.add(scorriButtonToRead);
+        scorriButtonToRead.setVisible(false);
+        if(libriButtonsToRead.size() > 6){
+            scorriButtonToRead.setVisible(true);
         }
         for(JButton b : libriButtonsToRead){
-            toReadPanel.add(b);             //aggiunta dei singoli JButton al pannello toRead
+            toReadPanel.add(b);             
             b.setOpaque(false);
             b.setContentAreaFilled(false);
             b.setBorderPainted(false);
         }
-        toReadPanel.add(aggiungiToRead);    //aggiunta del pulsante "+" per la creazione di un nuovo libro
+        toReadPanel.add(aggiungiToRead);    
     }
 
     
@@ -249,5 +257,12 @@ public class Home extends JPanel{
 
     public JButton getScorriInvReading() {
         return scorriInvReading;
+    }
+
+    public JButton getScorriInvRead() {
+        return scorriInvRead;
+    }
+    public JButton getScorriInvToRead() {
+        return scorriInvToRead;
     }
 }

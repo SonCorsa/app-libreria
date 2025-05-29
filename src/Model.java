@@ -10,7 +10,7 @@ public class Model {
     private JFileChooser fileChooser;
     private File immagineLibro;
     private final static int scorrimento = 7; // numero di libri da visualizzare per volta
-    private int y;
+    private int indReading, indToRead, indRead; // Indici per lo scorrimento delle liste
 
 
 
@@ -21,7 +21,9 @@ public class Model {
         this.libroGUI = finestra.getLibroGUI();
         this.libreria=libri;
         fileChooser = new JFileChooser();
-        y = 1; //inizializzo y a 0
+        indReading = 1; //inizializzo y a 1
+        indToRead = 1; //inizializzo y a 1
+        indRead = 1; //inizializzo y a 1
     }
 
     public void cambiaPagina(){ 
@@ -214,11 +216,11 @@ public class Model {
     }
 
 
-    public void scorrimento(){
+    public void scorrimentoReading(){
         home.getLibriButtonsReading().clear();
         int x = 0;
         for(Libri l : libreria.getLibri()){
-            if(x< scorrimento*y){
+            if(x< scorrimento*indReading){
                 x++;
             }else if(l.isReading() && home.getLibriButtonsReading().size() < scorrimento){
                 try{
@@ -234,17 +236,17 @@ public class Model {
                 }
             }
         }
-        if(home.getLibriButtonsReading().size() < scorrimento*y){
+        if(home.getLibriButtonsReading().size() < scorrimento*indReading){
             home.getScorriButtonReading().setEnabled(false);
         }
-        y++;
+        indReading++;
     }
 
-    public void scorrimentoInv(){
+    public void scorrimentoInvReading(){
         home.getLibriButtonsReading().clear();
-        int x = scorrimento * (y-1);
+        int x = scorrimento * (indReading-1);
         for(Libri l : libreria.getLibri()){  
-            if(l.isReading() && x < scorrimento*y){
+            if(l.isReading() && x < scorrimento*indReading){
                 try{
                     JButton b = new JButton();
                     ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(70, 90, 5)));
@@ -262,6 +264,108 @@ public class Model {
             home.rimuoviScorrimentoInvReading();
             home.getScorriButtonReading().setEnabled(true);
         }
-        y--;
+        indReading--;
+    }
+
+    public void scorrimentoToRead(){
+        home.getLibriButtonsToRead().clear();
+        int x = 0;
+        for(Libri l : libreria.getLibri()){
+            if(x< scorrimento*indToRead){
+                x++;
+            }else if(l.isToRead() && home.getLibriButtonsToRead().size() < scorrimento){
+                try{
+                    JButton b = new JButton();
+                    ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(70, 90, 5)));
+                    b.setIcon(im);
+                    l.setButton(b);
+                    home.getLibriButtonsToRead().add(b);
+                    home.InstaziaLibri();
+                    home.aggiungiScorrimentoInvToRead();
+                }catch(Exception e){
+                    e.printStackTrace(); 
+                }
+            }
+        }
+        if(home.getLibriButtonsToRead().size() < scorrimento*indToRead){
+            home.getScorriButtonToRead().setEnabled(false);
+        }
+        indToRead++;
+    }
+
+    public void scorrimentoInvToRead(){
+        home.getLibriButtonsToRead().clear();
+        int x = scorrimento * (indToRead-1);
+        for(Libri l : libreria.getLibri()){  
+            if(l.isToRead() && x < scorrimento*indToRead){
+                try{
+                    JButton b = new JButton();
+                    ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(70, 90, 5)));
+                    b.setIcon(im);
+                    l.setButton(b);
+                    home.getLibriButtonsToRead().add(b);
+                    home.InstaziaLibri();
+                    x++;
+                }catch(Exception e){
+                    e.printStackTrace(); 
+                }
+            }
+        }
+        if(x >= 7) {
+            home.rimuoviScorrimentoInvToRead();
+            home.getScorriButtonToRead().setEnabled(true);
+        }
+        indToRead--;
+    }
+
+    public void scorrimentoRead(){
+        home.getLibriButtonsRead().clear();
+        int x = 0;
+        for(Libri l : libreria.getLibri()){
+            if(x< scorrimento*indRead){
+                x++;
+            }else if(l.isRead() && home.getLibriButtonsRead().size() < scorrimento){
+                try{
+                    JButton b = new JButton();
+                    ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(70, 90, 5)));
+                    b.setIcon(im);
+                    l.setButton(b);
+                    home.getLibriButtonsRead().add(b);
+                    home.InstaziaLibri();
+                    home.aggiungiScorrimentoInvRead();
+                }catch(Exception e){
+                    e.printStackTrace(); 
+                }
+            }
+        }
+        if(home.getLibriButtonsRead().size() < scorrimento*indRead){
+            home.getScorriButtonRead().setEnabled(false);
+        }
+        indRead++;
+    }
+
+    public void scorrimentoInvRead(){
+        home.getLibriButtonsRead().clear();
+        int x = scorrimento * (indRead-1);
+        for(Libri l : libreria.getLibri()){  
+            if(l.isRead() && x < scorrimento*indRead){
+                try{
+                    JButton b = new JButton();
+                    ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(70, 90, 5)));
+                    b.setIcon(im);
+                    l.setButton(b);
+                    home.getLibriButtonsRead().add(b);
+                    home.InstaziaLibri();
+                    x++;
+                }catch(Exception e){
+                    e.printStackTrace(); 
+                }
+            }
+        }
+        if(x >= 7) {
+            home.rimuoviScorrimentoInvRead();
+            home.getScorriButtonRead().setEnabled(true);
+        }
+        indRead--;
     }
 }   

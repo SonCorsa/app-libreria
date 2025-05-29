@@ -62,7 +62,6 @@ public class Controller {
             public void actionPerformed(ActionEvent e){
             try{
                 model.aggiungiLibro(x);
-                Setup();
             }catch( Exception x){
                 x.printStackTrace();
             }
@@ -183,7 +182,7 @@ public class Controller {
         finestra.getHome().getScorriInvRead().addActionListener(scorrimentoInvRead);
         finestra.getHome().getScorriButtonToRead().addActionListener(scorrimentoToRead);
         finestra.getHome().getScorriInvToRead().addActionListener(scorrimentoInvToRead);
-        
+
     }
 
     public Libreria getLibreria(){

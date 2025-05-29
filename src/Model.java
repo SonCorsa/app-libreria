@@ -128,8 +128,7 @@ public class Model {
                 l1.setButton(b);
                 //e lo aggiungo alla home
                 home.getLibriButtonsRead().add(b);
-            }else if(l1.isReading() && home.getLibriButtonsReading().size() < 7){ //se il libro è in lettura
-
+            }else if(l1.isReading() && home.getLibriButtonsReading().size() < 6){ //se il libro è in lettura
                 JButton b = new JButton();
                 ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(100, 150, 5)));
                 b.setIcon(im);

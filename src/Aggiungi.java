@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.File;
 import javax.swing.*;
 
+import ComponentiRotondi.RoundedButton;
 import ComponentiRotondi.RoundedTextArea;
 import ComponentiRotondi.RoundedTextField;
 
@@ -20,7 +21,7 @@ public class Aggiungi extends JPanel{
         //istanzio il panel
 
         //istanzio JButton
-        aggiungi = new JButton("aggiungi");
+        aggiungi = new RoundedButton("Aggiungi",10,10);
         indietro = new JButton();
         copertina = new JButton();
 

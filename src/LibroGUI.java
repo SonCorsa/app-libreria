@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.File;
 import javax.swing.*;
 
+import ComponentiRotondi.RoundedButton;
 import ComponentiRotondi.RoundedTextArea;
 import ComponentiRotondi.RoundedTextField;
 
@@ -13,7 +14,6 @@ public class LibroGUI extends JPanel{
     private JLabel lnome,lautore,lgenere,lnpag,ltrama;
     private JPanel indietroPanel,aggiungiPanel,p1;
     private GridBagConstraints c;
-    private JCheckBox read,reading,toRead;
     private Libri l; //libro da modificare
 
     public LibroGUI(JFramePrincipale finestra,Libri l){
@@ -22,7 +22,7 @@ public class LibroGUI extends JPanel{
         //istanzio il panel
 
         //istanzio JButton
-        salva = new JButton("salva");
+        salva = new RoundedButton("salva",10,10);
         indietro = new JButton();
         copertina = new JButton();
 

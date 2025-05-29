@@ -22,7 +22,7 @@ public class Home extends JPanel{
         setLayout(new BorderLayout());
 
 
-        //FONT
+        //creazione del font personalizzato
         try {
             PoppinsBlack =Font.createFont(Font.TRUETYPE_FONT, new File("Fonts/Poppins-Black.ttf")).deriveFont(50f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -32,38 +32,38 @@ public class Home extends JPanel{
         }      
         
         
-        //istanzio i JButton
+        //istanzia dei JButton
         profileButton = new JButton();
         aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new RoundedButton("+",20,20);
         aggiungiToRead = new RoundedButton("+",20,20);
         
-        //istanzio i JLabel
+        //istanza dei JLabel
         home = new JLabel("Welcome");
         read= new JLabel("Read");
         reading = new JLabel("Reading");
         toRead= new JLabel("To Read");
 
-        //cambio i font
+        //cambio del font
         home.setFont(PoppinsBlack);
         read.setFont(PoppinsBlack.deriveFont(30f));
         reading.setFont(PoppinsBlack.deriveFont(30f));
         toRead.setFont(PoppinsBlack.deriveFont(30f));
         
         
-        //istanzio i JPanel
+        //istanza dei JPanel
         p1 = new JPanel(new BorderLayout());
         p2=new JPanel(new GridLayout(6,0));
         readPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         readingPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         toReadPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         
-        //Ordino gli elementi da destra a sinistra all'interno dei JPanel 
+        //Ordinamento degli elementi da destra a sinistra all'interno dei JPanel 
         readPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         readingPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         toReadPanel.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         
-        //istanzio ArrayList
+        //istanza degli ArrayList
         libriButtonsRead = new ArrayList<JButton>();
         libriButtonsReading = new ArrayList<JButton>();
         libriButtonsToRead = new ArrayList<JButton>();
@@ -71,7 +71,7 @@ public class Home extends JPanel{
         readingList=new ArrayList<JPanel>();
         toReadList= new ArrayList<JPanel>();
         
-        //IMMAGINE PROFILO
+        //settaggio immagine profilo di default
         fileicon = new File("Images/user.png");             //creazione oggetto di tipo file che prende un'immagine .png
         icon = new ImageIcon(fileicon.getAbsolutePath());         //creazione oggetto ImageIcon 
         profileButton.setIcon(new ImageIcon(icon.getImage().getScaledInstance(75, 75, 5)));    //settaggio parametri di dimensione dell'icon
@@ -117,29 +117,23 @@ public class Home extends JPanel{
     public void InstaziaLibri(){
 
         readPanel.removeAll();              //svuota il pannello dei bottoni read
-
         for(JButton b : libriButtonsRead){
             readPanel.add(b);               //aggiunta dei singoli JButton al pannello read
         }
-
         readPanel.add(aggiungiRead);        //aggiunta del pulsante "+" per la creazione di un nuovo libro
         
 
         readingPanel.removeAll();           //svuota pannello reading
-
         for(JButton b : libriButtonsReading){
             readingPanel.add(b);            //aggiunta dei singoli JButton al pannello reading
         }
-
         readingPanel.add(aggiungiReading);  //aggiunta del pulsante "+" per la creazione di un nuovo libro
         
 
         toReadPanel.removeAll();            //svuota il pannello toRead
-
         for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);             //aggiunta dei singoli JButton al pannello toRead
         }
-
         toReadPanel.add(aggiungiToRead);    //aggiunta del pulsante "+" per la creazione di un nuovo libro
     }
 

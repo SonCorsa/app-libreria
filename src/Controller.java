@@ -20,6 +20,9 @@ public class Controller {
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
+        Files file = new Files("Files/Libri.txt")
+        if(file){  //controllo se il file esiste
+        }
         model.leggiLibro();
         this.ActionListener();
     }

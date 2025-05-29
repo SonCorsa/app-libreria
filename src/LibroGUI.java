@@ -8,6 +8,7 @@ import ComponentiRotondi.RoundedTextField;
 
 public class LibroGUI extends JPanel{
 
+    //attributi
     private JButton salva,indietro,copertina;
     private JTextField nome,autore,genere,npag;
     private JTextArea trama;
@@ -17,9 +18,11 @@ public class LibroGUI extends JPanel{
     private Libri l; //libro da modificare
 
     public LibroGUI(JFramePrincipale finestra,Libri l){
-        this.l = l;
+        //set del layout
         setLayout(new BorderLayout());
-        //istanzio il panel
+
+        //set dell'attributo del libro di riferimento
+        this.l = l;
 
         //istanzio JButton
         salva = new RoundedButton("salva",10,10);
@@ -40,6 +43,7 @@ public class LibroGUI extends JPanel{
         trama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         trama.setLineWrap(true);
 
+        //riempimento delle JTextField con gli attributi del libro
         if(l != null) {
             nome.setText(l.getNome());
             autore.setText(l.getAutore());
@@ -60,6 +64,7 @@ public class LibroGUI extends JPanel{
         aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         p1 = new JPanel(new GridBagLayout());
         
+        //set delle dimensioni  delle JTextField
         nome.setPreferredSize(new Dimension(250,20));
         autore.setPreferredSize(new Dimension(250,20));
         genere.setPreferredSize(new Dimension(250,20));
@@ -67,14 +72,14 @@ public class LibroGUI extends JPanel{
         trama.setPreferredSize(new Dimension(250,100));
         salva.setPreferredSize(new Dimension(200,45));
     
-        //TASTI INDIETRO E AGGIUNGI
+        //tasti "indietro" e "aggiungi"
         indietroPanel.add(indietro);
         aggiungiPanel.add(salva);
         add(indietroPanel,BorderLayout.NORTH);
         add(aggiungiPanel,BorderLayout.SOUTH);
         
         
-        //PANNELLO GRIDBAGLAYOUT
+        //Pannello con GridBagLayout
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -83,7 +88,7 @@ public class LibroGUI extends JPanel{
         c.anchor = GridBagConstraints.CENTER;
         p1.add(copertina,c);
         
-        //LABEL NOME E TEXTFIELD NOME
+        //aggiunta degli elementi relativi al nome
         GridBagConstraints x= new GridBagConstraints();
         x.weightx = 0.5;
         x.gridx = 1;
@@ -97,7 +102,7 @@ public class LibroGUI extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(nome,x);
 
-        //LABEL AUTORE E TEXTFIELD AUTORE
+        //aggiunta degli elementi relativi all'autore
         x.gridx = 1;
         x.gridy = 2;
         x.insets = new Insets(0,0,0,200);
@@ -108,7 +113,7 @@ public class LibroGUI extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(autore,x);
 
-        //LABEL GENERE E TEXTFIELD GENERE
+        //aggiunta degli elementi relativi al genere
         x.gridx = 1;
         x.gridy = 4;
         x.insets = new Insets(0,0,0,200);
@@ -119,7 +124,7 @@ public class LibroGUI extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(genere,x);
 
-        //LABEL NUMERO PAGINE E TEXTFIELD NUMERO PAGINE
+        //aggiunta degli elementi relativi al numero di pagine
         x.gridx = 1;
         x.gridy = 6;
         x.insets = new Insets(0,0,0,150);
@@ -130,7 +135,7 @@ public class LibroGUI extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(npag,x);
 
-        //LABEL TRAMA E TEXTFIELD TRAMA
+        //aggiunta degli elementi relativi alla trama
         x.gridx = 1;
         x.gridy = 8;
         x.insets = new Insets(0,0,0,200);
@@ -157,6 +162,7 @@ public class LibroGUI extends JPanel{
         return copertina;
     }
 
+    //get delle JTextField
     public JTextField getNome() {
         return nome;
     }
@@ -172,10 +178,13 @@ public class LibroGUI extends JPanel{
     public JTextField getNpag() {
         return npag;
     }
+
+    //get del libro di riferimento
     public Libri getLibro(){
         return l;
     }
 
+    //metodo per settare l'immmagine di copertina con quella del libro
     public void setImmagineCopertina(){
         try{
 
@@ -189,6 +198,7 @@ public class LibroGUI extends JPanel{
         }
     }
     
+    //metodo per settare l'immagine del tasto "indietro"
     public void setImmagineBottone(JButton b,String path, int x ,int y){
         File fileicon = new File(path);
         ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());

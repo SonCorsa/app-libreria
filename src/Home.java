@@ -110,6 +110,9 @@ public class Home extends JPanel{
         }
         for(JButton b : libriButtonsRead){
             readPanel.add(b);               //aggiunta dei singoli JButton al pannello read
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
         }
         readPanel.add(aggiungiRead);        //aggiunta del pulsante "+" per la creazione di un nuovo libro
 
@@ -117,6 +120,9 @@ public class Home extends JPanel{
         readingPanel.add(scorriButtonReading);      //svuota pannello reading
         for(JButton b : libriButtonsReading){
             readingPanel.add(b);            //aggiunta dei singoli JButton al pannello reading
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
         }
         readingPanel.add(aggiungiReading);  //aggiunta del pulsante "+" per la creazione di un nuovo libro
         
@@ -127,6 +133,9 @@ public class Home extends JPanel{
         }
         for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);             //aggiunta dei singoli JButton al pannello toRead
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
         }
         toReadPanel.add(aggiungiToRead);    //aggiunta del pulsante "+" per la creazione di un nuovo libro
     }

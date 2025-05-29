@@ -5,6 +5,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class Libri implements Serializable {
+    //attributi
     protected String autore;
     protected String nome;
     protected String genere;
@@ -14,9 +15,9 @@ public class Libri implements Serializable {
     protected String trama;
     protected byte[] immagine;
     private boolean read,reading,toRead;
-    private static final long serialVersionUID = 1L;
-    private JButton button;    
-    //attributo per il punteggio(recensione)
+    private static final long serialVersionUID = 1L; //numero seriale per la lettura
+    private JButton button;  //riferimento al pulsante associato  
+    //aggiungere attributo per il la recensione
 
     
     public Libri(String autore, String nome, String genere, int pagine,File immagine) throws IOException {
@@ -33,10 +34,7 @@ public class Libri implements Serializable {
         toRead = false;
     }
         
-    public void setButton(JButton b){
-        this.button = b;
-    }
-
+    //get degli attributi
     public JButton getButton(){
         return button;
     }
@@ -44,53 +42,68 @@ public class Libri implements Serializable {
         return autore;
     }
 
-    public void setAutore(String autore) {
-        this.autore = autore;
-        System.out.println(autore+"<--Autore dentro setAutore");
-    }
-
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getGenere() {
         return genere;
     }
-
-    public void setGenere(String genere) {
-        this.genere = genere;
-    }
-
+    
     public int getPagine() {
         return pagine;
-    }
-
-    public void setPagine(int pagine) {
-        this.pagine = pagine;
     }
 
     public int[] getDataI() {
         return dataI;
     }
 
+    public int[] getDataF() {
+        return dataF;
+    }
+    
+
+    public String getTrama() {
+        return trama;
+    }
+
+    public void setButton(JButton b){
+        this.button = b;
+    }
+
+    public int getNpagine() {
+        return pagine;
+    }
+
+    public BufferedImage getImmagine()throws IOException{
+        ByteArrayInputStream im = new ByteArrayInputStream(immagine);
+        return ImageIO.read(im);
+    }
+
+
+    //set degli attributi
+    public void setAutore(String autore) {
+        this.autore = autore;
+        System.out.println(autore+"<--Autore dentro setAutore");
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setGenere(String genere) {
+        this.genere = genere;
+    }
+    public void setPagine(int pagine) {
+        this.pagine = pagine;
+    }
+
     public void setDataI(int[] dataI) {
         this.dataI = dataI;
     }
 
-    public int[] getDataF() {
-        return dataF;
-    }
-
     public void setDataF(int[] dataF) {
         this.dataF = dataF;
-    }
-
-    public String getTrama() {
-        return trama;
     }
 
     public void setRead(boolean n){
@@ -109,19 +122,11 @@ public class Libri implements Serializable {
         this.trama = trama;
     }
 
-    public int getNpagine() {
-        return pagine;
-    }
     public void setNpagine(int npagine) {
         this.pagine = npagine;
     }
 
-
-    public String toString(){
-        return String.format("%s %s %s %d",autore,nome, genere,pagine);
-    }
-
-
+    
     public boolean isRead() {
         return read;
     }
@@ -131,22 +136,18 @@ public class Libri implements Serializable {
     public boolean isToRead() {
         return toRead;
     }
- 
 
+    //metodo per la stampa di un libro
+    public String toString(){
+        return String.format("%s %s %s %d",autore,nome, genere,pagine);
+    }
+
+    //metodo per il confronto tra libri
     public boolean equals(Libri l){
         if(this.toString().equals(l.toString())){
             return true;
         }else{
             return false;
         }
-    }
-
-    public BufferedImage getImmagine()throws IOException{
-        ByteArrayInputStream im = new ByteArrayInputStream(immagine);
-        return ImageIO.read(im);
-    }
-
-    public void salvaCopertinaLibro(String path)throws IOException{
-        Files.write(new File(path).toPath(),immagine);   
     }
 }

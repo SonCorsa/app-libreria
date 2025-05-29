@@ -18,7 +18,6 @@ public class Model {
         this.libroGUI = finestra.getLibroGUI();
         this.libreria=libri;
         fileChooser = new JFileChooser();
-        //libreria=new Libreria();
     }
 
     public void cambiaPagina(){ 
@@ -73,9 +72,47 @@ public class Model {
             l.setToRead(true);
         }
         // Resetto le checkbox
-        addPage.getRead().setSelected(false);
-        addPage.getReading().setSelected(false);
-        addPage.getToRead().setSelected(false);
+        libreria.aggiungiLibro(l);
+
+
+        // Resetto l'immagine di copertina
+        addPage.setImmagineCopertina();
+
+        // Salvataggio su file in modalità append
+        File file = new File("Files/Libri.txt");
+        try (FileOutputStream fos = new FileOutputStream(file, false);
+        ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
+            scrivi.writeObject(libreria);//scrivo l'oggetto libro
+            scrivi.flush(); //svuoto il buffer
+            scrivi.close(); //chiudo lo stream
+        }
+    }
+
+     public void modificaLibro(int x) throws IOException {
+        // Lettura dalle textfield
+        String nome = LibroGUI.getNome().getText();
+        String autore = addPage.getAutore().getText();
+        String Genere = addPage.getGenere().getText();
+        int npag = Integer.parseInt(addPage.getNpag().getText());
+
+        // Svuoto le textfield
+        addPage.getNome().setText("");
+        addPage.getAutore().setText("");
+        addPage.getGenere().setText("");
+        addPage.getNpag().setText("");
+
+        //?DA CAMBIARE
+
+        // Istanzio il libro e aggiungo alla libreria
+        Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
+        if(x == 1){
+            l.setRead(true);
+        }else if(x == 2){
+            l.setReading(true);
+        }else if(x== 3){
+            l.setToRead(true);
+        }
+        // Resetto le checkbox
         libreria.aggiungiLibro(l);
 
 

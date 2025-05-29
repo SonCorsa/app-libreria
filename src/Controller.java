@@ -74,6 +74,7 @@ public class Controller {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.salvaLibro(rif,finestra.getLibroGUI());
+                model.
                 System.out.print(rif+" <---Bottone salva");
             }
         };

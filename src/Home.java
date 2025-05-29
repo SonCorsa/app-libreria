@@ -7,13 +7,13 @@ import ComponentiRotondi.RoundedButton;
 public class Home extends JPanel{
 
     //attributi
-    private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead; 
+    private JButton aggiungiRead,profileButton,aggiungiReading,aggiungiToRead;
+    private JButton scorriButtonRead , scorriButtonReading, scorriButtonToRead; //questi pulsanti servono per scorrere i libri nella home 
     private ArrayList<JButton> libriButtonsRead,libriButtonsReading,libriButtonsToRead; 
     private final JLabel home,reading,read,toRead; 
     private final JPanel p1,p2,readPanel,readingPanel,toReadPanel;
     private ImageIcon icon;
     private File fileicon;
-    private ArrayList<JPanel> readList,readingList,toReadList;
     private Font PoppinsBlack;
     
     
@@ -37,6 +37,10 @@ public class Home extends JPanel{
         aggiungiRead = new RoundedButton("+",20,20);
         aggiungiReading= new RoundedButton("+",20,20);
         aggiungiToRead = new RoundedButton("+",20,20);
+
+        scorriButtonToRead = new RoundedButton(">", 20, 20);
+        scorriButtonReading = new RoundedButton(">", 20, 20);
+        scorriButtonRead = new RoundedButton(">", 20, 20);
         
         //istanza dei JLabel
         home = new JLabel("Welcome");
@@ -67,9 +71,6 @@ public class Home extends JPanel{
         libriButtonsRead = new ArrayList<JButton>();
         libriButtonsReading = new ArrayList<JButton>();
         libriButtonsToRead = new ArrayList<JButton>();
-        readList=new ArrayList<JPanel>();
-        readingList=new ArrayList<JPanel>();
-        toReadList= new ArrayList<JPanel>();
         
         //settaggio immagine profilo di default
         fileicon = new File("Images/user.png");             //creazione oggetto di tipo file che prende un'immagine .png
@@ -82,19 +83,7 @@ public class Home extends JPanel{
         //aggiunta dei panel
         p1.add(profileButton,BorderLayout.EAST);
         p1.add(home,BorderLayout.WEST);
-        
-        //aggiunta dei button degli ArrayList ai JPanel
-        for(JButton b : libriButtonsRead){
-            readPanel.add(b);
-        }
-
-        for(JButton b : libriButtonsReading){
-            readingPanel.add(b);
-        }
-
-        for(JButton b : libriButtonsToRead){
-            toReadPanel.add(b);
-        }
+                
         
         //aggiunta dei JPanel ai JPanel principali
         readingPanel.add(aggiungiReading);
@@ -109,28 +98,33 @@ public class Home extends JPanel{
         p2.add(toRead);
         p2.add(toReadPanel);
         
-        
         add(p1,BorderLayout.NORTH);
         add(p2,BorderLayout.CENTER);
     }
     
     public void InstaziaLibri(){
 
-        readPanel.removeAll();              //svuota il pannello dei bottoni read
+        readPanel.removeAll();
+        if(libriButtonsRead.size() > 5){
+            readPanel.add(scorriButtonRead);         //svuota il pannello dei bottoni read
+        }
         for(JButton b : libriButtonsRead){
             readPanel.add(b);               //aggiunta dei singoli JButton al pannello read
         }
         readPanel.add(aggiungiRead);        //aggiunta del pulsante "+" per la creazione di un nuovo libro
-        
 
-        readingPanel.removeAll();           //svuota pannello reading
+        readingPanel.removeAll();     
+        readingPanel.add(scorriButtonReading);      //svuota pannello reading
         for(JButton b : libriButtonsReading){
             readingPanel.add(b);            //aggiunta dei singoli JButton al pannello reading
         }
         readingPanel.add(aggiungiReading);  //aggiunta del pulsante "+" per la creazione di un nuovo libro
         
 
-        toReadPanel.removeAll();            //svuota il pannello toRead
+        toReadPanel.removeAll();
+        if(libriButtonsRead.size() > 5){
+            toReadPanel.add(scorriButtonToRead);            //svuota il pannello toRead
+        }
         for(JButton b : libriButtonsToRead){
             toReadPanel.add(b);             //aggiunta dei singoli JButton al pannello toRead
         }

@@ -116,7 +116,7 @@ public class Model {
             if(l1.isRead() && home.getLibriButtonsRead().size() < 5){  //se il libro è letto
                 //creo un bottone e lo aggiungo alla lista dei bottoni letti
                 JButton b = new JButton();
-                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(90, 135, 5)));
+                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(70, 90, 5)));
                 b.setIcon(im);
                 x++;
                 l1.setButton(b);
@@ -124,7 +124,7 @@ public class Model {
                 home.getLibriButtonsRead().add(b);
             }else if(l1.isReading() && home.getLibriButtonsReading().size() < 6){ //se il libro è in lettura
                 JButton b = new JButton();
-                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(90, 135, 5)));
+                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(70, 90, 5)));
                 b.setIcon(im);
                 x++;
                 l1.setButton(b);
@@ -133,7 +133,7 @@ public class Model {
             }else if(l1.isToRead() && home.getLibriButtonsToRead().size() < 7){ //se il libro è da leggere
 
                 JButton b = new JButton();
-                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(90, 135, 5)));
+                ImageIcon im = new ImageIcon((l1.getImmagine().getScaledInstance(70, 90, 5)));
                 im.setDescription(String.valueOf(x));
                 b.setIcon(im);
                 x++;
@@ -207,5 +207,26 @@ public class Model {
     }
     public void setLibreria(Libreria libreria){
         this.libreria=libreria;
+    }
+
+
+    public void scorrimento(){
+        home.getLibriButtonsReading().clear();;
+        int x = 0;
+        for(Libri l : libreria.getLibri()){
+            if(x<6){
+                x++;
+            }else if(l.isReading() && home.getLibriButtonsReading().size() < 6){
+                try{
+                    JButton b = new JButton();
+                    ImageIcon im = new ImageIcon((l.getImmagine().getScaledInstance(70, 90, 5)));
+                    b.setIcon(im);
+                    l.setButton(b);
+                    home.getLibriButtonsReading().add(b);
+                }catch(Exception e){
+                    e.printStackTrace(); 
+                }
+            }
+        }
     }
 }

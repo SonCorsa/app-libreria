@@ -36,7 +36,7 @@ public class JFramePrincipale extends JFrame {
         add(pannelli);
         
         //Operazioni finali
-        setSize(1080,607);
+        setSize(1280,720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);

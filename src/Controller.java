@@ -95,6 +95,14 @@ public class Controller {
                 }
             }
         };
+
+        ActionListener scorrimento = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                model.scorrimento();
+                finestra.getHome().InstaziaLibri();
+            }
+        };
         
         for(JButton b: finestra.getHome().getLibriButtonsRead()){
             b.addActionListener(apriLibro);
@@ -113,6 +121,8 @@ public class Controller {
         finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
+
+        finestra.getHome().getScorriButtonReading().addActionListener(scorrimento);
     }
 
     public Libreria getLibreria(){

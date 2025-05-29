@@ -170,6 +170,18 @@ public class Home extends JPanel{
         return aggiungiToRead;
     }
 
+        public JButton getScorriButtonRead() {
+        return scorriButtonRead;
+    }
+
+    public JButton getScorriButtonReading() {
+        return scorriButtonReading;
+    }
+
+    public JButton getScorriButtonToRead() {
+        return scorriButtonToRead;
+    }
+
 
     //get dei JPanel
     public JPanel getP1() {

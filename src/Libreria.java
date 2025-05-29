@@ -2,12 +2,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Libreria implements Serializable {
+
+    //Lista dei libri
     protected ArrayList<Libri> libri;
 
     public Libreria(){
         libri=new ArrayList<Libri>();
     }
 
+    //metodo per aggiungere un libro alla lista se non è già presente
     public boolean aggiungiLibro(Libri l){
         boolean presente=false;
         for(Libri li:libri){
@@ -23,6 +26,7 @@ public class Libreria implements Serializable {
         }
     }
     
+    //metodo per eliminare un libro dalla lista se è presente
     public boolean eliminaLibro(Libri l){
         boolean presente=false;
         for(Libri li:libri){
@@ -38,6 +42,7 @@ public class Libreria implements Serializable {
         }
     }
 
+    //get della lista
     public ArrayList<Libri> getLibri() {
         return libri;
     }

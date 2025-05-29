@@ -7,7 +7,7 @@ import ComponentiRotondi.RoundedTextArea;
 import ComponentiRotondi.RoundedTextField;
 
 public class Aggiungi extends JPanel{
-
+    //attributi
     private JButton aggiungi,indietro,copertina;
     private JTextField nome,autore,genere,npag;
     private JTextArea trama;
@@ -17,20 +17,20 @@ public class Aggiungi extends JPanel{
     private JCheckBox read,reading,toRead;
 
     public Aggiungi(JFramePrincipale finestra){
+        //settaggio del layout
         setLayout(new BorderLayout());
-        //istanzio il panel
 
-        //istanzio JButton
+        //istanza dei JButton
         aggiungi = new RoundedButton("Aggiungi",10,10);
         indietro = new JButton();
         copertina = new JButton();
 
-        //setto l'immagine del bottone copertina
+        //set dell'immagine del bottone copertina
         setImmagineCopertina();
         setImmagineBottone(indietro, "Images/Freccia.png", 100, 60);
        
 
-        //istanzio JTextField
+        //istanza dei JTextField
         nome = new RoundedTextField(10,10);
         autore = new RoundedTextField(10,10);
         genere = new RoundedTextField(10,10);
@@ -39,18 +39,19 @@ public class Aggiungi extends JPanel{
         trama.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         trama.setLineWrap(true);
         
-        //istanzio JLabel
+        //istanza dei JLabel
         lnome = new JLabel("Nome");
         lautore = new JLabel("Autore");
         lgenere = new JLabel("Genere");
         lnpag = new JLabel("Numero pagine");
         ltrama= new JLabel("Trama");
 
-        //istanzio JPanel
+        //istanza dei JPanel
         indietroPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         aggiungiPanel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
         p1 = new JPanel(new GridBagLayout());
         
+        //set delle dimensioni delle JTextField
         nome.setPreferredSize(new Dimension(250,20));
         autore.setPreferredSize(new Dimension(250,20));
         genere.setPreferredSize(new Dimension(250,20));
@@ -58,14 +59,14 @@ public class Aggiungi extends JPanel{
         trama.setPreferredSize(new Dimension(250,100));
         aggiungi.setPreferredSize(new Dimension(200,45));
     
-        //TASTI INDIETRO E AGGIUNGI
+        //tasti "indietro" e "aggiungi"
         indietroPanel.add(indietro);
         aggiungiPanel.add(aggiungi);
         add(indietroPanel,BorderLayout.NORTH);
         add(aggiungiPanel,BorderLayout.SOUTH);
         
         
-        //PANNELLO GRIDBAGLAYOUT
+        //Pannello con GridBagLayout
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 0;
@@ -74,7 +75,7 @@ public class Aggiungi extends JPanel{
         c.anchor = GridBagConstraints.CENTER;
         p1.add(copertina,c);
         
-        //LABEL NOME E TEXTFIELD NOME
+        //aggiunta degli elementi relativi al nome
         GridBagConstraints x= new GridBagConstraints();
         x.weightx = 0.5;
         x.gridx = 1;
@@ -88,7 +89,7 @@ public class Aggiungi extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(nome,x);
 
-        //LABEL AUTORE E TEXTFIELD AUTORE
+        //aggiunta degli elementi relativi all'autore
         x.gridx = 1;
         x.gridy = 2;
         x.insets = new Insets(0,0,0,200);
@@ -99,7 +100,7 @@ public class Aggiungi extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(autore,x);
 
-        //LABEL GENERE E TEXTFIELD GENERE
+        //aggiunta degli elementi relativi al genere
         x.gridx = 1;
         x.gridy = 4;
         x.insets = new Insets(0,0,0,200);
@@ -110,7 +111,7 @@ public class Aggiungi extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(genere,x);
 
-        //LABEL NUMERO PAGINE E TEXTFIELD NUMERO PAGINE
+        //aggiunta degli elementi relativi al numero di pagine
         x.gridx = 1;
         x.gridy = 6;
         x.insets = new Insets(0,0,0,150);
@@ -121,7 +122,7 @@ public class Aggiungi extends JPanel{
         x.insets = new Insets(0,0,0,0);
         p1.add(npag,x);
 
-        //LABEL TRAMA E TEXTFIELD TRAMA
+        //aggiunta degli elementi relativi alla trama
         x.gridx = 1;
         x.gridy = 8;
         x.insets = new Insets(0,0,0,200);
@@ -133,9 +134,32 @@ public class Aggiungi extends JPanel{
         x.gridheight = 2;
         p1.add(trama,x);
         add(p1,BorderLayout.CENTER);
-
+        
     }
 
+
+    //metodo per il set dell'immagine di copertina
+    public void setImmagineCopertina(){
+        File fileicon = new File("Images/Aggiungi.png");
+        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
+        copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
+        copertina.setOpaque(false);
+        copertina.setBorderPainted(false);
+        copertina.setContentAreaFilled(false);
+    }
+    
+    //medoto per il set dell'immagine del pulsante "indietro"
+    public void setImmagineBottone(JButton b,String path, int x ,int y){
+        File fileicon = new File(path);
+        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
+        b.setIcon(new ImageIcon(icon.getImage().getScaledInstance(x, y, 5)));
+        b.setOpaque(false);
+        b.setBorderPainted(false);
+        b.setContentAreaFilled(false);
+    }
+
+
+    
     //get dei JButton
     public JButton getAggiungi() {
         return aggiungi;
@@ -149,6 +173,7 @@ public class Aggiungi extends JPanel{
         return copertina;
     }
 
+    //get delle JTextField
     public JTextField getNome() {
         return nome;
     }
@@ -165,73 +190,5 @@ public class Aggiungi extends JPanel{
         return npag;
     }
 
-    public void setImmagineCopertina(){
-        File fileicon = new File("Images/Aggiungi.png");
-        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
-        copertina.setIcon(new ImageIcon(icon.getImage().getScaledInstance(285, 370, 5)));
-        copertina.setOpaque(false);
-        copertina.setBorderPainted(false);
-        copertina.setContentAreaFilled(false);
-    }
-    
-    public void setImmagineBottone(JButton b,String path, int x ,int y){
-        File fileicon = new File(path);
-        ImageIcon icon = new ImageIcon(fileicon.getAbsolutePath());
-        b.setIcon(new ImageIcon(icon.getImage().getScaledInstance(x, y, 5)));
-        b.setOpaque(false);
-        b.setBorderPainted(false);
-        b.setContentAreaFilled(false);
-    }
-
-    public void CheckboxRead(){
-        toRead.setSelected(false);
-        reading.setSelected(false);        
-    }
-
-    public void CheckboxReading(){
-        toRead.setSelected(false);
-        read.setSelected(false);        
-    }
-
-    public void CheckboxToRead(){
-        read.setSelected(false);
-        reading.setSelected(false);        
-    }
-
-    public int getSelectedCheckbox(){
-        if(read.isSelected()){
-            return 1;
-        }else if(reading.isSelected()){
-            return 2;
-        }else if(toRead.isSelected()){
-            return 3;
-        }else{
-            return 0;
-        }
-    }
-
-    public JCheckBox getRead() {
-        return read;
-    }
-
-    public void setRead(JCheckBox read) {
-        this.read = read;
-    }
-
-    public JCheckBox getReading() {
-        return reading;
-    }
-
-    public void setReading(JCheckBox reading) {
-        this.reading = reading;
-    }
-
-    public JCheckBox getToRead() {
-        return toRead;
-    }
-
-    public void setToRead(JCheckBox toRead) {
-        this.toRead = toRead;
-    }
 
 }

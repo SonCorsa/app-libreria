@@ -84,7 +84,6 @@ public class Libri implements Serializable {
     //set degli attributi
     public void setAutore(String autore) {
         this.autore = autore;
-        System.out.println(autore+"<--Autore dentro setAutore");
     }
 
     public void setNome(String nome) {

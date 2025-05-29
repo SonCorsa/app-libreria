@@ -194,7 +194,6 @@ public class LibroGUI extends JPanel{
             copertina.setBorderPainted(false);
             copertina.setContentAreaFilled(false);
         }catch(Exception e){
-            System.out.println("Immagine non trovata");
         }
     }
     

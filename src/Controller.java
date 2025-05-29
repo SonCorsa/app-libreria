@@ -39,7 +39,6 @@ public class Controller {
                     x = 3;
 
                 }
-                System.out.println(x);
             }
         };
 
@@ -78,7 +77,6 @@ public class Controller {
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-                System.out.print(rif+" <---Bottone salva");
             }
         };
 
@@ -90,8 +88,6 @@ public class Controller {
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
                         rif=l;
-                        System.out.println(l);
-                        System.out.println(rif);
                         model.apriLibro(l);
                         finestra.getLibroGUI().getIndietro().addActionListener(cambiaPagina);
                         finestra.getLibroGUI().getSalva().addActionListener(salva);

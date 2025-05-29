@@ -88,47 +88,7 @@ public class Model {
         }
     }
 
-     public void modificaLibro(int x) throws IOException {
-        // Lettura dalle textfield
-        String nome = LibroGUI.getNome().getText();
-        String autore = addPage.getAutore().getText();
-        String Genere = addPage.getGenere().getText();
-        int npag = Integer.parseInt(addPage.getNpag().getText());
-
-        // Svuoto le textfield
-        addPage.getNome().setText("");
-        addPage.getAutore().setText("");
-        addPage.getGenere().setText("");
-        addPage.getNpag().setText("");
-
-        //?DA CAMBIARE
-
-        // Istanzio il libro e aggiungo alla libreria
-        Libri l = new Libri(autore, nome, Genere, npag, immagineLibro);
-        if(x == 1){
-            l.setRead(true);
-        }else if(x == 2){
-            l.setReading(true);
-        }else if(x== 3){
-            l.setToRead(true);
-        }
-        // Resetto le checkbox
-        libreria.aggiungiLibro(l);
-
-
-        // Resetto l'immagine di copertina
-        addPage.setImmagineCopertina();
-
-        // Salvataggio su file in modalità append
-        File file = new File("Files/Libri.txt");
-        try (FileOutputStream fos = new FileOutputStream(file, false);
-        ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
-            scrivi.writeObject(libreria);//scrivo l'oggetto libro
-            scrivi.flush(); //svuoto il buffer
-            scrivi.close(); //chiudo lo stream
-        }
-    }
-
+     
     public LibroGUI apriLibro(Libri l){
         LibroGUI li = new LibroGUI(finestra,l);
         finestra.setLibroGUI(li);
@@ -234,19 +194,25 @@ public class Model {
         }
     }
     
-    public Libreria getLibreria(){
-        return libreria;
-    }
-    public void setLibreria(Libreria libreria){
-        this.libreria=libreria;
-    }
-
-    public void salvaLibro(Libri l,LibroGUI li){
-        System.out.println(l.getNome());
+    public void salvaLibro(Libri l,LibroGUI li) throws IOException{
         l.setAutore(li.getAutore().getText());
         l.setNome(li.getNome().getText());
         l.setGenere(li.getGenere().getText());
         int z =Integer.parseInt(li.getNpag().getText());
         l.setPagine(z);
+        File file = new File("Files/Libri.txt");
+        try (FileOutputStream fos = new FileOutputStream(file, false);
+        ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
+            scrivi.writeObject(libreria);//scrivo l'oggetto libro
+            scrivi.flush(); //svuoto il buffer
+            scrivi.close(); //chiudo lo stream
+        }
+        
+    }
+    public Libreria getLibreria(){
+        return libreria;
+    }
+    public void setLibreria(Libreria libreria){
+        this.libreria=libreria;
     }
 }

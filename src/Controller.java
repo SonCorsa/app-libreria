@@ -73,8 +73,11 @@ public class Controller {
         ActionListener salva = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                model.salvaLibro(rif,finestra.getLibroGUI());
-                model.
+                try {
+                    model.salvaLibro(rif,finestra.getLibroGUI());
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
                 System.out.print(rif+" <---Bottone salva");
             }
         };
@@ -114,10 +117,6 @@ public class Controller {
         finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
         finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
-
-
-
-        
     }
 
     public Libreria getLibreria(){

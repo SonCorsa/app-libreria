@@ -1,5 +1,6 @@
 import java.awt.Desktop.Action;
 import java.awt.event.*;
+import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
 
@@ -20,7 +21,15 @@ public class Controller {
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
-        model.leggiLibro();
+        File file = new File("Files/libri.txt");
+        if(!file.exists()){
+            file.createNewFile();
+            finestra.getHome().InstaziaLibri();
+        }else if (file.length() > 0) {
+            model.leggiLibro();
+        }else{
+            finestra.getHome().InstaziaLibri();
+        }
         this.ActionListener();
     }
 

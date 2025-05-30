@@ -87,6 +87,7 @@ public class Model {
             scrivi.flush(); //svuoto il buffer
             scrivi.close(); //chiudo lo stream
         }
+        finestra.getHome().InstaziaLibri();
     }
 
      

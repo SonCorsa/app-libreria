@@ -21,7 +21,7 @@ public class Controller {
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
-        File file = new File("Files/libri.txt");
+        File file = new File("Files/Libri.txt");
         if(!file.exists()){
             file.createNewFile();
             finestra.getHome().InstaziaLibri();

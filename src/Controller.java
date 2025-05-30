@@ -82,22 +82,28 @@ public class Controller {
                 }
             }
         };
+        
         ActionListener aggiungiLibro= new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
                 try{
                     model.aggiungiLibro(x);
                     model.leggiLibro();
+                    // Riassocia gli ActionListener ai nuovi bottoni
+                    for(JButton b: finestra.getHome().getLibriButtonsRead()){
+                        b.addActionListener(apriLibro);
+                    }
+                    for(JButton b: finestra.getHome().getLibriButtonsReading()){
+                        b.addActionListener(apriLibro);
+                    }
+                    for(JButton b: finestra.getHome().getLibriButtonsToRead()){
+                        b.addActionListener(apriLibro);
+                    }
                 }catch( Exception x){
                     x.printStackTrace();
                 }
             }
         };
-
-        
-
-        
-
 
         ActionListener scorrimentoReading = new ActionListener() {
             @Override

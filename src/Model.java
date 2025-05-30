@@ -72,20 +72,23 @@ public class Model {
         }else if(x== 3){
             l.setToRead(true);
         }
-        // Resetto le checkbox
+        // Aggiungo il libro alla libreria
         libreria.aggiungiLibro(l);
 
 
         // Resetto l'immagine di copertina
         addPage.setImmagineCopertina();
 
-        // Salvataggio su file in modalità append
+        // Salvataggio su file sovrascrivendo il file esistente
         File file = new File("Files/Libri.txt");
         try (FileOutputStream fos = new FileOutputStream(file, false);
         ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
             scrivi.writeObject(libreria);//scrivo l'oggetto libro
             scrivi.flush(); //svuoto il buffer
             scrivi.close(); //chiudo lo stream
+            this.leggiLibro(); // Rileggo la libreria per aggiornare i bottoni della home
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 

@@ -17,9 +17,9 @@ public class Controller {
     }
     
     public void Setup() throws IOException, ClassNotFoundException{
-        finestra.getHome().getReadPanel().removeAll();
-        finestra.getHome().getReadingPanel().removeAll();
-        finestra.getHome().getToReadPanel().removeAll();
+        //finestra.getHome().getReadPanel().removeAll();
+        //finestra.getHome().getReadingPanel().removeAll();
+        //finestra.getHome().getToReadPanel().removeAll();
         model.leggiLibro();
         this.ActionListener();
     }

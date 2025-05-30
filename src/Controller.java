@@ -56,19 +56,6 @@ public class Controller {
                 model.cambiaImmagineCopertina();
             }
         };
-
-        ActionListener aggiungiLibro= new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e){
-            try{
-                model.aggiungiLibro(x);
-            }catch( Exception x){
-                x.printStackTrace();
-            }
-        }
-        };
-
-        
         ActionListener salva = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,7 +66,6 @@ public class Controller {
                 }
             }
         };
-
         
         ActionListener apriLibro = new ActionListener() {  
             @Override
@@ -87,6 +73,7 @@ public class Controller {
                 JButton b = (JButton)e.getSource();
                 for(Libri l: libri.getLibri()){   
                     if(b.equals(l.getButton())){
+                        System.out.println("Apro");
                         rif=l;
                         model.apriLibro(l);
                         finestra.getLibroGUI().getIndietro().addActionListener(cambiaPagina);
@@ -95,6 +82,21 @@ public class Controller {
                 }
             }
         };
+        ActionListener aggiungiLibro= new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    model.aggiungiLibro(x);
+                    model.leggiLibro();
+                }catch( Exception x){
+                    x.printStackTrace();
+                }
+            }
+        };
+
+        
+
+        
 
 
         ActionListener scorrimentoReading = new ActionListener() {
@@ -172,9 +174,9 @@ public class Controller {
         finestra.getHome().getAggiungiToRead().addActionListener(cambiaPagina);
         finestra.getHome().getProfileButton().addActionListener(cambiaImmagineProfilo);
         
+        finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
         finestra.getAddPage().getIndietro().addActionListener(cambiaPagina);
         finestra.getAddPage().getCopertina().addActionListener(cambiaImmagineCopertina);
-        finestra.getAddPage().getAggiungi().addActionListener(aggiungiLibro);
 
         finestra.getHome().getScorriButtonReading().addActionListener(scorrimentoReading);
         finestra.getHome().getScorriInvReading().addActionListener(scorrimentoInv);

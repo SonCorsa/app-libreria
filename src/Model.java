@@ -86,7 +86,6 @@ public class Model {
             scrivi.writeObject(libreria);//scrivo l'oggetto libro
             scrivi.flush(); //svuoto il buffer
             scrivi.close(); //chiudo lo stream
-            this.leggiLibro(); // Rileggo la libreria per aggiornare i bottoni della home
         }catch(Exception e){
             e.printStackTrace();
         }

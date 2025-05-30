@@ -1,6 +1,6 @@
 import java.awt.Desktop.Action;
 import java.awt.event.*;
-import java.io.IOException;
+import java.io.*;
 import javax.swing.JButton;
 
 public class Controller {
@@ -20,9 +20,6 @@ public class Controller {
         finestra.getHome().getReadPanel().removeAll();
         finestra.getHome().getReadingPanel().removeAll();
         finestra.getHome().getToReadPanel().removeAll();
-        Files file = new Files("Files/Libri.txt")
-        if(file){  //controllo se il file esiste
-        }
         model.leggiLibro();
         this.ActionListener();
     }

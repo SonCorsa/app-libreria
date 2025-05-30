@@ -104,20 +104,18 @@ public class Model {
     }
  
     public void leggiLibro()throws IOException, ClassNotFoundException{  //Lettura della libreria da file
-        boolean check = true; //variabile di controllo
         File file = new File("Files/Libri.txt");
-        ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
-        if(leggi.available() == 0){ //controllo se il file è vuoto
-            check=false; //se è vuoto esco dal ciclo
-        }
-        while(check){
+        if(file.exists() && file.length()>0){
+            ObjectInputStream leggi = new ObjectInputStream(new FileInputStream(file));
             try{
                 libreria = (Libreria) leggi.readObject(); //leggo l'oggetto libro
+                
+                leggi.close();
             }catch(EOFException e){ //eccezione di fine file
-                break;
+                System.out.println("File vuoto, nessun libro da leggere.");
             }
         }
-        leggi.close();
+        
         //aggiorno i bottoni della home
         home.getLibriButtonsRead().clear(); //svuoto i bottoni letti\
         home.getLibriButtonsReading().clear(); //svuoto i bottoni letti

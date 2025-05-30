@@ -89,6 +89,8 @@ public class Controller {
                 try{
                     model.aggiungiLibro(x);
                     model.leggiLibro();
+                    // AGGIORNA LA VARIABILE libri DEL CONTROLLER!
+                    setLibreria(model.getLibreria());
                     // Riassocia gli ActionListener ai nuovi bottoni
                     for(JButton b: finestra.getHome().getLibriButtonsRead()){
                         b.addActionListener(apriLibro);

@@ -5,7 +5,6 @@ public class Model {
     private JFramePrincipale finestra;
     private Aggiungi addPage;
     private Home home;
-    private LibroGUI libroGUI;
     private Libreria libreria;
     private JFileChooser fileChooser;
     private File immagineLibro;
@@ -18,7 +17,6 @@ public class Model {
         this.finestra=finestra;
         this.addPage=finestra.getAddPage();
         this.home=finestra.getHome();
-        this.libroGUI = finestra.getLibroGUI();
         this.libreria=libri;
         fileChooser = new JFileChooser();
         indReading = 1; //inizializzo y a 1

@@ -67,6 +67,14 @@ public class Controller {
             }
         };
         
+        ActionListener eliminaLibro = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                model.eliminaLibro(rif);
+                model.cambiaPagina();
+            }
+        };
+
+
         ActionListener apriLibro = new ActionListener() {  
             @Override
             public void actionPerformed(ActionEvent e){
@@ -78,6 +86,7 @@ public class Controller {
                         model.apriLibro(l);
                         finestra.getLibroGUI().getIndietro().addActionListener(cambiaPagina);
                         finestra.getLibroGUI().getSalva().addActionListener(salva);
+                        finestra.getLibroGUI().getElimina().addActionListener(eliminaLibro);
                     }                    
                 }
             }

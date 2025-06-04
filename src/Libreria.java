@@ -14,7 +14,7 @@ public class Libreria implements Serializable {
     public boolean aggiungiLibro(Libri l){
         boolean presente=false;
         for(Libri li:libri){
-            if(li.equals(libri)){
+            if(li.autore.equals(l.autore) && li.nome.equals(l.nome) && li.genere.equals(l.genere)){
                 presente=true;
             }
         }
@@ -30,7 +30,7 @@ public class Libreria implements Serializable {
     public boolean eliminaLibro(Libri l){
         boolean presente=false;
         for(Libri li:libri){
-            if(li.equals(libri)){
+            if(li.autore.equals(l.autore) && li.nome.equals(l.nome) && li.genere.equals(l.genere)){
                 presente=true;
             }
         }

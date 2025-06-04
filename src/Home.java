@@ -152,6 +152,43 @@ public class Home extends JPanel{
         toReadPanel.add(aggiungiToRead);    
     }
 
+     public void InstaziaLibri2(){
+
+        readPanel.removeAll();
+        readPanel.add(scorriButtonRead);
+        scorriButtonRead.setVisible(false);
+        
+        for(JButton b : libriButtonsRead){
+            readPanel.add(b);               
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
+        }
+        readPanel.add(aggiungiRead);        
+
+        readingPanel.removeAll();  
+        readingPanel.add(scorriButtonReading);
+        scorriButtonReading.setVisible(false);
+       
+        for(JButton b : libriButtonsReading){
+            readingPanel.add(b);            
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
+        }
+        readingPanel.add(aggiungiReading);  
+        
+        toReadPanel.removeAll();
+        toReadPanel.add(scorriButtonToRead);       
+        for(JButton b : libriButtonsToRead){
+            toReadPanel.add(b);             
+            b.setOpaque(false);
+            b.setContentAreaFilled(false);
+            b.setBorderPainted(false);
+        }
+        toReadPanel.add(aggiungiToRead);    
+    }
+
     
     public void aggiungiScorrimentoInvReading(){
         readingPanel.remove(aggiungiReading);

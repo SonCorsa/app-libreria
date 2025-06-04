@@ -9,7 +9,7 @@ import ComponentiRotondi.RoundedTextField;
 public class LibroGUI extends JPanel{
 
     //attributi
-    private JButton salva,indietro,copertina;
+    private JButton salva,indietro,copertina, elimina;
     private JTextField nome,autore,genere,npag;
     private JTextArea trama;
     private JLabel lnome,lautore,lgenere,lnpag,ltrama;
@@ -26,6 +26,7 @@ public class LibroGUI extends JPanel{
 
         //istanzio JButton
         salva = new RoundedButton("salva",10,10);
+        elimina = new RoundedButton("Elimina",10,10);
         indietro = new JButton();
         copertina = new JButton();
 
@@ -71,9 +72,11 @@ public class LibroGUI extends JPanel{
         npag.setPreferredSize(new Dimension(250,20));
         trama.setPreferredSize(new Dimension(250,100));
         salva.setPreferredSize(new Dimension(200,45));
+        elimina.setPreferredSize(new Dimension(200,45));
     
         //tasti "indietro" e "aggiungi"
         indietroPanel.add(indietro);
+        aggiungiPanel.add(elimina);
         aggiungiPanel.add(salva);
         add(indietroPanel,BorderLayout.NORTH);
         add(aggiungiPanel,BorderLayout.SOUTH);
@@ -209,5 +212,9 @@ public class LibroGUI extends JPanel{
 
     public JTextArea getTrama() {
         return trama;
+    }
+
+    public JButton getElimina() {
+        return elimina;
     }
 }

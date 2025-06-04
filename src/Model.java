@@ -161,7 +161,24 @@ public class Model {
     
 
     public void eliminaLibro(Libri l){
+        if(l.isRead()){
+            home.getLibriButtonsRead().remove(l.getButton());
+        }else if(l.isReading()){
+            home.getLibriButtonsReading().remove(l.getButton());
+        }else if(l.isToRead()){
+            home.getLibriButtonsToRead().remove(l.getButton());
+        }
         libreria.eliminaLibro(l);
+        File file = new File("Files/Libri.txt");
+        try (FileOutputStream fos = new FileOutputStream(file, false);
+        ObjectOutputStream scrivi = new ObjectOutputStream(fos)) {
+            scrivi.writeObject(libreria);//Riscrivo l'oggetto libreria
+            scrivi.flush(); //svuoto il buffer
+            scrivi.close(); 
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        home.InstaziaLibri();
     }
 
     public void cambiaImmagineProfilo(){
